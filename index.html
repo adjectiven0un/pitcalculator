@@ -4,9 +4,12 @@
   <title>Hypixel Pit rewards calculator</title>
   <link rel="stylesheet" href="stylesheet.css">
   <meta name = "description" content = "Calculator for XP and gold on kill">
+<span class = body>
   <p id = "title" style = "color:black;">Hypixel Pit rewards calculator</p>
-  <form action="">
-    <label>Select helmet</label>
+
+
+  <form action="" style = "display: inline-table">
+    <label>Select helmet </label>
     <select id="player1helmet">
       <option value="none">None</option>
       <option value="Fancy_Hat">Fancy Hat</option>
@@ -21,13 +24,13 @@
       <td style="text-align: center"><img src="./images/nohelmet.png" width="100%"></td>
     </tr>
     <tr>
-      <td class="small center" id="caption2" name="caption2">Player 1's helmet</td>
+      <td class="small center" id="caption2" name="caption2">Killer's helmet</td>
     </tr>
   </table>   
   <br>
        
-  <form action="">
-    <label>Select chestplate</label>
+  <form action="" style = "display: inline-table">
+    <label>Select chestplate </label>
     <select id="player1chestplate">
       <option value="none">None</option>
       <option value="Chainmail_Chestplate">Chainmail Chestplate</option>
@@ -41,12 +44,12 @@
       <td style="text-align: center"><img src="./images/nochestplate.png" width="100%"></td>
     </tr>
     <tr>
-      <td class="small center" id="caption2" name="caption2">Player 1's chestplate</td>
+      <td class="small center" id="caption2" name="caption2">Killer's chestplate</td>
     </tr>
   </table>
-    
-  <form action="">
-    <label>Select leggings</label>
+  <br>
+  <form action="" style = "display: inline-table">
+    <label>Select leggings </label>
     <select id="player1leggings">
       <option value="none">None</option>
       <option value="Chainmail_Leggings">Chainmail Leggings</option>
@@ -62,11 +65,12 @@
       <td style="text-align: center"><img src="./images/noleggings.png" width="100%"></td>
     </tr>
     <tr>
-      <td class="small center" id="caption2" name="caption2">Player 1's leggings</td>
+      <td class="small center" id="caption2" name="caption2">Killer's leggings</td>
     </tr>
   </table>
-  <form action="">
-    <label>Select boots</label>
+  <br>
+  <form action="" style = "display: inline-table">
+    <label>Select boots </label>
     <select id="player1boots">
       <option value="none">None</option>
       <option value="Chainmail_Boots">Chainmail Boots</option>
@@ -81,8 +85,41 @@
       <td style="text-align: center"><img src="./images/noboots.png" width="100%"></td>
     </tr>
     <tr>
-      <td class="small center" id="caption2" name="caption2">Player 1's boots</td>
+      <td class="small center" id="caption2" name="caption2">Killer's boots</td>
     </tr>
   </table>
+  <br>
+  <form action="">
+    <label>XP Boost passive level </label>
+    <select id="PassiveXPBoost">
+      <option value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+    </select>
+  </form>
+  <br>
+  <form action="">
+    <label>Gold Boost passive level </label>
+    <select id="PassiveGoldBoost">
+      <option value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+    </select>
+  </form>
+  <br>
+  <form>
+    <label>Killer's streak after kill </label>
+    <input type = "text" id = "killstreak">
+  </form>
+</span>
+  
   </body>
   </html>
