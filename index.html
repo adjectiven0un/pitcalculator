@@ -4,6 +4,7 @@
   <title>Hypixel Pit rewards calculator</title>
   <link rel="stylesheet" href="stylesheet.css">
   <meta name = "description" content = "Calculator for XP and gold on kill">
+  <p><span class = mc>WARNING!</span> This site has no function right now! Come back later!</p>
 <span class = body>
   <p id = "title" style = "color:black;">Hypixel Pit rewards calculator</p>
 
@@ -48,7 +49,7 @@
     </tr>
   </table>
   <br>
-  <form action="" style = "display: inline-table">
+  <form action="" style = "display: inline-table" onChange = "revealPants(player1leggings.value);">
     <label>Select leggings </label>
     <select id="player1leggings">
       <option value="none">None</option>
@@ -119,7 +120,81 @@
     <label>Killer's streak after kill </label>
     <input type = "text" id = "killstreak">
   </form>
+  <br>
+
+
+  <div id = "MysticPantsBuffs" class = "invis">
+  <p>Mystic Pants bonuses</p>
+  <form action="" style = "display: inline-table">
+    <label>Sweaty level </label>
+    <select id="SweatyLevel">
+      <option value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+    </select>
+  </form>
+  <form action="" style = "display: inline-table">
+    <label> XP Boost level </label>
+    <select id="XPBoostLevel">
+      <option value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+    </select>
+  </form>
+  <form action="" style = "display: inline-table">
+    <label> XP Bump Level </label>
+    <select id="XPBumpLevel">
+      <option value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+    </select>
+  </form>
+  <br><br>
+  <form action="" style = "display: inline-table">
+    <label>Moctezuma level </label>
+    <select id="MoctezumaLevel">
+      <option value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+    </select>
+  </form>
+  <form action="" style = "display: inline-table">
+    <label> Gold Boost level </label>
+    <select id="GoldBoostLevel">
+      <option value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+    </select>
+  </form>
+  <form action="" style = "display: inline-table">
+    <label> Gold Bump Level </label>
+    <select id="GoldBumpLevel">
+      <option value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+    </select>
+  </form>
+  </div>
 </span>
   
   </body>
+
+  <script>
+    function revealPants(value){
+      console.log("Change attempted");
+      console.log(value);
+      if (value == "Mystic_Pants"){
+        document.getElementById("MysticPantsBuffs").classList.remove("invis");
+      }
+      else{
+        document.getElementById("MysticPantsBuffs").classList.add("invis");
+      }
+    }
+  </script>
   </html>
