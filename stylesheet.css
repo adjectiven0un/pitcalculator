@@ -42,8 +42,7 @@ body {
 
 .img {
   outline: 1px solid white;
-  width: 100px;
-  float: right;
+  width: 200px;
   margin: 10px;
   border: 1px solid white;
 }
