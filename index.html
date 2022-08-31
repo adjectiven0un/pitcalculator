@@ -4,20 +4,21 @@
   <title>Hypixel Pit rewards calculator</title>
   <link rel="stylesheet" href="stylesheet.css">
   <meta name = "description" content = "Calculator for XP and gold on kill">
-  <p><span class = mc>WARNING!</span> This site has no function right now! Come back later!</p>
+<div class = "box">
 <span class = body>
-  <p id = "title" style = "color:black;">Hypixel Pit rewards calculator</p>
+  <p><span class = mc>WARNING!</span> This site has no function right now as it isn't complete. Come back later!</p>
+  <p id = "title" style = "color:white;">Hypixel Pit rewards calculator</p>
 
 
   <form action="" style = "display: inline-table">
     <label>Select helmet </label>
     <select id="player1helmet">
       <option value="none">None</option>
-      <option value="Fancy_Hat">Fancy Hat</option>
-      <option value="Chainmail_Helmet">Chainmail Helmet</option>
-      <option value="Iron_Helmet">Iron Helmet</option>
-      <option value="Diamond_Helmet">Diamond Helmet</option>
-      <option value="Golden_Helmet">Golden Helmet</option>
+      <option value="Fancy_Hat" style = "background: #a50">Fancy Hat</option>
+      <option value="Chainmail_Helmet" style = "background: #aaa">Chainmail Helmet</option>
+      <option value="Iron_Helmet" style = "background: #fff">Iron Helmet</option>
+      <option value="Diamond_Helmet" style = "background: #0ee">Diamond Helmet</option>
+      <option value="Golden_Helmet" style = "background: #ff0">Golden Helmet</option>
     </select>
   </form>
   <table class="img body" style = "display: inline-table">
@@ -34,10 +35,10 @@
     <label>Select chestplate </label>
     <select id="player1chestplate">
       <option value="none">None</option>
-      <option value="Chainmail_Chestplate">Chainmail Chestplate</option>
-      <option value="Iron_Chestplate">Iron Chestplate</option>
-      <option value="Diamond_Chestplate">Diamond Chestplate</option>
-      <option value="Diamond_Chestplate">Archangel Chestplate</option>
+      <option value="Chainmail_Chestplate" style = "background: #aaa">Chainmail Chestplate</option>
+      <option value="Iron_Chestplate" style = "background: #fff">Iron Chestplate</option>
+      <option value="Diamond_Chestplate" style = "background: #0ee">Diamond Chestplate</option>
+      <option value="Diamond_Chestplate" style = "background: #0ff">Archangel Chestplate</option>
     </select>
   </form>
   <table class="img body" style = "display: inline-table">
@@ -53,12 +54,12 @@
     <label>Select leggings </label>
     <select id="player1leggings">
       <option value="none">None</option>
-      <option value="Chainmail_Leggings">Chainmail Leggings</option>
-      <option value="Iron_Leggings">Iron Leggings</option>
-      <option value="Diamond_Leggings">Diamond Leggings</option>
-      <option value="Mystic_Pants">Mystic Pants</option>
-      <option value ="Dark_Pants">Dark Pants</option>
-      <option value = "Sewer_Pants">Sewer Pants</option>
+      <option value="Chainmail_Leggings" style = "background: #aaa">Chainmail Leggings</option>
+      <option value="Iron_Leggings" style = "background: #fff">Iron Leggings</option>
+      <option value="Diamond_Leggings" style = "background: #0ee">Diamond Leggings</option>
+      <option value="Mystic_Pants" style = "background: #f55">Mystic Pants</option>
+      <option value ="Dark_Pants" style = "background: #444">Dark Pants</option>
+      <option value = "Sewer_Pants" style = "background: #afc">Sewer Pants</option>
     </select>
   </form>
   <table class="img body" style = "display: inline-table">
@@ -74,11 +75,11 @@
     <label>Select boots </label>
     <select id="player1boots">
       <option value="none">None</option>
-      <option value="Chainmail_Boots">Chainmail Boots</option>
-      <option value="Iron_Boots">Iron Boots</option>
-      <option value="Diamond_Boots">Diamond Boots</option>
-      <option value="Chainmail_Boots">Armageddon Boots</option>
-      <option value="Chainmail_Boots">Radioactive Boots</option>
+      <option value="Chainmail_Boots" style = "background: #aaa">Chainmail Boots</option>
+      <option value="Iron_Boots" style = "background: #fff">Iron Boots</option>
+      <option value="Diamond_Boots" style = "background: #0ee">Diamond Boots</option>
+      <option value="Chainmail_Boots" style = "background: #c00">Armageddon Boots</option>
+      <option value="Chainmail_Boots" style = "background: #afc">Radioactive Boots</option>
     </select>
   </form>
   <table class="img body" style = "display: inline-table">
@@ -91,7 +92,7 @@
   </table>
   <br>
   <form action="">
-    <label>XP Boost passive level </label>
+    <label><span class = mb>XP Boost</span> passive level </label>
     <select id="PassiveXPBoost">
       <option value="0">0</option>
       <option value="1">1</option>
@@ -104,8 +105,21 @@
   </form>
   <br>
   <form action="">
-    <label>Gold Boost passive level </label>
+    <label><span class = m6>Gold Boost</span> passive level </label>
     <select id="PassiveGoldBoost">
+      <option value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+    </select>
+  </form>
+  <br>
+  <form action="">
+    <label><span class = md>El Gato</span> passive level </label>
+    <select id="PassiveElGato">
       <option value="0">0</option>
       <option value="1">1</option>
       <option value="2">2</option>
@@ -124,7 +138,7 @@
 
 
   <div id = "MysticPantsBuffs" class = "invis">
-  <p>Mystic Pants bonuses</p>
+  <p><span class = mc>Mystic Pants</span> bonuses</p>
   <form action="" style = "display: inline-table">
     <label>Sweaty level </label>
     <select id="SweatyLevel">
@@ -180,9 +194,135 @@
       <option value="3">3</option>
     </select>
   </form>
+  <br>
+  <br>
   </div>
-</span>
+
+
+  <p><span class = me>Mystic Sword</span> bonuses</p>
+  <form action="" style = "display: inline-table">
+    <label>Sweaty level </label>
+    <select id="SweatyLevel">
+      <option value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+    </select>
+  </form>
+  <form action="" style = "display: inline-table">
+    <label> XP Boost level </label>
+    <select id="XPBoostLevel">
+      <option value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+    </select>
+  </form>
+  <form action="" style = "display: inline-table">
+    <label> XP Bump Level </label>
+    <select id="XPBumpLevel">
+      <option value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+    </select>
+  </form>
+  <br><br>
+  <form action="" style = "display: inline-table">
+    <label>Moctezuma level </label>
+    <select id="MoctezumaLevel">
+      <option value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+    </select>
+  </form>
+  <form action="" style = "display: inline-table">
+    <label> Gold Boost level </label>
+    <select id="GoldBoostLevel">
+      <option value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+    </select>
+  </form>
+  <form action="" style = "display: inline-table">
+    <label> Gold Bump Level </label>
+    <select id="GoldBumpLevel">
+      <option value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+    </select>
+  </form>
+  <form action="" style = "display: inline-table">
+    <label> Sierra Level </label>
+    <select id="SierraLevel">
+      <option value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+    </select>
+  </form>
+  <br><br>
+  <form action="" style = "display: inline-table">
+    <label>Active Event </label>
+    <select id="EventMultiplier">
+      <option value="2">King of the Ladder</option>
+      <option value="2">2x Rewards</option>
+      <option value="4">King of the Hill</option>
+      <option value="2">Team Deathmatch</option>
+      <option value="r">Rage Pit</option>
+    </select>
+  </form>
+  <br><br>
+  <form action="" style = "display: inline-table">
+    <label>Genesis XP multiplier</label>
+    <select id="GenesisXPMultiplier">
+      <option value="0">0%</option>
+      <option value="1">1%</option>
+      <option value="2">2%</option>
+      <option value="3">3%</option>
+      <option value="4">4%</option>
+      <option value="5">5%</option>
+      <option value="6">6%</option>
+      <option value="7">7%</option>
+      <option value="8">8%</option>
+      <option value="9">9%</option>
+      <option value="10">10%</option>
+      <option value="11">11%</option>
+      <option value="12">12%</option>
+      <option value="13">13%</option>
+      <option value="14">14%</option>
+      <option value="15">15%</option>
+    </select>
+  </form>
+  <form action="" style = "display: inline-table">
+    <label>Genesis gold bump</label>
+    <select id="GenesisGoldBump">
+      <option value="0">0.0</option>
+      <option value="0.2">0.2</option>
+      <option value="0.4">0.4</option>
+      <option value="0.6">0.6</option>
+      <option value="0.8">0.8</option>
+      <option value="1.0">1.0</option>
+      <option value="1.2">1.2</option>
+      <option value="1.4">1.4</option>
+      <option value="1.6">1.6</option>
+      <option value="1.8">1.8</option>
+      <option value="2.0">2.0</option>
+      <option value="2.2">2.2</option>
+      <option value="2.4">2.4</option>
+      <option value="2.6">2.6</option>
+      <option value="2.8">2.8</option>
+      <option value="3.0">3.0</option>
+     
+    </select>
+  </form>
+
   
+</span>
+</div>
   </body>
 
   <script>
