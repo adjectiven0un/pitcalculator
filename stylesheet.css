@@ -18,7 +18,7 @@ body {
 
 .body {
   font-size: 16px;
-  color: #000;
+  color: #fff;
 }
 
 .section {
@@ -28,7 +28,7 @@ body {
 
 .small {
   font-size: 12px;
-  color: #000;
+  color: #fff;
 }
 
 .center {
@@ -40,10 +40,8 @@ body {
 }
 
 .img {
-  outline: 1px solid white;
   width: 125x;
   margin: 10px;
-  border: 1px solid white;
 }
 
 .tableheader {
@@ -275,6 +273,6 @@ ul {
 @media only screen and (max-width: 500px) {
   body {
     background-image: none;
-    background-color: #808080;
+    background-color: #252525;
   }
 }
