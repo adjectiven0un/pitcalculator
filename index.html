@@ -5,22 +5,25 @@
   <link rel="stylesheet" href="stylesheet.css">
   <meta name = "description" content = "Calculator for XP and gold on kill">
 <div class = "box">
-<span class = body>
+<span class = "body">
+  <span class="header">Rewards Calculator</span><br>
+  <span class="subheader">A beta feature of the <a href="https://pit.wiki">Hypixel Pit Wiki</a></span>
+  <hr>
+
   <p><span class = mc>WARNING!</span> This site has no function right now as it isn't complete. Come back later!</p>
-  <p id = "title" style = "color:white;">Hypixel Pit rewards calculator</p>
 
 
-  <form action="" style = "display: inline-table">
+  <form>
     <label>Select helmet </label>
-    <select id="player1helmet">
+    <select>
       <option value="none">None</option>
-      <option value="Fancy_Hat" style = "background: #a50">Fancy Hat</option>
-      <option value="Chainmail_Helmet" style = "background: #aaa">Chainmail Helmet</option>
-      <option value="Iron_Helmet" style = "background: #fff">Iron Helmet</option>
-      <option value="Diamond_Helmet" style = "background: #0ee">Diamond Helmet</option>
-      <option value="Golden_Helmet" style = "background: #ff0">Golden Helmet</option>
+      <option value="Fancy_Hat" style = "background: #a5a">Fancy Hat</option>
+      <option value="Chainmail_Helmet" style = "background: #888">Chainmail Helmet</option>
+      <option value="Iron_Helmet" style = "background: #aaa">Iron Helmet</option>
+      <option value="Diamond_Helmet" style = "background: #0cc">Diamond Helmet</option>
+      <option value="Golden_Helmet" style = "background: #cc0">Golden Helmet</option>
     </select>
-  </form>
+  
   <table class="img body" style = "display: inline-table">
     <tr>
       <td style="text-align: center"><img src="./images/nohelmet.png" width="100%"></td>
@@ -31,16 +34,16 @@
   </table>   
   <br>
        
-  <form action="" style = "display: inline-table">
+
     <label>Select chestplate </label>
     <select id="player1chestplate">
       <option value="none">None</option>
-      <option value="Chainmail_Chestplate" style = "background: #aaa">Chainmail Chestplate</option>
-      <option value="Iron_Chestplate" style = "background: #fff">Iron Chestplate</option>
-      <option value="Diamond_Chestplate" style = "background: #0ee">Diamond Chestplate</option>
-      <option value="Diamond_Chestplate" style = "background: #0ff">Archangel Chestplate</option>
+      <option value="Chainmail_Chestplate" style = "background: #888">Chainmail Chestplate</option>
+      <option value="Iron_Chestplate" style = "background: #aaa">Iron Chestplate</option>
+      <option value="Diamond_Chestplate" style = "background: #0cc">Diamond Chestplate</option>
+      <option value="Diamond_Chestplate" style = "background: #099">Archangel Chestplate</option>
     </select>
-  </form>
+  
   <table class="img body" style = "display: inline-table">
     <tr>
       <td style="text-align: center"><img src="./images/nochestplate.png" width="100%"></td>
@@ -54,14 +57,14 @@
     <label>Select leggings </label>
     <select id="player1leggings">
       <option value="none">None</option>
-      <option value="Chainmail_Leggings" style = "background: #aaa">Chainmail Leggings</option>
-      <option value="Iron_Leggings" style = "background: #fff">Iron Leggings</option>
-      <option value="Diamond_Leggings" style = "background: #0ee">Diamond Leggings</option>
+      <option value="Chainmail_Leggings" style = "background: #888">Chainmail Leggings</option>
+      <option value="Iron_Leggings" style = "background: #aaa">Iron Leggings</option>
+      <option value="Diamond_Leggings" style = "background: #0cc">Diamond Leggings</option>
       <option value="Mystic_Pants" style = "background: #f55">Mystic Pants</option>
       <option value ="Dark_Pants" style = "background: #444">Dark Pants</option>
-      <option value = "Sewer_Pants" style = "background: #afc">Sewer Pants</option>
+      <option value = "Sewer_Pants" style = "background: #9c4">Sewer Pants</option>
     </select>
-  </form>
+  
   <table class="img body" style = "display: inline-table">
     <tr>
       <td style="text-align: center"><img src="./images/noleggings.png" width="100%"></td>
@@ -71,17 +74,17 @@
     </tr>
   </table>
   <br>
-  <form action="" style = "display: inline-table">
+
     <label>Select boots </label>
     <select id="player1boots">
       <option value="none">None</option>
-      <option value="Chainmail_Boots" style = "background: #aaa">Chainmail Boots</option>
-      <option value="Iron_Boots" style = "background: #fff">Iron Boots</option>
-      <option value="Diamond_Boots" style = "background: #0ee">Diamond Boots</option>
+      <option value="Chainmail_Boots" style = "background: #888">Chainmail Boots</option>
+      <option value="Iron_Boots" style = "background: #aaa">Iron Boots</option>
+      <option value="Diamond_Boots" style = "background: #0cc">Diamond Boots</option>
       <option value="Chainmail_Boots" style = "background: #c00">Armageddon Boots</option>
-      <option value="Chainmail_Boots" style = "background: #afc">Radioactive Boots</option>
+      <option value="Chainmail_Boots" style = "background: #9c4">Radioactive Boots</option>
     </select>
-  </form>
+  
   <table class="img body" style = "display: inline-table">
     <tr>
       <td style="text-align: center"><img src="./images/noboots.png" width="100%"></td>
@@ -95,177 +98,177 @@
     <label><span class = mb>XP Boost</span> passive level </label>
     <select id="PassiveXPBoost">
       <option value="0">0</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
+      <option value="1">I</option>
+      <option value="2">II</option>
+      <option value="3">III</option>
+      <option value="4">IV</option>
+      <option value="5">V</option>
+      <option value="6">VI</option>
     </select>
-  </form>
+  
   <br>
   <form action="">
     <label><span class = m6>Gold Boost</span> passive level </label>
     <select id="PassiveGoldBoost">
       <option value="0">0</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
+      <option value="1">I</option>
+      <option value="2">II</option>
+      <option value="3">III</option>
+      <option value="4">IV</option>
+      <option value="5">V</option>
+      <option value="6">VI</option>
     </select>
-  </form>
+  
   <br>
   <form action="">
     <label><span class = md>El Gato</span> passive level </label>
     <select id="PassiveElGato">
       <option value="0">0</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
+      <option value="1">I</option>
+      <option value="2">II</option>
+      <option value="3">III</option>
+      <option value="4">IV</option>
+      <option value="5">V</option>
+      <option value="6">VI</option>
     </select>
-  </form>
+  
   <br>
   <form>
     <label>Killer's streak after kill </label>
-    <input type = "text" id = "killstreak">
-  </form>
+    <input type = "text" id = "killstreak" onkeyup="RemoveBad()">
+  
   <br>
 
 
   <div id = "MysticPantsBuffs" class = "invis">
   <p><span class = mc>Mystic Pants</span> bonuses</p>
-  <form action="" style = "display: inline-table">
+
     <label>Sweaty level </label>
     <select id="SweatyLevel">
       <option value="0">0</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
+      <option value="1">I</option>
+      <option value="2">II</option>
+      <option value="3">III</option>
     </select>
-  </form>
-  <form action="" style = "display: inline-table">
+  
+
     <label> XP Boost level </label>
     <select id="XPBoostLevel">
       <option value="0">0</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
+      <option value="1">I</option>
+      <option value="2">II</option>
+      <option value="3">III</option>
     </select>
-  </form>
-  <form action="" style = "display: inline-table">
+  
+
     <label> XP Bump Level </label>
     <select id="XPBumpLevel">
       <option value="0">0</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
+      <option value="1">I</option>
+      <option value="2">II</option>
+      <option value="3">III</option>
     </select>
-  </form>
+  
   <br><br>
-  <form action="" style = "display: inline-table">
+
     <label>Moctezuma level </label>
     <select id="MoctezumaLevel">
       <option value="0">0</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
+      <option value="1">I</option>
+      <option value="2">II</option>
+      <option value="3">III</option>
     </select>
-  </form>
-  <form action="" style = "display: inline-table">
+  
+
     <label> Gold Boost level </label>
     <select id="GoldBoostLevel">
       <option value="0">0</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
+      <option value="1">I</option>
+      <option value="2">II</option>
+      <option value="3">III</option>
     </select>
-  </form>
-  <form action="" style = "display: inline-table">
+  
+
     <label> Gold Bump Level </label>
     <select id="GoldBumpLevel">
       <option value="0">0</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
+      <option value="1">I</option>
+      <option value="2">II</option>
+      <option value="3">III</option>
     </select>
-  </form>
+  
   <br>
   <br>
   </div>
 
 
   <p><span class = me>Mystic Sword</span> bonuses</p>
-  <form action="" style = "display: inline-table">
+
     <label>Sweaty level </label>
     <select id="SweatyLevel">
       <option value="0">0</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
+      <option value="1">I</option>
+      <option value="2">II</option>
+      <option value="3">III</option>
     </select>
-  </form>
-  <form action="" style = "display: inline-table">
+  
+
     <label> XP Boost level </label>
     <select id="XPBoostLevel">
       <option value="0">0</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
+      <option value="1">I</option>
+      <option value="2">II</option>
+      <option value="3">III</option>
     </select>
-  </form>
-  <form action="" style = "display: inline-table">
+  
+
     <label> XP Bump Level </label>
     <select id="XPBumpLevel">
       <option value="0">0</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
+      <option value="1">I</option>
+      <option value="2">II</option>
+      <option value="3">III</option>
     </select>
-  </form>
+  
   <br><br>
-  <form action="" style = "display: inline-table">
+
     <label>Moctezuma level </label>
     <select id="MoctezumaLevel">
       <option value="0">0</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
+      <option value="1">I</option>
+      <option value="2">II</option>
+      <option value="3">III</option>
     </select>
-  </form>
-  <form action="" style = "display: inline-table">
+  
+
     <label> Gold Boost level </label>
     <select id="GoldBoostLevel">
       <option value="0">0</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
+      <option value="1">I</option>
+      <option value="2">II</option>
+      <option value="3">III</option>
     </select>
-  </form>
-  <form action="" style = "display: inline-table">
+  
+
     <label> Gold Bump Level </label>
     <select id="GoldBumpLevel">
       <option value="0">0</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
+      <option value="1">I</option>
+      <option value="2">II</option>
+      <option value="3">III</option>
     </select>
-  </form>
-  <form action="" style = "display: inline-table">
+  
+
     <label> Sierra Level </label>
     <select id="SierraLevel">
       <option value="0">0</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
+      <option value="1">I</option>
+      <option value="2">II</option>
+      <option value="3">III</option>
     </select>
-  </form>
+  
   <br><br>
-  <form action="" style = "display: inline-table">
+
     <label>Active Event </label>
     <select id="EventMultiplier">
       <option value="2">King of the Ladder</option>
@@ -274,9 +277,9 @@
       <option value="2">Team Deathmatch</option>
       <option value="r">Rage Pit</option>
     </select>
-  </form>
+  
   <br><br>
-  <form action="" style = "display: inline-table">
+
     <label>Genesis XP multiplier</label>
     <select id="GenesisXPMultiplier">
       <option value="0">0%</option>
@@ -296,8 +299,8 @@
       <option value="14">14%</option>
       <option value="15">15%</option>
     </select>
-  </form>
-  <form action="" style = "display: inline-table">
+  
+
     <label>Genesis gold bump</label>
     <select id="GenesisGoldBump">
       <option value="0">0.0</option>
@@ -318,8 +321,9 @@
       <option value="3.0">3.0</option>
      
     </select>
-  </form>
+  
 
+  
   
 </span>
 </div>
@@ -335,6 +339,13 @@
       else{
         document.getElementById("MysticPantsBuffs").classList.add("invis");
       }
+    }
+
+    function RemoveBad() {
+      if(parseFloat(killstreak.value.replace(/[^\.\d]/g,'')).toLocaleString() == "NaN") {
+        document.getElementById('killstreak').value = 0;
+      }
+      document.getElementById('killstreak').value = (killstreak.value.replace(/[^\.\d]/g,''))
     }
   </script>
   </html>
