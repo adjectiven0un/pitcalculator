@@ -18,7 +18,7 @@ body {
 
 .body {
   font-size: 16px;
-  color: #fff;
+  color: #000;
 }
 
 .section {
@@ -28,8 +28,7 @@ body {
 
 .small {
   font-size: 12px;
-  font-style: italic;
-  color: #aaa;
+  color: #000;
 }
 
 .center {
@@ -42,7 +41,7 @@ body {
 
 .img {
   outline: 1px solid white;
-  width: 200px;
+  width: 125x;
   margin: 10px;
   border: 1px solid white;
 }
@@ -214,7 +213,7 @@ a:active {
   --mce: #ff5;
   --mcf: #fff;
   --td: #caa;
-  --bg: #fff;
+  --bg: #252525;
 }
 
 td img {
