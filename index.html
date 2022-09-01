@@ -358,11 +358,25 @@
     function revealPants(value){
       console.log("Change attempted");
       console.log(value);
-      if (value == "Mystic_Pants"){
+      if (value == "Mystic"){
         document.getElementById("MysticPantsBuffs").classList.remove("invis");
+        document.getElementById("SewerPantsBuffs").classList.add("invis");
+        document.getElementById("DarkPantsBuffs").classList.add("invis");
+      }
+      if (value == "Dark"){
+        document.getElementById("DarkPantsBuffs").classList.remove("invis");
+        document.getElementById("SewerPantsBuffs").classList.add("invis");
+        document.getElementById("MysticPantsBuffs").classList.add("invis");
+      }
+      if (value == "Sewer"){
+        document.getElementById("MysticPantsBuffs").classList.remove("invis");
+        document.getElementById("SewerPantsBuffs").classList.add("invis");
+        document.getElementById("DarkPantsBuffs").classList.add("invis");
       }
       else{
         document.getElementById("MysticPantsBuffs").classList.add("invis");
+        document.getElementById("SewerPantsBuffs").classList.add("invis");
+        document.getElementById("DarkPantsBuffs").classList.add("invis");
       }
     }
 
