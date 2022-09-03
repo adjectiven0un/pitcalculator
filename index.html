@@ -442,8 +442,35 @@
         perksequipped.push(value);
         console.log("attempting to change background");
         document.getElementById(value).style.backgroundColor = "#55aa55";
+        updatePerksList();
+      }
+      else if (!perksequipped.includes(value) && perksequipped.length >= 4){
+        document.getElementById(perksequipped[0]).style.backgroundColor = "#252525";
+        perksequipped.splice(0, 1);
+        perksequipped.push(value);
+        console.log("attempting to change background");
+        document.getElementById(value).style.backgroundColor = "#55aa55";
+        updatePerksList();
+      }
+      else if (perksequipped.includes(value)){
+        document.getElementById(value).style.backgroundColor = "#252525";
+        perksequipped.splice(perksequipped.indexOf(value), 1);
+        updatePerksList();
+        
+      }
+      
+    }
+    function updatePerksList(){
+      document.getElementById("perk1image").src = ("");
+      document.getElementById("perk2image").src = ("");
+      document.getElementById("perk3image").src = ("");
+      document.getElementById("perk4image").src = ("");
+      for (var i = 1; i <= perksequipped.length; i++){
         console.log("perk" + (perksequipped.length) + "image");
-        document.getElementById("perk" + (perksequipped.length) + "image").src = ("./images/" + value + ".png");
+        document.getElementById("perk" + (i) + "image").src = ("./images/" + perksequipped[i - 1] + ".png");
+      }
+      if (perksequipped.length == 0){
+        document.getElementById("perk4image").src = ("./images/nohelmet.png");
       }
     }
     
