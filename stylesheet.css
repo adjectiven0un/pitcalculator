@@ -35,14 +35,29 @@ body {
   text-align: center;
 }
 
+.icon {
+  width: 30px;
+}
+
 .italic {
   font-style: italic;
 }
 
 .img {
-  width: 125x;
+  width: 125px;
   margin: 10px;
 }
+
+.imgkillstreaks{
+  width: 171px;
+  margin: 10px;
+}
+
+.imgwide {
+  width: 300px;
+  margin: 10px;
+}
+
 
 .tableheader {
   font-size: 25px;
@@ -97,6 +112,13 @@ td {
 
 .invis {
   display: none;
+}
+
+.unselected {
+  border-color: "#ff0000";
+}
+.selected {
+  border-color: "#00ff00";
 }
 
 .m0 {
