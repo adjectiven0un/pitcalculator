@@ -359,22 +359,22 @@
     <p>Perks</p>
     <table class="imgwide body" style = "display: inline-table">
     <tr>
-      <td id = "Safety_First" style="text-align: center; background-color: #d34545;"><img src="./images/nohelmet.png" width="100%"></td>
-      <td id = "Spammer" style="text-align: center; background-color: #d34545;"><img src="./images/nohelmet.png" width="100%"></td>
-      <td id = "Bounty_Hunter" style="text-align: center; background-color: #d34545;"><img src="./images/nohelmet.png" width="100%"></td>
-      <td id = "Streaker" style="text-align: center; background-color: #d34545;"><img src="./images/nohelmet.png" width="100%"></td>
-      <td id = "Assistant_to_the_Streaker" style="text-align: center; background-color: #d34545;"><img src="./images/nohelmet.png" width="100%"></td>
-      <td id = "Coop_Cat" style="text-align: center; background-color: #d34545;"><img src="./images/nohelmet.png" width="100%"></td>
-      <td id = "Conglomerate" style="text-align: center; background-color: #d34545;"><img src="./images/nohelmet.png" width="100%"></td>
+      <td id = "Safety_First" style="text-align: center; background-color: #252525;" onclick = "addPerk('Safety_First');"><img class = "icon" src="./images/Safety_First.png" width="100%"></td>
+      <td id = "Spammer" style="text-align: center; background-color: #252525;" onclick = "addPerk('Spammer');"><img class = "icon" src="./images/Spammer.png" width="100%"></td>
+      <td id = "Bounty_Hunter" style="text-align: center; background-color: #252525;" onclick = "addPerk('Bounty_Hunter');"><img class = "icon" src="./images/Bounty_Hunter.png" width="100%"></td>
+      <td id = "Streaker" style="text-align: center; background-color: #252525;" onclick = "addPerk('Streaker');"><img class = "icon" src="./images/Streaker.png" width="100%"></td>
+      <td id = "Assistant_to_the_Streaker" style="text-align: center; background-color: #252525;" onclick = "addPerk('Assistant_to_the_Streaker');"><img class = "icon" src="./images/Assistant_to_the_Streaker.png" width="100%"></td>
+      <td id = "Coop_Cat" style="text-align: center; background-color: #252525;" onclick = "addPerk('Coop_Cat');"><img class = "icon" src="./images/Coop_Cat.png" width="100%"></td>
+      <td id = "Conglomerate" style="text-align: center; background-color: #252525;" onclick = "addPerk('Conglomerate');"><img class = "icon" src="./images/Conglomerate.png" width="100%"></td>
     </tr>
     </table>
     <br><br>
     <table class="imgkillstreaks body" style = "display: inline-table">
     <tr>
-      <td id = "perk1" style="text-align: center"><img src="./images/nohelmet.png" width="100%"></td>
-      <td id = "perk2" style="text-align: center"><img src="./images/nohelmet.png" width="100%"></td>
-      <td id = "perk3" style="text-align: center"><img src="./images/nohelmet.png" width="100%"></td>
-      <td id = "perk4" style="text-align: center"><img src="./images/nohelmet.png" width="100%"></td>
+      <td id = "perk1" style="text-align: center"><img class = "icon" id = "perk1image" src="./images/nohelmet.png" width="100%"></td>
+      <td id = "perk2" style="text-align: center"><img class = "icon" id = "perk2image" src="./images/nohelmet.png" width="100%"></td>
+      <td id = "perk3" style="text-align: center"><img class = "icon" id = "perk3image" src="./images/nohelmet.png" width="100%"></td>
+      <td id = "perk4" style="text-align: center"><img class = "icon" id = "perk4image" src="./images/nohelmet.png" width="100%"></td>
     </tr>
     </table>
   
@@ -441,7 +441,9 @@
       if (!perksequipped.includes(value) && perksequipped.length < 4){
         perksequipped.push(value);
         console.log("attempting to change background");
-        document.getElementById(value).style.backgroundColor = "#00ff00";
+        document.getElementById(value).style.backgroundColor = "#55aa55";
+        console.log("perk" + (perksequipped.length) + "image");
+        document.getElementById("perk" + (perksequipped.length) + "image").src = ("./images/" + value + ".png");
       }
     }
     
