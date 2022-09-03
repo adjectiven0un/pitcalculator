@@ -13,7 +13,7 @@
   <p><span class = mc>WARNING!</span> This site has no function right now as it isn't complete. Come back later!</p>
 
 
-  <form>
+  <form action="" style = "display: inline-table" onChange = "checkHat(player1helmet.value);">
     <label>Select helmet </label>
     <select>
       <option value="none">None</option>
@@ -23,18 +23,11 @@
       <option value="Diamond_Helmet" style = "background: #0cc">Diamond Helmet</option>
       <option value="Golden_Helmet" style = "background: #cc0">Golden Helmet</option>
     </select>
+  </form>
   
-  <table class="img body" style = "display: inline-table">
-    <tr>
-      <td style="text-align: center"><img src="./images/nohelmet.png" width="100%"></td>
-    </tr>
-    <tr>
-      <td class="small center" id="caption2" name="caption2">Killer's helmet</td>
-    </tr>
-  </table>   
   <br>
        
-
+  <form action="" style = "display: inline-table">
     <label>Select chestplate </label>
     <select id="player1chestplate">
       <option value="none">None</option>
@@ -43,38 +36,25 @@
       <option value="Diamond_Chestplate" style = "background: #0cc">Diamond Chestplate</option>
       <option value="Diamond_Chestplate" style = "background: #099">Archangel Chestplate</option>
     </select>
+  </form>
   
-  <table class="img body" style = "display: inline-table">
-    <tr>
-      <td style="text-align: center"><img src="./images/nochestplate.png" width="100%"></td>
-    </tr>
-    <tr>
-      <td class="small center" id="caption2" name="caption2">Killer's chestplate</td>
-    </tr>
-  </table>
   <br>
   <form action="" style = "display: inline-table" onChange = "revealPants(player1leggings.value);">
     <label>Select leggings </label>
     <select id="player1leggings">
       <option value="none">None</option>
-      <option value="Chainmail" style = "background: #888">Chainmail Leggings</option>
-      <option value="Iron" style = "background: #aaa">Iron Leggings</option>
-      <option value="Diamond" style = "background: #0cc">Diamond Leggings</option>
-      <option value="Mystic" style = "background: #f55">Mystic Pants</option>
-      <option value="Dark" style = "background: #444">Dark Pants</option>
-      <option value="Sewer" style = "background: #9c4">Sewer Pants</option>
+      <option value="Golden_Pants" style = "background: #dd0">Golden Leggings</option>
+      <option value="Chainmail_Pants" style = "background: #888">Chainmail Leggings</option>
+      <option value="Iron_Pants" style = "background: #aaa">Iron Leggings</option>
+      <option value="Diamond_Pants" style = "background: #0cc">Diamond Leggings</option>
+      <option value="Mystic_Pants" style = "background: #f55">Mystic Pants</option>
+      <option value="Dark_Pants" style = "background: #444">Dark Pants</option>
+      <option value="Sewer_Pants" style = "background: #9c4">Sewer Pants</option>
     </select>
+  </form>
   
-  <table class="img body" style = "display: inline-table">
-    <tr>
-      <td style="text-align: center"><img src="./images/noleggings.png" width="100%"></td>
-    </tr>
-    <tr>
-      <td class="small center" id="caption2" name="caption2">Killer's leggings</td>
-    </tr>
-  </table>
   <br>
-
+  <form action="" style = "display: inline-table">
     <label>Select boots </label>
     <select id="player1boots">
       <option value="none">None</option>
@@ -84,7 +64,33 @@
       <option value="Chainmail_Boots" style = "background: #c00">Armageddon Boots</option>
       <option value="Chainmail_Boots" style = "background: #9c4">Radioactive Boots</option>
     </select>
+  </form>
   
+  <br>
+  <table class="img body" style = "display: inline-table">
+    <tr>
+      <td style="text-align: center"><img src="./images/nohelmet.png" width="100%"></td>
+    </tr>
+    <tr>
+      <td class="small center" id="caption2" name="caption2">Killer's helmet</td>
+    </tr>
+  </table>  
+  <table class="img body" style = "display: inline-table">
+    <tr>
+      <td style="text-align: center"><img src="./images/nochestplate.png" width="100%"></td>
+    </tr>
+    <tr>
+      <td class="small center" id="caption2" name="caption2">Killer's chestplate</td>
+    </tr>
+  </table>
+  <table class="img body" style = "display: inline-table">
+    <tr>
+      <td style="text-align: center"><img src="./images/noleggings.png" width="100%"></td>
+    </tr>
+    <tr>
+      <td class="small center" id="caption2" name="caption2">Killer's leggings</td>
+    </tr>
+  </table>
   <table class="img body" style = "display: inline-table">
     <tr>
       <td style="text-align: center"><img src="./images/noboots.png" width="100%"></td>
@@ -93,7 +99,10 @@
       <td class="small center" id="caption2" name="caption2">Killer's boots</td>
     </tr>
   </table>
-  <br>
+
+
+
+
   <form action="">
     <label><span class = mb>XP Boost</span> passive level </label>
     <select id="PassiveXPBoost">
@@ -137,7 +146,7 @@
     <label>Killer's streak after kill </label>
     <input type = "text" id = "killstreak" onkeyup="RemoveBad()">
   
-  <br>
+  <br><br>
 
 
   <div id = "MysticPantsBuffs" class = "invis">
@@ -227,7 +236,7 @@
   </div>
 
 
-  <p><span class = me>Mystic Sword</span> bonuses</p>
+  <p><span class = me>Mystic weapon</span> bonuses</p>
 
     <label>Sweaty level </label>
     <select id="SweatyLevel">
@@ -292,7 +301,7 @@
       <option value="3">III</option>
     </select>
   
-  <br><br>
+  <br><br><br>
 
     <label>Active Event </label>
     <select id="EventMultiplier">
@@ -358,25 +367,33 @@
     function revealPants(value){
       console.log("Change attempted");
       console.log(value);
-      if (value == "Mystic"){
-        document.getElementById("MysticPantsBuffs").classList.remove("invis");
-        document.getElementById("SewerPantsBuffs").classList.add("invis");
-        document.getElementById("DarkPantsBuffs").classList.add("invis");
+      if (value == "Mystic_Pants"){
+        console.log("Revealing mystic pants");
+        document.getElementById("MysticPantsBuffs").className = ("");
+        document.getElementById("SewerPantsBuffs").className = ("invis");
+        document.getElementById("DarkPantsBuffs").className = ("invis");
       }
-      if (value == "Dark"){
-        document.getElementById("DarkPantsBuffs").classList.remove("invis");
-        document.getElementById("SewerPantsBuffs").classList.add("invis");
-        document.getElementById("MysticPantsBuffs").classList.add("invis");
+      else if (value == "Dark_Pants"){
+        console.log("Revealing dark pants");
+        document.getElementById("DarkPantsBuffs").className = ("");
+        document.getElementById("SewerPantsBuffs").className = ("invis");
+        document.getElementById("MysticPantsBuffs").className = ("invis");
       }
-      if (value == "Sewer"){
-        document.getElementById("SewerPantsBuffs").classList.remove("invis");
-        document.getElementById("MysticPantsBuffs").classList.add("invis");
-        document.getElementById("DarkPantsBuffs").classList.add("invis");
+      else if (value == "Sewer_Pants"){
+        console.log("Revealing sewer pants");
+        document.getElementById("SewerPantsBuffs").className = ("");
+        document.getElementById("DarkPantsBuffs").className = ("invis");
+        document.getElementById("MysticPantsBuffs").className = ("invis");
       }
       else{
+        console.log("Hiding all...");
         document.getElementById("MysticPantsBuffs").classList.add("invis");
         document.getElementById("SewerPantsBuffs").classList.add("invis");
         document.getElementById("DarkPantsBuffs").classList.add("invis");
+        if (value = "Golden_Leggings"){
+          console.log("Those are golden pants. Adding Bounty Hunter to perks list...");
+          addPerk("Safety First");
+        }
       }
     }
 
@@ -386,5 +403,13 @@
       }
       document.getElementById('killstreak').value = (killstreak.value.replace(/[^\.\d]/g,''))
     }
+    var perksequipped = [];
+    function checkHat(value){
+      if (value = "Chainmail_Helmet"){
+        console.log("That's a chainmail helmet. Adding Safety First to perks list...");
+        addPerk("Safety First");
+      }
+    }
+    
   </script>
   </html>
