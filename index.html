@@ -386,7 +386,19 @@
       <td id = "perk4" style="text-align: center"><img class = "icon" id = "perk4image" src="./images/nohelmet.png" width="100%"></td>
     </tr>
     </table>
-  
+    
+    <br><br>
+    <p>Kill streak</p>
+    <table class = "imgkillstreaks body" style = "display: inline-table">
+      <td id = "Second_Gapple" style="text-align: center" onclick = selectKillstreak("Second_Gapple")><img class = "icon"  src="./images/Second_Gapple.png" width="100%"></td>
+      <td id = "Explicious" style="text-align: center" onclick = selectKillstreak("Explicious")><img class = "icon"  src="./images/Explicious.png" width="100%"></td>
+      <td id = "Arquebusier" style="text-align: center" onclick = selectKillstreak("Arquebusier")><img class = "icon"  src="./images/Arquebusier.png" width="100%"></td>
+      <td id = "Khanate" style="text-align: center" onclick = selectKillstreak("Khanate")><img class = "icon"  src="./images/Khanate.png" width="100%"></td>
+    </table>
+    <p>Super Streaker</p>
+    <table class = "imgkillstreaks body" style = "display: inline-table">
+      <td id = "Super_Streaker" style="text-align: center" onclick = toggleSuperStreaker()><img class = "icon"  src="./images/Super_Streaker.png" width="100%"></td>
+    </table>
   
 </span>
 </div>
@@ -503,7 +515,28 @@
         document.getElementById("perk4image").src = ("./images/nohelmet.png");
       }
     }
-    
-    
+    var killstreakequipped = "";
+    function selectKillstreak(value){
+      if (killstreakequipped != value){
+        killstreakequipped = value;
+        document.getElementById("Second_Gapple").style.backgroundColor = "#252525";
+        document.getElementById("Explicious").style.backgroundColor = "#252525";
+        document.getElementById("Arquebusier").style.backgroundColor = "#252525";
+        document.getElementById("Khanate").style.backgroundColor = "#252525";
+        document.getElementById(value).style.backgroundColor = "#55aa55";
+      } else if (killstreakequipped == value) {
+        killstreakequipped = "";
+        document.getElementById(value).style.backgroundColor = "#252525";
+      }
+    }
+    var superstreakeractive = 0;
+    function toggleSuperStreaker(){
+      superstreakeractive = Math.abs(superstreakeractive - 1);
+      if (superstreakeractive == 0){
+        document.getElementById("Super_Streaker").style.backgroundColor = "#252525";
+      } else {
+        document.getElementById("Super_Streaker").style.backgroundColor = "#55aa55";
+      }
+    }
   </script>
   </html>
