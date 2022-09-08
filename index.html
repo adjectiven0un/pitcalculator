@@ -169,15 +169,15 @@
       <option value="1.225">IX</option>
       <option value="1.25">X</option>
     </select> </form>
-    
   <br><br>
-  <form action="" style = "display: inline-table;">
-  <label><span class = mb>XP Stack</span> activations </label>
-    <input type = "text" id = "XPStack" onkeyup = "roundXP()">
-  <form>
+    <label>XP stack activations (0 - 220)</label>
+    <input type = "number" id = "XPStack" min = "0" max = "220">
+    <label> Gold stack activations (0 - 55)</label>
+    <input type = "number" id = "GoldStack" min = "0" max = "55">
+  <br><br>
+  
     <label>Killer's streak after kill </label>
     <input type = "text" id = "killstreak" onkeyup="RemoveBad()">
-  </form>
   <br><br>
 
 
@@ -431,7 +431,14 @@
     <table class = "imgkillstreaks body" style = "display: inline-table">
       <td id = "Super_Streaker" style="text-align: center" onclick = toggleSuperStreaker()><img class = "icon"  src="./images/Super_Streaker.png" width="100%"></td>
     </table>
-  
+    <p>Megastreak</p>
+    <table class = "imgkillstreaks body" style = "display: inline-table">
+      <td id = "Overdrive" style="text-align: center" onclick = selectMega("Overdrive")><img class = "icon"  src="./images/Overdrive.png" width="100%"></td>
+      <td id = "Beastmode" style="text-align: center" onclick = selectMega("Beastmode")><img class = "icon"  src="./images/Beastmode.png" width="100%"></td>
+      <td id = "Hermit" style="text-align: center" onclick = selectMega("Hermit")><img class = "icon"  src="./images/Hermit.png" width="100%"></td>
+      <td id = "Highlander" style="text-align: center" onclick = selectMega("Highlander")><img class = "icon"  src="./images/Highlander.png" width="100%"></td>
+      <td id = "To_the_Moon" style="text-align: center" onclick = selectMega("To_the_Moon")><img class = "icon"  src="./images/To_the_Moon.png" width="100%"></td>
+    </table>
 </span>
 </div>
   </body>
@@ -571,6 +578,22 @@
         document.getElementById("Super_Streaker").style.backgroundColor = "#252525";
       } else {
         document.getElementById("Super_Streaker").style.backgroundColor = "#55aa55";
+      }
+    }
+    var megaequipped = "Overdrive";
+    function selectMega(value){
+      if (megaequipped != value){
+        megaequipped = value;
+        document.getElementById("Overdrive").style.backgroundColor = "#252525";
+        document.getElementById("Beastmode").style.backgroundColor = "#252525";
+        document.getElementById("Hermit").style.backgroundColor = "#252525";
+        document.getElementById("Highlander").style.backgroundColor = "#252525";
+        document.getElementById("To_the_Moon").style.backgroundColor = "#252525";
+        document.getElementById(value).style.backgroundColor = "#55aa55";
+      } else if (megaequipped == value) {
+        megaequipped = "Overdrive";
+        document.getElementById(value).style.backgroundColor = "#252525";
+        document.getElementById(Overdrive).style.backgroundColor = "#55aa55";
       }
     }
   </script>
