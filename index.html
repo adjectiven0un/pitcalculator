@@ -103,7 +103,7 @@
 
 
 
-  <form action="">
+  <form action="" style = "display: inline-table;">
     <label><span class = mb>XP Boost</span> passive level </label>
     <select id="PassiveXPBoost">
       <option value="1">0</option>
@@ -113,10 +113,8 @@
       <option value="1.4">IV</option>
       <option value="1.5">V</option>
       <option value="1.6">VI</option>
-    </select>
-  
-  <br>
-  <form action="">
+    </select> </form>
+  <form action="" style = "display: inline-table;">
     <label><span class = m6>Gold Boost</span> passive level </label>
     <select id="PassiveGoldBoost">
       <option value="1">0</option>
@@ -126,10 +124,8 @@
       <option value="1.4">IV</option>
       <option value="1.5">V</option>
       <option value="1.6">VI</option>
-    </select>
-  
-  <br>
-  <form action="">
+    </select> </form>
+  <form action="" style = "display: inline-table;">
     <label><span class = md>El Gato</span> passive level </label>
     <select id="PassiveElGato">
       <option value="0">0</option>
@@ -139,13 +135,49 @@
       <option value="4">IV</option>
       <option value="5">V</option>
       <option value="6">VI</option>
-    </select>
-  
-  <br>
+    </select> </form>
+    <br><br>
+    
+  <form action="" style = "display: inline-table;">
+  <label><span class = mb>Renown XP Bump</span> passive level </label>
+    <select id="RenownXPBump">
+      <option value="0">0</option>
+      <option value="1">I</option>
+      <option value="2">II</option>
+      <option value="3">III</option>
+      <option value="4">IV</option>
+      <option value="5">V</option>
+      <option value="6">VI</option>
+      <option value="7">VII</option>
+      <option value="8">VIII</option>
+      <option value="9">IX</option>
+      <option value="10">X</option>
+    </select> </form>
+ 
+  <form action="" style = "display: inline-table;">
+  <label><span class = m6>Renown Gold Boost</span> passive level </label>
+    <select id="RenownGoldBoost">
+      <option value="1">0</option>
+      <option value="1.025">I</option>
+      <option value="1.05">II</option>
+      <option value="1.075">III</option>
+      <option value="1.1">IV</option>
+      <option value="1.125">V</option>
+      <option value="1.15">VI</option>
+      <option value="1.175">VII</option>
+      <option value="1.2">VIII</option>
+      <option value="1.225">IX</option>
+      <option value="1.25">X</option>
+    </select> </form>
+    
+  <br><br>
+  <form action="" style = "display: inline-table;">
+  <label><span class = mb>XP Stack</span> activations </label>
+    <input type = "text" id = "XPStack" onkeyup = "roundXP()">
   <form>
     <label>Killer's streak after kill </label>
     <input type = "text" id = "killstreak" onkeyup="RemoveBad()">
-  
+  </form>
   <br><br>
 
 
@@ -441,6 +473,16 @@
       }
       document.getElementById('killstreak').value = (killstreak.value.replace(/[^\.\d]/g,''))
     }
+    /* no time to finish, will do soon
+    function roundXP() {
+      if(parseFloat(XPStack.value.toLocaleString() == "NaN") {
+        document.getElementById('XPStack').value = 0;
+      }
+      if(parseFloat(XPStack.value.toLocaleString() > 70) {
+        document.getElementById('XPStack').value = 0;
+      }
+    }
+    */
     var perksequipped = [];
     function checkHat(value){
       
