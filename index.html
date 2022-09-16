@@ -9,10 +9,10 @@
   <span class="header">Rewards Calculator</span><br>
   <span class="subheader">A beta feature of the <a href="https://pit.wiki">Hypixel Pit Wiki</a></span>
   <hr>
-
+  
   <p><span class = mc>WARNING!</span> This site has no function right now as it isn't complete. Come back later!</p>
 
-
+  <p class = "section">Killer's armor</p>
   <form action="" style = "display: inline-table" onChange = "checkHat(player1helmet.value);">
     <label>Select helmet </label>
     <select id="player1helmet">
@@ -102,6 +102,7 @@
 
 
   <br><br>
+  <p class = "section">Passives</p>
 
   <form action="" style = "display: inline-table;">
     <label><span class = mb>XP Boost</span> passive level </label>
@@ -115,7 +116,7 @@
       <option value="1.6">VI</option>
     </select> </form>
   <form action="" style = "display: inline-table;">
-    <label><span class = m6>Gold Boost</span> passive level </label>
+    <label><span class = m6>  Gold Boost</span> passive level </label>
     <select id="PassiveGoldBoost">
       <option value="1">0</option>
       <option value="1.1">I</option>
@@ -126,7 +127,7 @@
       <option value="1.6">VI</option>
     </select> </form>
   <form action="" style = "display: inline-table;">
-    <label><span class = md>El Gato</span> passive level </label>
+    <label><span class = md>  El Gato</span> passive level </label>
     <select id="PassiveElGato">
       <option value="0">0</option>
       <option value="1">I</option>
@@ -137,7 +138,7 @@
       <option value="6">VI</option>
     </select> </form>
     <br><br>
-    
+    <p class = "section">Renown Reward Boosts</p>
   <form action="" style = "display: inline-table;">
   <label><span class = mb>Renown XP Bump</span> passive level </label>
     <select id="RenownXPBump">
@@ -155,7 +156,7 @@
     </select> </form>
  
   <form action="" style = "display: inline-table;">
-  <label><span class = m6>Renown Gold Boost</span> passive level </label>
+  <label><span class = m6>  Renown Gold Boost</span> passive level </label>
     <select id="RenownGoldBoost">
       <option value="1">0</option>
       <option value="1.025">I</option>
@@ -170,12 +171,14 @@
       <option value="1.25">X</option>
     </select> </form>
   <br><br>
-    <label>XP stack activations (0 - 220)</label>
+  <p class = "section">Stacking killstreaks</p>
+    <label><span class = mb>XP stack</span> activations (0 - 220)</label>
     <input type = "number" id = "XPStack" min = "0" max = "220">
-    <label> Gold stack activations (0 - 55)</label>
+    <label>  <span class = m6>Gold stack</span> activations (0 - 55)</label>
     <input type = "number" id = "GoldStack" min = "0" max = "55">
   <br><br>
-  <label>Genesis XP multiplier</label>
+  <p class = "section">Genesis</p>
+  <label>Genesis <span class = mb>XP multiplier</span></label>
     <select id="GenesisXPMultiplier">
       <option value="1.0">0%</option>
       <option value="1.01">1%</option>
@@ -196,7 +199,7 @@
     </select>
   
 
-    <label>Genesis gold bump</label>
+    <label>  Genesis <span class = m6>Gold bump</span></label>
     <select id="GenesisGoldBump">
       <option value="0">0.0</option>
       <option value="0.2">0.2</option>
@@ -217,6 +220,7 @@
      
     </select>
     <br><br>
+    <p class = "section">Killstreak</p>
     <label>Killer's streak after kill </label>
     <input type = "text" id = "killstreak" onkeyup="RemoveBad()">
   <br><br>
