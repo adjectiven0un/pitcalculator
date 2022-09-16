@@ -529,6 +529,12 @@
   <br><br>
   <label>Victims's streak </label>
     <input type = "text" id = "shutdown" onkeyup="RemoveBad()">
+
+  <br><br>
+
+  <span class = "mc"><b>WARNING!</b> This button doesn't do anything visible. Yet.</span><br><br>
+  <span id = "Calcbutton" style = "padding: 10px; background-color: #aa55aa" onclick = "calcxp();">Calculate!</span><br>
+
 </span>
 </div>
   </body>
@@ -677,6 +683,39 @@
         document.getElementById("Overdrive").style.backgroundColor = "#55aa55";
       }
     }
+    
+    function calcxp(){
+      var basexp = 5;
+      
+      var streak = 0;
+      if (!killstreak.value == ""){
+         streak = killstreak.value;
+      }
+      if (streak <= 3) {
+        basexp += 4;
+      }
+      if (streak <= PassiveElGato.value){
+        basexp += 5;
+      }
+      basexp += parseInt(RenownXPBump.value);
+      basexp += (parseInt(XPStack.value) * 0.05);
+      
+      var streakxpbonus;
+      if (killstreak == 3 || killstreak == 4) {
+        streakxpbonus = 3;
+      }
+      else if (killstreak >= 5 && killstreak <= 19) {
+        streakxpbonus = 5;
+      }
+      else if (killstreak >= 20 && killstreak <= 200) {  //i will fix this to include eic later
+        streakxpbonus = Math.floor(Killstreak / 10) * 3;
+      }
+      basexp += parseInt(streakxpbonus);
+      console.log(basexp);
+      //will add sweaty and streaker later
+    }
+    
+    
     
   </script>
   </html>
