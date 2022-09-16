@@ -230,7 +230,7 @@
   <p class = "section"><span class = mc>Mystic Pants</span> bonuses</p>
 
     <label>Sweaty level </label>
-    <select id="SweatyLevel">
+    <select id="SweatyLevelP">
       <option value="0">0</option>
       <option value="1">I</option>
       <option value="2">II</option>
@@ -239,7 +239,7 @@
   
 
     <label> XP Boost level </label>
-    <select id="XPBoostLevel">
+    <select id="XPBoostLevelP">
       <option value="1">0</option>
       <option value="1.1">I</option>
       <option value="1.2">II</option>
@@ -248,7 +248,7 @@
   
 
     <label> XP Bump Level </label>
-    <select id="XPBumpLevel">
+    <select id="XPBumpLevelP">
       <option value="0">0</option>
       <option value="2">I</option>
       <option value="4">II</option>
@@ -258,7 +258,7 @@
   <br><br>
 
     <label>Moctezuma level </label>
-    <select id="MoctezumaLevel">
+    <select id="MoctezumaLevelP">
       <option value="0">0</option>
       <option value="6">I</option>
       <option value="12">II</option>
@@ -267,7 +267,7 @@
   
 
     <label> Gold Boost level </label>
-    <select id="GoldBoostLevel">
+    <select id="GoldBoostLevelP">
       <option value="1">0</option>
       <option value="1.15">I</option>
       <option value="1.3">II</option>
@@ -276,7 +276,7 @@
   
 
     <label> Gold Bump Level </label>
-    <select id="GoldBumpLevel">
+    <select id="GoldBumpLevelP">
       <option value="0">0</option>
       <option value="4">I</option>
       <option value="8">II</option>
@@ -284,7 +284,7 @@
     </select>
 
     <label> Pit MBA Level </label>
-    <select id="PitMBALevel">
+    <select id="PitMBALevelP">
       <option value="0">0</option>
       <option value="1">I</option>
       <option value="2">II</option>
@@ -431,9 +431,12 @@
       <td id = "Arquebusier" style="text-align: center" onclick = selectKillstreak("Arquebusier")><img class = "icon"  src="./images/Arquebusier.png" width="100%"></td>
       <td id = "Khanate" style="text-align: center" onclick = selectKillstreak("Khanate")><img class = "icon"  src="./images/Khanate.png" width="100%"></td>
     </table>
-    <p>Super Streaker</p>
+    <p>Other bonuses</p>
     <table class = "imgkillstreaks body" style = "display: inline-table">
       <td id = "Super_Streaker" style="text-align: center" onclick = toggleSuperStreaker()><img class = "icon"  src="./images/Super_Streaker.png" width="100%"></td>
+    </table>
+    <table class = "imgkillstreaks body" style = "display: inline-table">
+      <td id = "ExperienceIndustrial_Complex" style="text-align: center" onclick = toggleEIC()><img class = "icon"  src="./images/ExperienceIndustrial_Complex.png" width="100%"></td>
     </table>
     <p>Megastreak</p>
     <table class = "imgkillstreaks body" style = "display: inline-table">
@@ -670,6 +673,18 @@
         document.getElementById("Super_Streaker").style.backgroundColor = "#55aa55";
       }
     }
+    var EICActive = 0;
+    var EIC = 100;
+    function toggleSuperStreaker(){
+      EICActive = Math.abs(EICActive - 1);
+      if (superstreakeractive == 0){
+        document.getElementById("Super_Streaker").style.backgroundColor = "#252525";
+        EIC = 100;
+      } else {
+        document.getElementById("Super_Streaker").style.backgroundColor = "#55aa55";
+        EIC = 200;
+      }
+    }
     var megaequipped = "Overdrive";
     document.getElementById("Overdrive").style.backgroundColor = "#55aa55";
     function selectMega(value){
@@ -689,11 +704,11 @@
     }
     
     function calcxp(){
-      var basexp = 5;
+      var basexp = 5.0;
       
       var streak = 0;
       if (!killstreak.value == ""){
-         streak = killstreak.value;
+         streak = parseInt(killstreak.value);
       }
       if (streak <= 3) {
         basexp += 4;
@@ -702,7 +717,7 @@
         basexp += 5;
       }
       basexp += parseInt(RenownXPBump.value);
-      basexp += (parseInt(XPStack.value) * 0.05);
+      basexp += (parseFloat(XPStack.value) * 0.05);
       
       var streakxpbonus;
       if (killstreak == 3 || killstreak == 4) {
@@ -711,12 +726,21 @@
       else if (killstreak >= 5 && killstreak <= 19) {
         streakxpbonus = 5;
       }
-      else if (killstreak >= 20 && killstreak <= 200) {  //i will fix this to include eic later
+      else if (killstreak >= 20 && killstreak <= EIC) {  
         streakxpbonus = Math.floor(Killstreak / 10) * 3;
       }
+      if (perksequipped.includes("Streaker")){
+        streakxpbonus *= 3;
+      }
+      var sweaty = 0;
+      sweaty += parseFloat(SweatyLevel.value);
+      sweaty += parseFloat(SweatyLevelP.value);
+      sweaty *= 0.2;
+      sweaty += 1;
+      streakxpbonus *= parseFloat(sweaty);
+      
       basexp += parseInt(streakxpbonus);
       console.log(basexp);
-      //will add sweaty and streaker later
     }
     
     
