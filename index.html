@@ -12,7 +12,7 @@
   
   <p><span class = mc>WARNING!</span> This site has no function right now as it isn't complete. Come back later!</p>
 
-  <p class = "section">Killer's armor</p>
+  <p class = "section">Killer's stats</p>
   <form action="" style = "display: inline-table" onChange = "checkHat(player1helmet.value);">
     <label>Select helmet </label>
     <select id="player1helmet">
@@ -65,7 +65,7 @@
       <option value="Radioactive_Boots" style = "background: #9c4">Radioactive Boots</option>
     </select>
   </form>
-  
+ 
   <br>
   <table class="img body" style = "display: inline-table">
     <tr>
@@ -100,7 +100,9 @@
     </tr>
   </table>
 
-
+  <br><br>
+    <label>Killer's streak after kill </label>
+    <input type = "text" id = "killstreak" onkeyup="RemoveBad()">
   <br><br>
   <p class = "section">Passives</p>
 
@@ -220,9 +222,7 @@
      
     </select>
     <br><br>
-    <p class = "section">Killstreak</p>
-    <label>Killer's streak after kill </label>
-    <input type = "text" id = "killstreak" onkeyup="RemoveBad()">
+    
   <br><br>
 
 
@@ -579,7 +579,7 @@
 
     function RemoveBad() {
       if(parseFloat(killstreak.value.replace(/[^\.\d]/g,'')).toLocaleString() == "NaN") {
-        document.getElementById('killstreak').value = 0;
+        document.getElementById('killstreak').value = 1;
       }
       document.getElementById('killstreak').value = (killstreak.value.replace(/[^\.\d]/g,''))
     }
@@ -675,13 +675,13 @@
     }
     var EICActive = 0;
     var EIC = 100;
-    function toggleSuperStreaker(){
+    function toggleEIC(){
       EICActive = Math.abs(EICActive - 1);
-      if (superstreakeractive == 0){
-        document.getElementById("Super_Streaker").style.backgroundColor = "#252525";
+      if (EICActive == 0){
+        document.getElementById("ExperienceIndustrial_Complex").style.backgroundColor = "#252525";
         EIC = 100;
       } else {
-        document.getElementById("Super_Streaker").style.backgroundColor = "#55aa55";
+        document.getElementById("ExperienceIndustrial_Complex").style.backgroundColor = "#55aa55";
         EIC = 200;
       }
     }
@@ -705,35 +705,41 @@
     
     function calcxp(){
       var basexp = 5.0;
-      
-      var streak = 0;
+      console.log("Base xp: " + basexp);
+      var streak = 1;
       if (!killstreak.value == ""){
          streak = parseInt(killstreak.value);
       }
       if (streak <= 3) {
         basexp += 4;
       }
+      console.log("After first 4 kills: " + basexp);
       if (streak <= PassiveElGato.value){
         basexp += 5;
       }
+      console.log("After El Gato: " + basexp);
       basexp += parseInt(RenownXPBump.value);
+      console.log("After RXPB: " + basexp);
       basexp += (parseFloat(XPStack.value) * 0.05);
-      
+      console.log("After XP Stack: " + basexp);
       var streakxpbonus;
-      if (killstreak == 3 || killstreak == 4) {
+      if (streak < 3){
+        streakxpbonus = 0;
+      }
+      else if (streak == 3 || streak == 4) {
         streakxpbonus = 3;
       }
-      else if (killstreak >= 5 && killstreak <= 19) {
+      else if (streak >= 5 && streak <= 19) {
         streakxpbonus = 5;
       }
-      else if (killstreak >= 20 && killstreak <= EIC) {  
-        streakxpbonus = Math.floor(Killstreak / 10) * 3;
+      else if (streak >= 20 && streak <= EIC) {  
+        streakxpbonus = Math.floor(streak / 10) * 3;
       }
       else {
-        if (EIC == 100){
+        if (EICActive == 0){
           streakxpbonus = 30;
         }
-        if (EIC == 200){
+        if (EICActive == 1){
           streakxpbonus = 60;
         }
       }
