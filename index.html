@@ -175,7 +175,48 @@
     <label> Gold stack activations (0 - 55)</label>
     <input type = "number" id = "GoldStack" min = "0" max = "55">
   <br><br>
+  <label>Genesis XP multiplier</label>
+    <select id="GenesisXPMultiplier">
+      <option value="1.0">0%</option>
+      <option value="1.01">1%</option>
+      <option value="1.02">2%</option>
+      <option value="1.03">3%</option>
+      <option value="1.04">4%</option>
+      <option value="1.05">5%</option>
+      <option value="1.06">6%</option>
+      <option value="1.07">7%</option>
+      <option value="1.08">8%</option>
+      <option value="1.09">9%</option>
+      <option value="1.10">10%</option>
+      <option value="1.11">11%</option>
+      <option value="1.12">12%</option>
+      <option value="1.13">13%</option>
+      <option value="1.14">14%</option>
+      <option value="1.15">15%</option>
+    </select>
   
+
+    <label>Genesis gold bump</label>
+    <select id="GenesisGoldBump">
+      <option value="0">0.0</option>
+      <option value="0.2">0.2</option>
+      <option value="0.4">0.4</option>
+      <option value="0.6">0.6</option>
+      <option value="0.8">0.8</option>
+      <option value="1.0">1.0</option>
+      <option value="1.2">1.2</option>
+      <option value="1.4">1.4</option>
+      <option value="1.6">1.6</option>
+      <option value="1.8">1.8</option>
+      <option value="2.0">2.0</option>
+      <option value="2.2">2.2</option>
+      <option value="2.4">2.4</option>
+      <option value="2.6">2.6</option>
+      <option value="2.8">2.8</option>
+      <option value="3.0">3.0</option>
+     
+    </select>
+    <br><br>
     <label>Killer's streak after kill </label>
     <input type = "text" id = "killstreak" onkeyup="RemoveBad()">
   <br><br>
@@ -353,49 +394,8 @@
       <option value="r">Rage Pit</option>
     </select>
   
-  <br><br>
 
-    <label>Genesis XP multiplier</label>
-    <select id="GenesisXPMultiplier">
-      <option value="1.0">0%</option>
-      <option value="1.01">1%</option>
-      <option value="1.02">2%</option>
-      <option value="1.03">3%</option>
-      <option value="1.04">4%</option>
-      <option value="1.05">5%</option>
-      <option value="1.06">6%</option>
-      <option value="1.07">7%</option>
-      <option value="1.08">8%</option>
-      <option value="1.09">9%</option>
-      <option value="1.10">10%</option>
-      <option value="1.11">11%</option>
-      <option value="1.12">12%</option>
-      <option value="1.13">13%</option>
-      <option value="1.14">14%</option>
-      <option value="1.15">15%</option>
-    </select>
-  
-
-    <label>Genesis gold bump</label>
-    <select id="GenesisGoldBump">
-      <option value="0">0.0</option>
-      <option value="0.2">0.2</option>
-      <option value="0.4">0.4</option>
-      <option value="0.6">0.6</option>
-      <option value="0.8">0.8</option>
-      <option value="1.0">1.0</option>
-      <option value="1.2">1.2</option>
-      <option value="1.4">1.4</option>
-      <option value="1.6">1.6</option>
-      <option value="1.8">1.8</option>
-      <option value="2.0">2.0</option>
-      <option value="2.2">2.2</option>
-      <option value="2.4">2.4</option>
-      <option value="2.6">2.6</option>
-      <option value="2.8">2.8</option>
-      <option value="3.0">3.0</option>
-     
-    </select>
+    
     <br><br>
     <p>Perks</p>
     <table class="imgwide body" style = "display: inline-table">
@@ -439,6 +439,96 @@
       <td id = "Highlander" style="text-align: center" onclick = selectMega("Highlander")><img class = "icon"  src="./images/Highlander.png" width="100%"></td>
       <td id = "To_the_Moon" style="text-align: center" onclick = selectMega("To_the_Moon")><img class = "icon"  src="./images/To_the_Moon.png" width="100%"></td>
     </table>
+    <br><br><br>
+    <form action="" style = "display: inline-table">
+    <label>Select victim's helmet </label>
+    <select id="player2helmet">
+      <option value="none">None</option>
+      <option value="Fancy_Hat" style = "background: #a5a">Fancy Hat</option>
+      <option value="Chainmail_Helmet" style = "background: #888">Chainmail Helmet</option>
+      <option value="Iron_Helmet" style = "background: #aaa">Iron Helmet</option>
+      <option value="Diamond_Helmet" style = "background: #0cc">Diamond Helmet</option>
+      <option value="Golden_Helmet" style = "background: #cc0">Golden Helmet</option>
+    </select>
+  </form>
+  
+  <br>
+       
+  <form action="" style = "display: inline-table">
+    <label>Select victim's chestplate </label>
+    <select id="player2chestplate">
+      <option value="none">None</option>
+      <option value="Chainmail_Chestplate" style = "background: #888">Chainmail Chestplate</option>
+      <option value="Iron_Chestplate" style = "background: #aaa">Iron Chestplate</option>
+      <option value="Diamond_Chestplate" style = "background: #0cc">Diamond Chestplate</option>
+      <option value="Archangel_Chestplate" style = "background: #099">Archangel Chestplate</option>
+    </select>
+  </form>
+  
+  <br>
+  <form action="" style = "display: inline-table">
+    <label>Select victim's leggings </label>
+    <select id="player2leggings">
+      <option value="none">None</option>
+      <option value="Golden_Leggings" style = "background: #dd0">Golden Leggings</option>
+      <option value="Chainmail_Leggings" style = "background: #888">Chainmail Leggings</option>
+      <option value="Iron_Leggings" style = "background: #aaa">Iron Leggings</option>
+      <option value="Diamond_Leggings" style = "background: #0cc">Diamond Leggings</option>
+      <option value="Mystic_Pants" style = "background: #f55">Mystic Pants</option>
+      <option value="Dark_Pants" style = "background: #444">Dark Pants</option>
+      <option value="Sewer_Pants" style = "background: #9c4">Sewer Pants</option>
+    </select>
+  </form>
+  
+  <br>
+  <form action="" style = "display: inline-table">
+    <label>Select victim's boots </label>
+    <select id="player2boots">
+      <option value="none">None</option>
+      <option value="Chainmail_Boots" style = "background: #888">Chainmail Boots</option>
+      <option value="Iron_Boots" style = "background: #aaa">Iron Boots</option>
+      <option value="Diamond_Boots" style = "background: #0cc">Diamond Boots</option>
+      <option value="Armageddon_Boots" style = "background: #c00">Armageddon Boots</option>
+      <option value="Radioactive_Boots" style = "background: #9c4">Radioactive Boots</option>
+    </select>
+  </form>
+
+  <br>
+  <table class="img body" style = "display: inline-table">
+    <tr>
+      <td style="text-align: center"><img src="./images/nohelmet.png" width="100%"></td>
+    </tr>
+    <tr>
+      <td class="small center" id="caption2" name="caption2">Victim's helmet</td>
+    </tr>
+  </table>  
+  <table class="img body" style = "display: inline-table">
+    <tr>
+      <td style="text-align: center"><img src="./images/nochestplate.png" width="100%"></td>
+    </tr>
+    <tr>
+      <td class="small center" id="caption2" name="caption2">Victim's chestplate</td>
+    </tr>
+  </table>
+  <table class="img body" style = "display: inline-table">
+    <tr>
+      <td style="text-align: center"><img src="./images/noleggings.png" width="100%"></td>
+    </tr>
+    <tr>
+      <td class="small center" id="caption2" name="caption2">Victim's leggings</td>
+    </tr>
+  </table>
+  <table class="img body" style = "display: inline-table">
+    <tr>
+      <td style="text-align: center"><img src="./images/noboots.png" width="100%"></td>
+    </tr>
+    <tr>
+      <td class="small center" id="caption2" name="caption2">Victim's boots</td>
+    </tr>
+  </table>
+  <br><br>
+  <label>Victims's streak </label>
+    <input type = "text" id = "shutdown" onkeyup="RemoveBad()">
 </span>
 </div>
   </body>
@@ -586,5 +676,6 @@
         document.getElementById(Overdrive).style.backgroundColor = "#55aa55";
       }
     }
+    
   </script>
   </html>
