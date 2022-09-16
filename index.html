@@ -729,6 +729,14 @@
       else if (killstreak >= 20 && killstreak <= EIC) {  
         streakxpbonus = Math.floor(Killstreak / 10) * 3;
       }
+      else {
+        if (EIC = 100){
+          streakxpbonus = 30;
+        }
+        if (EIC = 200){
+          streakxpbonus = 60;
+        }
+      }
       if (perksequipped.includes("Streaker")){
         streakxpbonus *= 3;
       }
