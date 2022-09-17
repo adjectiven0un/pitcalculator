@@ -1062,10 +1062,7 @@
       var sierravalue = parseInt(SierraLevel.value);
       basegold += (sierravalue * victimdiamondarmor);
       console.log("Sierra: +" + (sierravalue * victimdiamondarmor) + " (" + basegold + ")");
-      if (perksequipped.includes("Conglomerate")){
-        basegold += (0.2 * basexp);
-        console.log("Conglomerate: +" + (0.2 * basexp) + " (" + basegold + ")");
-      }
+      
       basexp += ((GoldStack.value) * 0.1);
       console.log("Gold Stacks: +" + (GoldStack.value) * 0.1 + " (" + basegold + ")");
       
@@ -1112,6 +1109,10 @@
       if (victimlevel.value <= 20) {
         basegold *= 0.91;
         console.log("Killed a noob: x0.91 " + "(" + basegold + ")");
+      }
+      if (perksequipped.includes("Conglomerate")){
+        basegold += (0.2 * basexp);
+        console.log("Conglomerate: +" + (0.2 * basexp) + " (" + basegold + ")");
       }
       basegold = basegold.toFixed(2);
       var cap = 2500;
