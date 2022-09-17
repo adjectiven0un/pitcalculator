@@ -553,6 +553,7 @@
   </body>
 
   <script>
+    //Reveals pants based on whether certain conditions are true.
     function revealPants(value){  
       if (value == "Mystic_Pants"){
         document.getElementById("MysticPantsBuffs").className = ("");
@@ -582,7 +583,7 @@
         }
       }
     }
-
+    //Removes letters from number inputs. Thanks Brookie!
     function RemoveBad() {
       if(parseFloat(killstreak.value.replace(/[^\.\d]/g,'')).toLocaleString() == "NaN") {
         document.getElementById('killstreak').value = "";
@@ -590,6 +591,7 @@
       document.getElementById('killstreak').value = (killstreak.value.replace(/[^\.\d]/g,''))
     }
     var perksequipped = [];
+    //Adds safety first if chain helm is equipped.
     function checkHat(value){
       
       if (value == "Chainmail_Helmet" && !perksequipped.includes("Safety_First")){
@@ -597,10 +599,11 @@
         addPerk("Safety_First");
       } 
     }
+    //Add a perk. 
     function addPerk(value){
       if (!perksequipped.includes(value) && perksequipped.length < 4){
         perksequipped.push(value);
-        
+        //If Safety First or Bounty Hunter are selected, select those as your worn item.
         document.getElementById(value).style.backgroundColor = "#55aa55";
         if (value == "Safety_First"){
           player1helmet.selectedIndex = 2;
@@ -610,8 +613,10 @@
         }
         updatePerksList();
       }
+      //Push an perk out of the list if there's already four equipped.
       else if (!perksequipped.includes(value) && perksequipped.length >= 4){
         document.getElementById(perksequipped[0]).style.backgroundColor = "#252525";
+        //If the removed perk is sf or bh, clear helm or leggings respectively
         if (perksequipped[0] == "Safety_First"){
           player1helmet.selectedIndex = 0;
         }
@@ -630,6 +635,7 @@
         }
         updatePerksList();
       }
+      //unequip a perk
       else if (perksequipped.includes(value)){
         document.getElementById(value).style.backgroundColor = "#252525";
         perksequipped.splice(perksequipped.indexOf(value), 1);
@@ -644,6 +650,7 @@
       }
       
     }
+    //reset all images, then re-add them as necessary
     function updatePerksList(){
       document.getElementById("perk1image").src = ("");
       document.getElementById("perk2image").src = ("");
@@ -656,6 +663,7 @@
         document.getElementById("perk4image").src = ("./images/nohelmet.png");
       }
     }
+    //killstreak selection
     var killstreakequipped = "";
     function selectKillstreak(value){
       if (killstreakequipped != value){
@@ -670,6 +678,7 @@
         document.getElementById(value).style.backgroundColor = "#252525";
       }
     }
+    //toggle Super Streaker on or off
     var superstreakeractive = 0;
     function toggleSuperStreaker(){
       superstreakeractive = Math.abs(superstreakeractive - 1);
@@ -679,6 +688,7 @@
         document.getElementById("Super_Streaker").style.backgroundColor = "#55aa55";
       }
     }
+    //toggle EIC on or off
     var EICActive = 0;
     var EIC = 100;
     function toggleEIC(){
@@ -691,6 +701,7 @@
         EIC = 200;
       }
     }
+    //equip overdrive by default and select a megastreak
     var megaequipped = "Overdrive";
     document.getElementById("Overdrive").style.backgroundColor = "#55aa55";
     function selectMega(value){
@@ -708,7 +719,7 @@
         document.getElementById("Overdrive").style.backgroundColor = "#55aa55";
       }
     }
-    
+    //start the calcs
     function calcxp(){
       var basexp = 5.0;
       console.log("Base xp: " + basexp);
