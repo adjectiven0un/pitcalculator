@@ -538,8 +538,8 @@
     </tr>
   </table>
   <br><br>
-  <label>Victims's streak </label>
-    <input type = "text" id = "victimstreak" onkeyup="RemoveBad()">
+  <label>Victim's streak </label>
+    <input type = "text" id = "victimstreak" onkeyup="RemoveBad2()">
   <br><br>
   <label>Victim's level </label>
     <input type = "number" id = "victimlevel" min = "0" max = "120">
@@ -589,6 +589,18 @@
         document.getElementById('killstreak').value = "";
       }
       document.getElementById('killstreak').value = (killstreak.value.replace(/[^\.\d]/g,''))
+    }
+    function RemoveBad() {
+      if(parseFloat(killstreak.value.replace(/[^\.\d]/g,'')).toLocaleString() == "NaN") {
+        document.getElementById('killstreak').value = "";
+      }
+      document.getElementById('killstreak').value = (killstreak.value.replace(/[^\.\d]/g,''))
+    }
+    function RemoveBad2() {
+      if(parseFloat(victimstreak.value.replace(/[^\.\d]/g,'')).toLocaleString() == "NaN") {
+        document.getElementById('victimstreak').value = "";
+      }
+      document.getElementById('victimstreak').value = (victimstreak.value.replace(/[^\.\d]/g,''))
     }
     var perksequipped = [];
     //Adds safety first if chain helm is equipped.
@@ -782,7 +794,6 @@
       }
       var shutdownbonus = 0;
       var shutdown = victimstreak.value;
-      console.log(shutdown);
       if (shutdown < 3){
         shutdownbonus = 0;
       }
@@ -803,7 +814,7 @@
       
       console.log(basexp);
      
-  
+      
     }
     
     
