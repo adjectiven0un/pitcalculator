@@ -546,7 +546,7 @@
   <br><br>
 
   <span class = "mc">Gold functionality coming as soon as adj stops being lazy.</span><br><br>
-  <span id = "Calcbutton" style = "padding: 10px; background-color: #aa55aa" onclick = "calcxp();">Calculate!</span><br><br>
+  <span id = "Calcbutton" style = "padding: 10px; background-color: #aa55aa" onclick = "calcrewards();">Calculate!</span><br><br>
   <span class = mb id = "finalxp">-</span><br><br>
   <span class = m6 id = "finalgold">-</span>
 
@@ -734,7 +734,8 @@
       }
     }
     //start the calcs
-    function calcxp(){
+    function calcrewards(){
+      console.log("__...---== XP Formula ==---...__");
       var basexp = 5.0;
       console.log("Base xp: " + basexp);
       var streak = 1;
@@ -896,6 +897,10 @@
         basexp *= superstreakermult;
         console.log("Super Streaker boost: x" + superstreakermult + " (" + basexp + ")");
       }
+      if (victimlevel.value <= 20) {
+        basexp *= 0.91;
+        console.log("Killed a noob: x0.91 " + "(" + basexp + ")");
+      }
       var cap = 400;
       if (EICActive == 1){
         cap += 50;
@@ -904,6 +909,8 @@
       cap += 50 * (SweatyLevelP.value - 1);
       if (streak >= 100 && megaequipped == "To_the_Moon") {
         cap += 100;
+      } else if (streak >= 50 && megaequipped == "Beastmode"){
+        cap += 50;
       }
       cap *= superstreakermult;
       cap = Math.floor(cap);
@@ -917,9 +924,126 @@
       else {
         document.getElementById("finalxp").innerText = (basexp + "XP");
       }
+      if (perksequipped.includes("Conglomerate")){
+        document.getElementById("finalxp").className = ("m7");
+      } else {
+        document.getElementById("finalxp").className = ("mb");
+      }
+      
+      
+      //gold now
+      console.log("__...---== Gold Formula ==---...__");
+      var basegold = 10;
+      console.log("Base gold: " + basegold);
+      if (streak <= 3) {
+        basegold += 4;
+        console.log("First 3 kills bonus: +4 (" + basegold + ")");
+      }
+      
+      if (streak <= PassiveElGato.value){
+        basegold += 5;
+        console.log("El Gato Bonus: +5 (" + basegold + ")");
+      }
+      if (perksequipped.includes("Assistant_to_the_Streaker")) {
+        basegold += 2;
+        console.log("ATTS: +2 (" + basegold + ")");
+      }
+      if (perksequipped.includes("Bounty_Hunter")) {
+        basegold += 4;
+        console.log("Bounty Hunter: +4 (" + basegold + ")");
+      }
+      if (streak % 3 == 0){
+        if (killstreakequipped == "Second_Gapple"){
+          basegold += 5;
+          console.log("Second Gapple: +5" + " (" + basegold + ")");
+        }
+        if (killstreakequipped == "Arquebusier"){
+          basegold += 12;
+          console.log("Arquebusier: +7 " + " (" + basegold + ")");
+        }
+        if (killstreakequipped == "Khanate"){
+          basegold += 12;
+          console.log("Khanate: +8 " + " (" + basegold + ")");
+        }
+      }
+      var goldbumpvalue = parseFloat(GoldBumpLevel.value);
+      goldbumpvalue += parseFloat(GoldBumpLevelP.value);
+      basegold += goldbumpvalue;
+      console.log("Gold Bump: +" + goldbumpvalue + " (" + basegold + ")");
+
+      var moctvalue = parseFloat(MoctezumaLevel.value);
+      moctvalue += parseFloat(MoctezumaLevelP.value);
+      basegold += moctvalue;
+      console.log("Moctezuma: +" + moctvalue + " (" + basegold + ")");
+      
+      basegold += parseFloat(GenesisGoldBump.value);
+      console.log("Genesis Gold Bump: +" + GenesisGoldBump.value + " (" + basegold + ")");
+      var goldshutdown = 0;
+      
+      if (shutdown > 3){
+        goldshutdown = (shutdown * 2);
+      }
+      if (goldshutdown > 80){
+        goldshutdown = 80;
+      }
+      basegold += goldshutdown;
+      console.log("Streak shutdown: +" + goldshutdown + " (" + basegold + ")");
+
+      var killerarmor = 0;
+      if (player1helmet.value == "Chainmail_Helmet"){
+        killerarmor += 1;
+      } else if (player1helmet.value == "Iron_Helmet"){
+        killerarmor += 2;
+      } else if (player1helmet.value == "Diamond_Helmet"){
+        killerarmor += 4;
+      }
+      if (player1chestplate.value == "Iron_Chestplate"){
+        killerarmor += 2;
+      } else if (player1chestplate.value == "Diamond_Chestplate"){
+        killerarmor += 4;
+      }
+      if (player1leggings.value == "Iron_Leggings"){
+        killerarmor += 2;
+      } else if (player1leggings.value == "Diamond_Leggings"){
+        killerarmor += 4;
+      }
+      if (player1boots.value == "Iron_Boots"){
+        killerarmor += 2;
+      } else if (player1boots.value == "Diamond_Boots"){
+        killerarmor += 4;
+      }
+      var victimarmor = 0;
+      if (player2helmet.value == "Chainmail_Helmet"){
+        victimarmor += 1;
+      } else if (player2helmet.value == "Iron_Helmet"){
+        victimarmor += 2;
+      } else if (player2helmet.value == "Diamond_Helmet"){
+        victimarmor += 4;
+      }
+      if (player2chestplate.value == "Iron_Chestplate"){
+        victimarmor += 2;
+      } else if (player2chestplate.value == "Diamond_Chestplate"){
+        victimarmor += 4;
+      }
+      if (player2leggings.value == "Iron_Leggings"){
+        victimarmor += 2;
+      } else if (player2leggings.value == "Diamond_Leggings"){
+        victimarmor += 4;
+      }
+      if (player2boots.value == "Iron_Boots"){
+        victimarmor += 2;
+      } else if (player2boots.value == "Diamond_Boots"){
+        victimarmor += 4;
+      }
+
+      var armordifference = victimarmor - killerarmor;
+      
+      if (armordifference > 0) {
+        basegold += armordifference;
+        console.log("Armor difference: +" + armordifference + " (" + basegold + ")");
+      }
+      
     }
-    
-    
     
   </script>
   </html>
