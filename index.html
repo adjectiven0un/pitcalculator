@@ -412,7 +412,6 @@
       <td id = "Bounty_Hunter" style="text-align: center; background-color: #252525;" onclick = "addPerk('Bounty_Hunter');"><img class = "icon" src="./images/Bounty_Hunter.png" width="100%"></td>
       <td id = "Streaker" style="text-align: center; background-color: #252525;" onclick = "addPerk('Streaker');"><img class = "icon" src="./images/Streaker.png" width="100%"></td>
       <td id = "Assistant_to_the_Streaker" style="text-align: center; background-color: #252525;" onclick = "addPerk('Assistant_to_the_Streaker');"><img class = "icon" src="./images/Assistant_to_the_Streaker.png" width="100%"></td>
-      <td id = "Coop_Cat" style="text-align: center; background-color: #252525;" onclick = "addPerk('Coop_Cat');"><img class = "icon" src="./images/Coop_Cat.png" width="100%"></td>
       <td id = "Conglomerate" style="text-align: center; background-color: #252525;" onclick = "addPerk('Conglomerate');"><img class = "icon" src="./images/Conglomerate.png" width="100%"></td>
     </tr>
     </table>
@@ -547,6 +546,15 @@
   <label>Victim's level </label>
     <input type = "number" id = "victimlevel" min = "0" max = "120">
   <br><br>
+  <label>Victim in party? </label>
+    <select id="inparty">
+      <option value="false">No</option>
+      <option value="true">Yes</option>
+    </select>
+  <br><br>
+
+
+
   <span id = "Calcbutton" style = "padding: 10px; background-color: #aa55aa" onclick = "calcrewards();">Calculate!</span><br><br>
   <span class = mb id = "finalxp">-</span><br><br>
   <span class = m6 id = "finalgold">-</span>
@@ -874,6 +882,11 @@
       mysticxpboost += 1;
       basexp *= mysticxpboost;
       console.log("Mystic XP Boost: x" + mysticxpboost + " (" + basexp + ")");
+
+      var pitmba = "1." + PitMBALevelP.value;
+      basexp *= pitmba;
+      console.log("Pit MBA: x" + pitmba + " (" + basexp + ")");
+
       if (perksequipped.includes("Assistant_to_the_Streaker")){
         basexp *= 1.15;
         console.log("ATTS: x1.15 (" + basexp + ")");
@@ -909,6 +922,10 @@
         
         basexp *= superstreakermult;
         console.log("Super Streaker boost: x" + superstreakermult + " (" + basexp + ")");
+      }
+      if (inparty) {
+        basexp *= 1.1;
+        console.log("Victim in a party: x1.1 " + "(" + basexp + ")");
       }
       if (victimlevel.value <= 20) {
         basexp *= 0.91;
@@ -1076,6 +1093,13 @@
       mysticgoldboost += 1;
       basegold *= mysticgoldboost;
       console.log("Mystic Gold Boost: x" + mysticgoldboost + " (" + basegold + ")");
+      var pitmbavaluecheck = 2 * parseInt(PitMBALevelP.value) - 1
+      if (pitmbavaluecheck < 0) {
+        pitmbavaluecheck = 0;
+      }
+      var pitmba2 = "1." + (pitmbavaluecheck);
+      basegold *= pitmba2;
+      console.log("Pit MBA: x" + pitmba2 + " (" + basegold + ")");
       if (perksequipped.includes("Spammer")){
         basegold *= 3;
         console.log("Spammer: x3 (" + basegold + ")");
@@ -1121,6 +1145,7 @@
         console.log("Capped at " + cap);
         document.getElementById("finalgold").innerText = (basegold + "g (Capped)");
       }
+      
       else {
         document.getElementById("finalgold").innerText = (basegold + "g");
       }
