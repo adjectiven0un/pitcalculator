@@ -539,7 +539,7 @@
   </table>
   <br><br>
   <label>Victims's streak </label>
-    <input type = "text" id = "shutdown" onkeyup="RemoveBad()">
+    <input type = "text" id = "victimstreak" onkeyup="RemoveBad()">
   <br><br>
   <label>Victim's level </label>
     <input type = "number" id = "victimlevel" min = "0" max = "120">
@@ -585,7 +585,7 @@
 
     function RemoveBad() {
       if(parseFloat(killstreak.value.replace(/[^\.\d]/g,'')).toLocaleString() == "NaN") {
-        document.getElementById('killstreak').value = 1;
+        document.getElementById('killstreak').value = "";
       }
       document.getElementById('killstreak').value = (killstreak.value.replace(/[^\.\d]/g,''))
     }
@@ -763,8 +763,36 @@
       streakxpbonus *= parseFloat(sweaty);
       basexp += (streakxpbonus);
       console.log("Streak xp bonus modified: " + streakxpbonus + " (" + basexp + ")");
+      var lvldifference = victimlevel.value - killerlevel.value;
+      if (lvldifference > 0){
+        lvldifference = Math.floor(lvldifference / 5);
+        basexp += (lvldifference);
+        console.log("Level difference: " + lvldifference + " (" + basexp + ")");
+      }
+      var shutdownbonus = 0;
+      var shutdown = victimstreak.value;
+      console.log(shutdown);
+      if (shutdown < 3){
+        shutdownbonus = 0;
+      }
+      else if (shutdown == 3 || shutdown == 4) {
+        shutdownbonus = 15;
+      }
+      else if (shutdown >= 5 && shutdown <= 19) {
+        shutdownbonus = 25;
+      }
+      else if (shutdown >= 20 && shutdown <= 200) {  
+        shutdownbonus = Math.floor(victimstreak.value / 10) * 15;
+      }
+      else if (shutdown >= 200){
+        shutdownbonus = 300;
+      }
+      basexp += shutdownbonus;
+      console.log("Shutdown bonus: " + shutdownbonus + " (" + basexp + ")");
       
       console.log(basexp);
+     
+  
     }
     
     
