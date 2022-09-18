@@ -930,6 +930,10 @@
         basexp *= 0.91;
         console.log("Killed a noob: x0.91 " + "(" + basexp + ")");
       }
+      if (EventMultiplier.value != "r"){
+        basexp *= EventMultiplier.value;
+        console.log("Active event: x" + EventMultiplier + " (" + basexp + ")");
+      }
       var cap = 400;
       if (EICActive == 1){
         cap += 50;
@@ -1136,6 +1140,13 @@
       if (perksequipped.includes("Conglomerate")){
         basegold += (0.2 * basexp);
         console.log("Conglomerate: +" + (0.2 * basexp) + " (" + basegold + ")");
+      }
+      if (EventMultiplier.value != "r"){
+        basegold *= EventMultiplier.value;
+        console.log("Active event: x" + EventMultiplier + " (" + basegold + ")");
+      } else {
+        basegold *= 2;
+        console.log("Active event: x2 (" + basegold + ")");
       }
       basegold = basegold.toFixed(2);
       var cap = 2500;
