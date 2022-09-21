@@ -12,7 +12,7 @@
   
   <p><span class = mc>WARNING!</span> This site is still a work in progress. Bugs may happen. Report bugs to adjective_noun#3215 on Discord, to @adj_noun on Twitter, or to adjectivenoun3215@gmail.com using an email service.</p>
   
-  <i><span class = "me" id = "splashtext"></span></i>
+  <i><p id = "splashtext" class = "me" ></p></i>
 
   <p class = "section">Killer's Stats</p>
   <form action="" style = "display: inline-table" onChange = "checkHat(player1helmet.value);">
@@ -565,6 +565,10 @@
   </body>
 
   <script>
+    //splashes
+    var splashtexts = ["/boop BrookeAFK!", "/boop Gamazations!", "/boop litphoenix!", "Now with 6% less fat!", "Also try Warlords!", "Nerf MW Hunter!", "Don't do hacks!", "People actually use this site?", "They'll find you.", "Jump Boost Potions are a great item!", "Mirror has interesting effects with Overdrive!", "Grey is the best color!", "Brought to you by The Council!", "Also see pit.wiki!", "Also see brookeafk.com!", "Replace pitcalculator in the URL with holeinthewall!", ":heart:!", "<o/", "Make sure to finish your daily contracts!", "Cool features coming soon!"]
+    var splashindex = Math.floor(Math.random() * 20);
+    document.getElementById(splashtext).innerText = splashtexts[splashindex];
     //Reveals pants based on whether certain conditions are true.
     function revealPants(value){  
       if (value == "Mystic_Pants"){
