@@ -707,13 +707,15 @@
       }
     }
     //toggle Super Streaker on or off
-    var superstreakeractive = 0;
+    var superstreakeractive = true;
     function toggleSuperStreaker(){
-      superstreakeractive = Math.abs(superstreakeractive - 1);
-      if (superstreakeractive == 0){
+      
+      if (superstreakeractive){
         document.getElementById("Super_Streaker").style.backgroundColor = "#252525";
+        superstreakeractive = false;
       } else {
         document.getElementById("Super_Streaker").style.backgroundColor = "#55aa55";
+        superstreakeractive = true;
       }
     }
     //toggle EIC on or off
@@ -852,11 +854,11 @@
           console.log("Explicious: +12" + " (" + basexp + ")");
         }
       }
-      if (streak % 10 == 0){
-        if (superstreakeractive == 1){
+      if (streak % 10 == 0 && superstreakeractive == true){
+       
           basexp += 50;
           console.log("Super Streaker: +50" + " (" + basexp + ")");
-        }
+     
         
       }
       var xpbump = 0;
@@ -919,7 +921,7 @@
         console.log("Overdrive: x2 (" + basexp + ")");
       }
       var superstreakermult = 1;
-      if (superstreakeractive = 1){
+      if (superstreakeractive == true){
         superstreakermult += Math.floor(streak / 10) * 0.05;
         if (superstreakermult > 1.5){
           superstreakermult = 1.5;
