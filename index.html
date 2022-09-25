@@ -930,7 +930,7 @@
         basexp *= superstreakermult;
         console.log("Super Streaker boost: x" + superstreakermult + " (" + basexp + ")");
       }
-      if (inparty) {
+      if (inparty.value == "true") {
         basexp *= 1.1;
         console.log("Victim in a party: x1.1 " + "(" + basexp + ")");
       }
