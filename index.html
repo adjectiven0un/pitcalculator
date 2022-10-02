@@ -3,7 +3,7 @@
   <body>
   <title>Hypixel Pit rewards calculator</title>
   <link rel="stylesheet" href="stylesheet.css">
-  <meta name = "description" content = "Hypixel Pit rewards calculator v0.0.2β">
+  <meta name = "description" content = "Hypixel Pit rewards calculator v0.0.3β">
   <meta name = "author" content = "adjective_n0un">
 <div class = "box">
 <span class = "body">
@@ -18,7 +18,7 @@
   <p class = "section">Killer's Stats</p>
   <form action="" style = "display: inline-table" onChange = "checkHat(player1helmet.value);">
     <label>Select helmet </label>
-    <select id="player1helmet">
+    <select id="Player1Helmet">
       <option value="none">None</option>
       <option value="Fancy_Hat" style = "background: #a5a">Fancy Hat</option>
       <option value="Chainmail_Helmet" style = "background: #888">Chainmail Helmet</option>
@@ -32,7 +32,7 @@
        
   <form action="" style = "display: inline-table">
     <label>Select chestplate </label>
-    <select id="player1chestplate">
+    <select id="Player1Chestplate">
       <option value="none">None</option>
       <option value="Chainmail_Chestplate" style = "background: #888">Chainmail Chestplate</option>
       <option value="Iron_Chestplate" style = "background: #aaa">Iron Chestplate</option>
@@ -44,7 +44,7 @@
   <br>
   <form action="" style = "display: inline-table" onChange = "revealPants(player1leggings.value);">
     <label>Select leggings </label>
-    <select id="player1leggings">
+    <select id="Player1Leggings">
       <option value="none">None</option>
       <option value="Golden_Leggings" style = "background: #dd0">Golden Leggings</option>
       <option value="Chainmail_Leggings" style = "background: #888">Chainmail Leggings</option>
@@ -59,7 +59,7 @@
   <br>
   <form action="" style = "display: inline-table">
     <label>Select boots </label>
-    <select id="player1boots">
+    <select id="Player1Boots">
       <option value="none">None</option>
       <option value="Chainmail_Boots" style = "background: #888">Chainmail Boots</option>
       <option value="Iron_Boots" style = "background: #aaa">Iron Boots</option>
@@ -72,7 +72,7 @@
   <br>
   <table class="img body" style = "display: inline-table">
     <tr>
-      <td style="text-align: center"><img src="./images/nohelmet.png" width="100%"></td>
+      <td id = "killerhelmet" style="text-align: center"><img src="./images/None_Helmet.png" width="100%"></td>
     </tr>
     <tr>
       <td class="small center" id="caption2" name="caption2">Killer's helmet</td>
@@ -80,7 +80,7 @@
   </table>  
   <table class="img body" style = "display: inline-table">
     <tr>
-      <td style="text-align: center"><img src="./images/nochestplate.png" width="100%"></td>
+      <td id = "killerchestplate" style="text-align: center"><img src="./images/None_Chestplate.png" width="100%"></td>
     </tr>
     <tr>
       <td class="small center" id="caption2" name="caption2">Killer's chestplate</td>
@@ -88,7 +88,7 @@
   </table>
   <table class="img body" style = "display: inline-table">
     <tr>
-      <td style="text-align: center"><img src="./images/noleggings.png" width="100%"></td>
+      <td id = "killerleggings" style="text-align: center"><img src="./images/None_Leggings.png" width="100%"></td>
     </tr>
     <tr>
       <td class="small center" id="caption2" name="caption2">Killer's leggings</td>
@@ -96,7 +96,7 @@
   </table>
   <table class="img body" style = "display: inline-table">
     <tr>
-      <td style="text-align: center"><img src="./images/noboots.png" width="100%"></td>
+      <td id = "killerboots" style="text-align: center"><img src="./images/None_Boots.png" width="100%"></td>
     </tr>
     <tr>
       <td class="small center" id="caption2" name="caption2">Killer's boots</td>
@@ -407,7 +407,7 @@
     
     <br><br>
     <p class = "section">Perks & Killstreaks</p>
-    <p class = me><i><b>Only perks and killstreaks that influence on-kill rewards are displayed.<b><i></p>
+    <p class = me><i><b>Only perks and killstreaks that influence on-kill rewards are displayed.</b></i></p>
     <table class="imgwide body" style = "display: inline-table">
     <tr>
       <td id = "Safety_First" style="text-align: center; background-color: #252525;" onclick = "addPerk('Safety_First');"><img class = "icon" src="./images/Safety_First.png" width="100%"></td>
@@ -458,7 +458,7 @@
     <p class = section>Victim's Stats</p>
     <form action="" style = "display: inline-table">
     <label>Select victim's helmet </label>
-    <select id="player2helmet">
+    <select id="Player2Helmet">
       <option value="none">None</option>
       <option value="Fancy_Hat" style = "background: #a5a">Fancy Hat</option>
       <option value="Chainmail_Helmet" style = "background: #888">Chainmail Helmet</option>
@@ -472,7 +472,7 @@
        
   <form action="" style = "display: inline-table">
     <label>Select victim's chestplate </label>
-    <select id="player2chestplate">
+    <select id="Player2Chestplate">
       <option value="none">None</option>
       <option value="Chainmail_Chestplate" style = "background: #888">Chainmail Chestplate</option>
       <option value="Iron_Chestplate" style = "background: #aaa">Iron Chestplate</option>
@@ -484,7 +484,7 @@
   <br>
   <form action="" style = "display: inline-table">
     <label>Select victim's leggings </label>
-    <select id="player2leggings">
+    <select id="Player2Leggings">
       <option value="none">None</option>
       <option value="Golden_Leggings" style = "background: #dd0">Golden Leggings</option>
       <option value="Chainmail_Leggings" style = "background: #888">Chainmail Leggings</option>
@@ -499,7 +499,7 @@
   <br>
   <form action="" style = "display: inline-table">
     <label>Select victim's boots </label>
-    <select id="player2boots">
+    <select id="Player2Boots">
       <option value="none">None</option>
       <option value="Chainmail_Boots" style = "background: #888">Chainmail Boots</option>
       <option value="Iron_Boots" style = "background: #aaa">Iron Boots</option>
@@ -512,7 +512,7 @@
   <br>
   <table class="img body" style = "display: inline-table">
     <tr>
-      <td style="text-align: center"><img src="./images/nohelmet.png" width="100%"></td>
+      <td id = "victimhelmet" style="text-align: center"><img src="./images/None_Helmet.png" width="100%"></td>
     </tr>
     <tr>
       <td class="small center" id="caption2" name="caption2">Victim's helmet</td>
@@ -520,7 +520,7 @@
   </table>  
   <table class="img body" style = "display: inline-table">
     <tr>
-      <td style="text-align: center"><img src="./images/nochestplate.png" width="100%"></td>
+      <td id = "victimchestplate" style="text-align: center"><img src="./images/None_Chestplate.png" width="100%"></td>
     </tr>
     <tr>
       <td class="small center" id="caption2" name="caption2">Victim's chestplate</td>
@@ -528,7 +528,7 @@
   </table>
   <table class="img body" style = "display: inline-table">
     <tr>
-      <td style="text-align: center"><img src="./images/noleggings.png" width="100%"></td>
+      <td id = "victimleggings" style="text-align: center"><img src="./images/None_Leggings.png" width="100%"></td>
     </tr>
     <tr>
       <td class="small center" id="caption2" name="caption2">Victim's leggings</td>
@@ -536,7 +536,7 @@
   </table>
   <table class="img body" style = "display: inline-table">
     <tr>
-      <td style="text-align: center"><img src="./images/noboots.png" width="100%"></td>
+      <td id = "victimboots" style="text-align: center"><img src="./images/None_Boots.png" width="100%"></td>
     </tr>
     <tr>
       <td class="small center" id="caption2" name="caption2">Victim's boots</td>
@@ -1183,6 +1183,12 @@
       
       else {
         document.getElementById("finalgold").innerText = (basegold + "g");
+      }
+    }
+    function changeArmorImage(type, player){
+      var item = ("Player" + player + type).value;
+      if (player == 1){
+        //tba
       }
     }
   </script>
