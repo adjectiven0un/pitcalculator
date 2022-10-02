@@ -16,7 +16,7 @@
   <i><p id = "splashtext" class = "me" >Loading...</p></i>
 
   <p class = "section">Killer's Stats</p>
-  <form action="" style = "display: inline-table" onChange = "checkHat(player1helmet.value);">
+  <form action="" style = "display: inline-table" onChange = "checkHat(Player1Helmet.value);">
     <label>Select helmet </label>
     <select id="Player1Helmet">
       <option value="none">None</option>
@@ -42,7 +42,7 @@
   </form>
   
   <br>
-  <form action="" style = "display: inline-table" onChange = "revealPants(player1leggings.value);">
+  <form action="" style = "display: inline-table" onChange = "revealPants(Player1Leggings.value);">
     <label>Select leggings </label>
     <select id="Player1Leggings">
       <option value="none">None</option>
@@ -636,10 +636,10 @@
         //If Safety First or Bounty Hunter are selected, select those as your worn item.
         document.getElementById(value).style.backgroundColor = "#55aa55";
         if (value == "Safety_First"){
-          player1helmet.selectedIndex = 2;
+          Player1Helmet.selectedIndex = 2;
         }
         if (value == "Bounty_Hunter"){
-          player1leggings.selectedIndex = 1;
+          Player1Leggings.selectedIndex = 1;
         }
         updatePerksList();
       }
@@ -648,20 +648,20 @@
         document.getElementById(perksequipped[0]).style.backgroundColor = "#252525";
         //If the removed perk is sf or bh, clear helm or leggings respectively
         if (perksequipped[0] == "Safety_First"){
-          player1helmet.selectedIndex = 0;
+          Player1Helmet.selectedIndex = 0;
         }
         if (perksequipped[0] == "Bounty_Hunter"){
-          player1leggings.selectedIndex = 0;
+          Player1Leggings.selectedIndex = 0;
         }
         perksequipped.splice(0, 1);
         perksequipped.push(value);
         
         document.getElementById(value).style.backgroundColor = "#55aa55";
         if (value == "Safety_First"){
-          player1helmet.selectedIndex = 2;
+          Player1Helmet.selectedIndex = 2;
         }
         if (value == "Bounty_Hunter"){
-          player1leggings.selectedIndex = 1;
+          Player1Leggings.selectedIndex = 1;
         }
         updatePerksList();
       }
@@ -670,10 +670,10 @@
         document.getElementById(value).style.backgroundColor = "#252525";
         perksequipped.splice(perksequipped.indexOf(value), 1);
         if (value == "Safety_First"){
-          player1helmet.selectedIndex = 0;
+          Player1Helmet.selectedIndex = 0;
         }
         if (value == "Bounty_Hunter"){
-          player1leggings.selectedIndex = 0;
+          Player1Leggings.selectedIndex = 0;
         }
         updatePerksList();
         
