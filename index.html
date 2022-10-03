@@ -873,15 +873,15 @@
       console.log("XP Boost Passive: x" + PassiveXPBoost.value + " (" + basexp + ")");
       basexp *= GenesisXPMultiplier.value;
       console.log("Genesis XP Multiplier: x" + GenesisXPMultiplier.value + " (" + basexp + ")");
-      if (player1helmet.value == "Golden_Helmet"){
+      if (Player1Helmet.value == "Golden_Helmet"){
         basexp *= 1.1;
         console.log("Royalty: x1.1 (" + basexp + ")");
       }
-      if (player1leggings.value == "Sewer_Pants"){
+      if (Player1Leggings.value == "Sewer_Pants"){
         basexp *= SewerMult.value;
         console.log("Sewer Pants: x" + SewerMult.value + " (" + basexp + ")");
       }
-      if (player1leggings.value == "Dark_Pants"){
+      if (Player1Leggings.value == "Dark_Pants"){
         basexp *= DarkMult.value;
         console.log("Dark Pants: x" + DarkMult.value + " (" + basexp + ")");
       }
@@ -1036,53 +1036,53 @@
         console.log("Streak shutdown: +" + goldshutdown + " (" + basegold + ")");
       }
       var killerarmor = 0;
-      if (player1helmet.value == "Chainmail_Helmet"){
+      if (Player1Helmet.value == "Chainmail_Helmet"){
         killerarmor += 1;
-      } else if (player1helmet.value == "Iron_Helmet"){
+      } else if (Player1Helmet.value == "Iron_Helmet"){
         killerarmor += 2;
-      } else if (player1helmet.value == "Diamond_Helmet"){
+      } else if (Player1Helmet.value == "Diamond_Helmet"){
         killerarmor += 4;
       }
-      if (player1chestplate.value == "Iron_Chestplate"){
+      if (Player1Chestplate.value == "Iron_Chestplate"){
         killerarmor += 2;
-      } else if (player1chestplate.value == "Diamond_Chestplate"){
+      } else if (Player1Chestplate.value == "Diamond_Chestplate"){
         killerarmor += 4;
       }
-      if (player1leggings.value == "Iron_Leggings"){
+      if (Player1Leggings.value == "Iron_Leggings"){
         killerarmor += 2;
-      } else if (player1leggings.value == "Diamond_Leggings"){
+      } else if (Player1Leggings.value == "Diamond_Leggings"){
         killerarmor += 4;
       }
-      if (player1boots.value == "Iron_Boots"){
+      if (Player1Boots.value == "Iron_Boots"){
         killerarmor += 2;
-      } else if (player1boots.value == "Diamond_Boots"){
+      } else if (Player1Boots.value == "Diamond_Boots"){
         killerarmor += 4;
       }
       var victimarmor = 0;
       var victimdiamondarmor = 0;
-      if (player2helmet.value == "Chainmail_Helmet"){
+      if (Player2Helmet.value == "Chainmail_Helmet"){
         victimarmor += 1;
-      } else if (player2helmet.value == "Iron_Helmet"){
+      } else if (Player2Helmet.value == "Iron_Helmet"){
         victimarmor += 2;
-      } else if (player2helmet.value == "Diamond_Helmet"){
+      } else if (Player2Helmet.value == "Diamond_Helmet"){
         victimarmor += 4;
         victimdiamondarmor += 1;
       }
-      if (player2chestplate.value == "Iron_Chestplate"){
+      if (Player2Chestplate.value == "Iron_Chestplate"){
         victimarmor += 2;
-      } else if (player2chestplate.value == "Diamond_Chestplate"){
+      } else if (Player2Chestplate.value == "Diamond_Chestplate"){
         victimarmor += 4;
         victimdiamondarmor += 1;
       }
-      if (player2leggings.value == "Iron_Leggings"){
+      if (Player2Leggings.value == "Iron_Leggings"){
         victimarmor += 2;
-      } else if (player2leggings.value == "Diamond_Leggings"){
+      } else if (Player2Leggings.value == "Diamond_Leggings"){
         victimarmor += 4;
         victimdiamondarmor += 1;
       }
-      if (player2boots.value == "Iron_Boots"){
+      if (Player2Boots.value == "Iron_Boots"){
         victimarmor += 2;
-      } else if (player2boots.value == "Diamond_Boots"){
+      } else if (Player2Boots.value == "Diamond_Boots"){
         victimarmor += 4;
         victimdiamondarmor += 1;
       }
