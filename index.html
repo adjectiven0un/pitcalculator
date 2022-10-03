@@ -1181,9 +1181,11 @@
         basegold += (0.2 * basexp);
         console.log("Conglomerate: +" + (0.2 * basexp) + " (" + basegold + ")");
       }
-      if (EventMultiplier.value != "r" && EventMultiplier.value != 1){
-        basegold *= EventMultiplier.value;
-        console.log("Active event: x" + EventMultiplier.value + " (" + basegold + ")");
+      if (EventMultiplier.value != "r"){
+        if (EventMultiplier.value != 1){
+          basegold *= EventMultiplier.value;
+          console.log("Active event: x" + EventMultiplier.value + " (" + basegold + ")");
+        }
       } else {
         basegold *= 2;
         console.log("Active event: x2 (" + basegold + ")");
