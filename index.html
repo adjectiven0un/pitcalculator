@@ -781,11 +781,14 @@
         basexp += 5;
         console.log("El Gato Bonus: +5 (" + basexp + ")");
       }
-      
-      basexp += parseInt(RenownXPBump.value);
-      console.log("Renown XP Bump: +" + RenownXPBump.value + " (" + basexp + ")");
-      basexp += ((XPStack.value) * 0.05);
-      console.log("XP Stacks: +" + (XPStack.value) * 0.05 + " (" + basexp + ")");
+      if (RenownXPBump.value > 0){
+        basexp += parseInt(RenownXPBump.value);
+        console.log("Renown XP Bump: +" + RenownXPBump.value + " (" + basexp + ")");
+      }
+      if (XPStack.value > 0){
+        basexp += ((XPStack.value) * 0.05);
+        console.log("XP Stacks: +" + (XPStack.value) * 0.05 + " (" + basexp + ")");
+      }
       var streakxpbonus;
       if (streak < 3){
         streakxpbonus = 0;
@@ -817,8 +820,10 @@
       sweaty *= 0.2;
       sweaty += 1;
       streakxpbonus *= parseFloat(sweaty);
-      basexp += (streakxpbonus);
-      console.log("Streak xp bonus modified: " + streakxpbonus + " (" + basexp + ")");
+      if (streakxpbonus > 0){
+        basexp += (streakxpbonus);
+        console.log("Streak xp bonus modified: " + streakxpbonus + " (" + basexp + ")");
+      }
       var lvldifference = victimlevel.value - killerlevel.value;
       if (lvldifference > 0){
         lvldifference = Math.floor(lvldifference / 5);
@@ -842,8 +847,10 @@
       else if (shutdown >= 200){
         shutdownbonus = 300;
       }
-      basexp += shutdownbonus;
-      console.log("Shutdown bonus: " + shutdownbonus + " (" + basexp + ")");
+      if (shutdownbonus > 0){
+        basexp += shutdownbonus;
+        console.log("Shutdown bonus: " + shutdownbonus + " (" + basexp + ")");
+      }
       
      
       if (streak % 3 == 0){
@@ -866,13 +873,18 @@
       var xpbump = 0;
       xpbump += parseInt(XPBumpLevel.value);
       xpbump += parseInt(XPBumpLevelP.value);
-      basexp += xpbump;
-      console.log("XP Bump: +" + xpbump + " (" + basexp + ")");
-      
-      basexp *= PassiveXPBoost.value;
-      console.log("XP Boost Passive: x" + PassiveXPBoost.value + " (" + basexp + ")");
-      basexp *= GenesisXPMultiplier.value;
-      console.log("Genesis XP Multiplier: x" + GenesisXPMultiplier.value + " (" + basexp + ")");
+      if (xpbump > 0){
+        basexp += xpbump;
+        console.log("XP Bump: +" + xpbump + " (" + basexp + ")");
+      }
+      if (PassiveXPBoost.value > 1){
+        basexp *= PassiveXPBoost.value;
+        console.log("XP Boost Passive: x" + PassiveXPBoost.value + " (" + basexp + ")");
+      }
+      if (GenesisXPMultiplier.value > 1){
+        basexp *= GenesisXPMultiplier.value;
+        console.log("Genesis XP Multiplier: x" + GenesisXPMultiplier.value + " (" + basexp + ")");
+      }
       if (Player1Helmet.value == "Golden_Helmet"){
         basexp *= 1.1;
         console.log("Royalty: x1.1 (" + basexp + ")");
@@ -889,13 +901,15 @@
       mysticxpboost += parseInt(XPBoostLevel.value);
       mysticxpboost += parseInt(XPBoostLevelP.value);
       mysticxpboost += 1;
-      basexp *= mysticxpboost;
-      console.log("Mystic XP Boost: x" + mysticxpboost + " (" + basexp + ")");
-
+      if (mysticxpboost > 1){
+        basexp *= mysticxpboost;
+        console.log("Mystic XP Boost: x" + mysticxpboost + " (" + basexp + ")");
+      }
       var pitmba = "1." + PitMBALevelP.value;
-      basexp *= pitmba;
-      console.log("Pit MBA: x" + pitmba + " (" + basexp + ")");
-
+      if (pitmba > 1){
+        basexp *= pitmba;
+        console.log("Pit MBA: x" + pitmba + " (" + basexp + ")");
+      }
       if (perksequipped.includes("Assistant_to_the_Streaker")){
         basexp *= 1.15;
         console.log("ATTS: x1.15 (" + basexp + ")");
