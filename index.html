@@ -709,7 +709,7 @@
       }
     }
     //toggle Super Streaker on or off
-    var superstreakeractive = true;
+    var superstreakeractive = false;
     function toggleSuperStreaker(){
       
       if (superstreakeractive){
@@ -810,7 +810,6 @@
           streakxpbonus = 60;
         }
       }
-      console.log("Initial Streak XP Bonus: " + streakxpbonus);
       if (perksequipped.includes("Streaker")){
         streakxpbonus *= 3;
       }
@@ -954,9 +953,9 @@
         basexp *= 0.9;
         console.log("Killed a noob: x0.9 " + "(" + basexp + ")");
       }
-      if (EventMultiplier.value != "r"){
+      if (EventMultiplier.value != "r" && EventMultiplier.value != 1){
         basexp *= EventMultiplier.value;
-        console.log("Active event: x" + EventMultiplier + " (" + basexp + ")");
+        console.log("Active event: x" + EventMultiplier.value + " (" + basexp + ")");
       }
       var cap = 400;
       if (EICActive == 1){
@@ -1035,8 +1034,10 @@
         basegold += moctvalue;
         console.log("Moctezuma: +" + moctvalue + " (" + basegold + ")");
       }
-      basegold += parseFloat(GenesisGoldBump.value);
-      console.log("Genesis Gold Bump: +" + GenesisGoldBump.value + " (" + basegold + ")");
+      if (GenesisGoldBump.value > 0){
+        basegold += parseFloat(GenesisGoldBump.value);
+        console.log("Genesis Gold Bump: +" + GenesisGoldBump.value + " (" + basegold + ")");
+      }
       var goldshutdown = 0;
       
       if (shutdown > 3){
@@ -1180,9 +1181,9 @@
         basegold += (0.2 * basexp);
         console.log("Conglomerate: +" + (0.2 * basexp) + " (" + basegold + ")");
       }
-      if (EventMultiplier.value != "r"){
+      if (EventMultiplier.value != "r" && EventMultiplier.value != 1){
         basegold *= EventMultiplier.value;
-        console.log("Active event: x" + EventMultiplier + " (" + basegold + ")");
+        console.log("Active event: x" + EventMultiplier.value + " (" + basegold + ")");
       } else {
         basegold *= 2;
         console.log("Active event: x2 (" + basegold + ")");
