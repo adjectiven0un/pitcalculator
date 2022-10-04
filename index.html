@@ -72,7 +72,7 @@
   <br>
   <table class="img body" style = "display: inline-table">
     <tr>
-      <td id = "killerhelmet" style="text-align: center"><img src="./images/None_Helmet.png" width="100%"></td>
+      <td id = "killerHelmet" style="text-align: center"><img src="./images/None_Helmet.png" width="100%"></td>
     </tr>
     <tr>
       <td class="small center" id="caption2" name="caption2">Killer's helmet</td>
@@ -80,7 +80,7 @@
   </table>  
   <table class="img body" style = "display: inline-table">
     <tr>
-      <td id = "killerchestplate" style="text-align: center"><img src="./images/None_Chestplate.png" width="100%"></td>
+      <td id = "killerChestplate" style="text-align: center"><img src="./images/None_Chestplate.png" width="100%"></td>
     </tr>
     <tr>
       <td class="small center" id="caption2" name="caption2">Killer's chestplate</td>
@@ -88,7 +88,7 @@
   </table>
   <table class="img body" style = "display: inline-table">
     <tr>
-      <td id = "killerleggings" style="text-align: center"><img src="./images/None_Leggings.png" width="100%"></td>
+      <td id = "killerLeggings" style="text-align: center"><img src="./images/None_Leggings.png" width="100%"></td>
     </tr>
     <tr>
       <td class="small center" id="caption2" name="caption2">Killer's leggings</td>
@@ -96,7 +96,7 @@
   </table>
   <table class="img body" style = "display: inline-table">
     <tr>
-      <td id = "killerboots" style="text-align: center"><img src="./images/None_Boots.png" width="100%"></td>
+      <td id = "killerBoots" style="text-align: center"><img src="./images/None_Boots.png" width="100%"></td>
     </tr>
     <tr>
       <td class="small center" id="caption2" name="caption2">Killer's boots</td>
@@ -512,7 +512,7 @@
   <br>
   <table class="img body" style = "display: inline-table">
     <tr>
-      <td id = "victimhelmet" style="text-align: center"><img src="./images/None_Helmet.png" width="100%"></td>
+      <td id = "victimHelmet" style="text-align: center"><img src="./images/None_Helmet.png" width="100%"></td>
     </tr>
     <tr>
       <td class="small center" id="caption2" name="caption2">Victim's helmet</td>
@@ -520,7 +520,7 @@
   </table>  
   <table class="img body" style = "display: inline-table">
     <tr>
-      <td id = "victimchestplate" style="text-align: center"><img src="./images/None_Chestplate.png" width="100%"></td>
+      <td id = "victimChestplate" style="text-align: center"><img src="./images/None_Chestplate.png" width="100%"></td>
     </tr>
     <tr>
       <td class="small center" id="caption2" name="caption2">Victim's chestplate</td>
@@ -528,7 +528,7 @@
   </table>
   <table class="img body" style = "display: inline-table">
     <tr>
-      <td id = "victimleggings" style="text-align: center"><img src="./images/None_Leggings.png" width="100%"></td>
+      <td id = "victimLeggings" style="text-align: center"><img src="./images/None_Leggings.png" width="100%"></td>
     </tr>
     <tr>
       <td class="small center" id="caption2" name="caption2">Victim's leggings</td>
@@ -536,7 +536,7 @@
   </table>
   <table class="img body" style = "display: inline-table">
     <tr>
-      <td id = "victimboots" style="text-align: center"><img src="./images/None_Boots.png" width="100%"></td>
+      <td id = "victimBoots" style="text-align: center"><img src="./images/None_Boots.png" width="100%"></td>
     </tr>
     <tr>
       <td class="small center" id="caption2" name="caption2">Victim's boots</td>
@@ -559,8 +559,8 @@
 
 
   <span id = "Calcbutton" style = "padding: 10px; background-color: #aa55aa" onclick = "calcrewards();">Calculate!</span><br><br>
-  <span class = mb id = "finalxp">-</span><br><br>
-  <span class = m6 id = "finalgold">-</span>
+  <span class = mb id = "finalxp">–––––</span><br><br>
+  <span class = m6 id = "finalgold">–––––</span>
 
 </span>
 </div>
@@ -1202,10 +1202,13 @@
         document.getElementById("finalgold").innerText = (basegold + "g");
       }
     }
-    function changeArmorImage(type, player){
-      var item = ("Player" + player + type).value;
+    function changeArmorImage(armortype, material, player){
+      var item = ("Player" + player + armortype).value;
       if (player == 1){
-        //tba
+        document.getElementById("killer" + armortype).src = "./images/" + material + "_" + armortype + ".png";
+      }
+      if (player == 2){
+        document.getElementById("victim" + armortype).src = "./images/" + material + "_" + armortype + ".png";
       }
     }
   </script>
