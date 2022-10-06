@@ -3,14 +3,14 @@
   <body>
   <title>Hypixel Pit rewards calculator</title>
   <link rel="stylesheet" href="stylesheet.css">
-  <meta name = "description" content = "Hypixel Pit rewards calculator v0.0.3β">
+  <meta name = "description" content = "Hypixel Pit rewards calculator v0.0.4β">
   <meta name = "author" content = "adjective_n0un">
 <div class = "box">
 <span class = "body">
   <span class="header">Hypixel Pit Rewards Calculator</span><br>
   <span class="subheader">A beta feature of the <a href="https://pit.wiki">Hypixel Pit Wiki</a></span>
   <hr>
-  <!--I sincerely apologize to anyone who has to read this. The HTML ends at line 567.-->
+  <!--Apologies to anyone who has to read this. The HTML ends at line 567. I'll try to explain it as well as I can.-->
   <p><span class = mc>WARNING!</span> This site is still a work in progress. Bugs may happen. Report bugs to adjective_noun#3215 on Discord, to @adj_noun on Twitter, or to adjectivenoun3215@gmail.com using an email service.</p>
   
   <i><p id = "splashtext" class = "me" >Loading...</p></i>
@@ -814,8 +814,12 @@
         streakxpbonus *= 3;
       }
       var sweaty = 0;
-      sweaty += parseFloat(SweatyLevel.value);
-      sweaty += parseFloat(SweatyLevelP.value);
+      if (Player1Leggings.value != "Dark_Pants"){
+        sweaty += parseFloat(SweatyLevel.value);
+      }
+      if (Player1Leggings.value == "Mystic_Pants"){
+        sweaty += parseFloat(SweatyLevelP.value);
+      }
       sweaty *= 0.2;
       sweaty += 1;
       streakxpbonus *= parseFloat(sweaty);
@@ -870,8 +874,12 @@
         
       }
       var xpbump = 0;
-      xpbump += parseInt(XPBumpLevel.value);
-      xpbump += parseInt(XPBumpLevelP.value);
+      if (Player1Leggings.value != "Dark_Pants"){
+        xpbump += parseInt(XPBumpLevel.value);
+      }
+      if (Player1Leggings.value == "Mystic_Pants"){
+        xpbump += parseInt(XPBumpLevelP.value);
+      }
       if (xpbump > 0){
         basexp += xpbump;
         console.log("XP Bump: +" + xpbump + " (" + basexp + ")");
@@ -896,18 +904,24 @@
         basexp *= DarkMult.value;
         console.log("Dark Pants: x" + DarkMult.value + " (" + basexp + ")");
       }
-      var mysticxpboost = 0;
-      mysticxpboost += parseInt(XPBoostLevel.value);
-      mysticxpboost += parseInt(XPBoostLevelP.value);
-      mysticxpboost += 1;
+      
+      var mysticxpboost = 1;
+      if (Player1Leggings.value != "Dark_Pants"){
+        mysticxpboost += parseInt(XPBoostLevel.value);
+      }
+      if (Player1Leggings.value == "Mystic_Pants"){
+        mysticxpboost += parseInt(XPBoostLevelP.value);
+      }
       if (mysticxpboost > 1){
         basexp *= mysticxpboost;
         console.log("Mystic XP Boost: x" + mysticxpboost + " (" + basexp + ")");
       }
-      var pitmba = "1." + PitMBALevelP.value;
-      if (pitmba > 1){
-        basexp *= pitmba;
-        console.log("Pit MBA: x" + pitmba + " (" + basexp + ")");
+      if (Player1Leggings.value == "Mystic_Pants"){
+        var pitmba = "1." + PitMBALevelP.value;
+        if (pitmba > 1){
+          basexp *= pitmba;
+          console.log("Pit MBA: x" + pitmba + " (" + basexp + ")");
+        }
       }
       if (perksequipped.includes("Assistant_to_the_Streaker")){
         basexp *= 1.15;
@@ -961,8 +975,12 @@
       if (EICActive == 1){
         cap += 50;
       }
-      cap += 50 * (SweatyLevel.value - 1);
-      cap += 50 * (SweatyLevelP.value - 1);
+      if (Player1Leggings.value != "Dark_Pants"){
+        cap += 50 * (SweatyLevel.value - 1);
+      }
+      if (Player1Leggings.value == "Mystic_Pants"){
+        cap += 50 * (SweatyLevelP.value - 1);
+      }
       if (streak >= 100 && megaequipped == "To_the_Moon") {
         cap += 100;
       } else if (streak >= 50 && megaequipped == "Beastmode"){
@@ -1022,14 +1040,24 @@
           console.log("Khanate: +8 " + " (" + basegold + ")");
         }
       }
-      var goldbumpvalue = parseFloat(GoldBumpLevel.value);
-      goldbumpvalue += parseFloat(GoldBumpLevelP.value);
+      var goldbumpvalue = 0;
+      if (Player1Leggings.value != "Dark_Pants"){
+        goldbumpvalue = parseFloat(GoldBumpLevel.value);
+      }
+      if (Player1Leggings.value == "Mystic_Pants"){
+        goldbumpvalue += parseFloat(GoldBumpLevelP.value);
+      }
       if (goldbumpvalue > 1){
         basegold += goldbumpvalue;
         console.log("Gold Bump: +" + goldbumpvalue + " (" + basegold + ")");
       }
-      var moctvalue = parseFloat(MoctezumaLevel.value);
-      moctvalue += parseFloat(MoctezumaLevelP.value);
+      var moctvalue = 0;
+      if (Player1Leggings.value != "Dark_Pants"){
+        moctvalue = parseFloat(MoctezumaLevel.value);
+      }
+      if (Player1Leggings.value == "Mystic_Pants"){
+        moctvalue += parseFloat(MoctezumaLevelP.value);
+      }
       if (moctvalue > 1){
         basegold += moctvalue;
         console.log("Moctezuma: +" + moctvalue + " (" + basegold + ")");
@@ -1108,10 +1136,12 @@
         basegold += armordifference;
         console.log("Armor difference: +" + armordifference + " (" + basegold + ")");
       }
-      var sierravalue = parseInt(SierraLevel.value);
-      if (sierravalue * victimdiamondarmor > 1) {
-        basegold += (sierravalue * victimdiamondarmor);
-        console.log("Sierra: +" + (sierravalue * victimdiamondarmor) + " (" + basegold + ")");
+      if (Player1Leggings.value != "Dark_Pants"){
+        var sierravalue = parseInt(SierraLevel.value);
+        if (sierravalue * victimdiamondarmor > 1) {
+          basegold += (sierravalue * victimdiamondarmor);
+          console.log("Sierra: +" + (sierravalue * victimdiamondarmor) + " (" + basegold + ")");
+        }
       }
       if (GoldStack.value > 1){
         basegold += ((GoldStack.value) * 0.1);
@@ -1126,22 +1156,27 @@
         basegold *= RenownGoldBoost.value;
         console.log("Renown Gold Boost: x" + RenownGoldBoost.value + " (" + basegold + ")");
       }
-      var mysticgoldboost = 0;
-      mysticgoldboost += parseInt(GoldBoostLevel.value);
-      mysticgoldboost += parseInt(GoldBoostLevelP.value);
-      mysticgoldboost += 1;
+      var mysticgoldboost = 1;
+      if (Player1Leggings.value != "Dark_Pants"){
+        mysticgoldboost += parseInt(GoldBoostLevel.value);
+      }
+      if (Player1Leggings.value == "Mystic_Pants"){
+        mysticgoldboost += parseInt(GoldBoostLevelP.value);
+      }
       if (mysticgoldboost > 1){
         basegold *= mysticgoldboost;
         console.log("Mystic Gold Boost: x" + mysticgoldboost + " (" + basegold + ")");
       }
-      var pitmbavaluecheck = 2 * parseInt(PitMBALevelP.value) - 1
-      if (pitmbavaluecheck < 0) {
-        pitmbavaluecheck = 0;
-      }
-      var pitmba2 = "1." + (pitmbavaluecheck);
-      if (pitmba2 > 1){
-        basegold *= pitmba2;
-        console.log("Pit MBA: x" + pitmba2 + " (" + basegold + ")");
+      if (Player1Leggings.value == "Mystic_Pants"){
+        var pitmbavaluecheck = 2 * parseInt(PitMBALevelP.value) - 1
+        if (pitmbavaluecheck < 0) {
+          pitmbavaluecheck = 0;
+        }
+        var pitmba2 = "1." + (pitmbavaluecheck);
+        if (pitmba2 > 1){
+          basegold *= pitmba2;
+          console.log("Pit MBA: x" + pitmba2 + " (" + basegold + ")");
+        }
       }
       if (perksequipped.includes("Spammer")){
         basegold *= 3;
