@@ -574,7 +574,9 @@
     document.getElementById("splashtext").innerText = splashtexts[splashindex];
     //Reveals pants based on whether certain conditions are true.
     function revealPants(value){  
-      
+      if (perksequipped.includes("Bounty_Hunter"){
+        addPerk("Bounty_Hunter");
+      }
       if (value == "Mystic_Pants"){
         document.getElementById("MysticPantsBuffs").className = ("");
         document.getElementById("MysticWeaponBuffs").className = ("");
