@@ -573,6 +573,9 @@
     document.getElementById("splashtext").innerText = splashtexts[splashindex];
     //Reveals pants based on whether certain conditions are true.
     function revealPants(value){  
+      if (value != "Golden_Leggings"){
+        addPerk("Bounty_Hunter");
+      }
       if (value == "Mystic_Pants"){
         document.getElementById("MysticPantsBuffs").className = ("");
         document.getElementById("MysticWeaponBuffs").className = ("");
@@ -640,6 +643,7 @@
         }
         if (value == "Bounty_Hunter"){
           Player1Leggings.selectedIndex = 1;
+          revealPants("Golden_Leggings");
         }
         updatePerksList();
       }
@@ -662,6 +666,7 @@
         }
         if (value == "Bounty_Hunter"){
           Player1Leggings.selectedIndex = 1;
+          revealPants("Golden_Leggings");
         }
         updatePerksList();
       }
