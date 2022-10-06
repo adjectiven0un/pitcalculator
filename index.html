@@ -3,7 +3,7 @@
   <body>
   <title>Hypixel Pit rewards calculator</title>
   <link rel="stylesheet" href="stylesheet.css">
-  <meta name = "description" content = "Hypixel Pit rewards calculator v0.0.4β">
+  <meta name = "description" content = "Hypixel Pit rewards calculator v0.0.5β">
   <meta name = "author" content = "adjective_n0un">
 <div class = "box">
 <span class = "body">
@@ -582,18 +582,21 @@
         document.getElementById("MysticWeaponBuffs").className = ("");
         document.getElementById("SewerPantsBuffs").className = ("invis");
         document.getElementById("DarkPantsBuffs").className = ("invis");
+        Player1Leggings.selectedIndex = 5;
       }
       else if (value == "Dark_Pants"){
         document.getElementById("DarkPantsBuffs").className = ("");
         document.getElementById("MysticWeaponBuffs").className = ("invis");
         document.getElementById("SewerPantsBuffs").className = ("invis");
         document.getElementById("MysticPantsBuffs").className = ("invis");
+         Player1Leggings.selectedIndex = 6;
       }
       else if (value == "Sewer_Pants"){
         document.getElementById("MysticWeaponBuffs").className = ("");
         document.getElementById("SewerPantsBuffs").className = ("");
         document.getElementById("DarkPantsBuffs").className = ("invis");
         document.getElementById("MysticPantsBuffs").className = ("invis");
+         Player1Leggings.selectedIndex = 7;
       }
       else if (value == "Golden_Leggings" && !perksequipped.includes("Bounty_Hunter")){
         addPerk("Bounty_Hunter");
@@ -607,7 +610,18 @@
         document.getElementById("MysticPantsBuffs").classList.add("invis");
         document.getElementById("SewerPantsBuffs").classList.add("invis");
         document.getElementById("DarkPantsBuffs").classList.add("invis");
-        
+        if (value == "None"){
+           Player1Leggings.selectedIndex = 0;
+        }
+        if (value == "Chainmail_Leggings"){
+           Player1Leggings.selectedIndex = 2;
+        }
+        if (value == "Iron_Leggings"){
+           Player1Leggings.selectedIndex = 3;
+        }
+        if (value == "Diamond_Leggings"){
+           Player1Leggings.selectedIndex = 4;
+        }
       }
     }
     //Removes letters from number inputs. Thanks Brookie!
