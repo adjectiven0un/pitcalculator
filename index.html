@@ -10,11 +10,11 @@
   <span class="header">Hypixel Pit Rewards Calculator</span><br>
   <span class="subheader">A beta feature of the <a href="https://pit.wiki">Hypixel Pit Wiki</a></span>
   <hr>
-  
+  <!--I sincerely apologize to anyone who has to read this. The HTML ends at line 567.-->
   <p><span class = mc>WARNING!</span> This site is still a work in progress. Bugs may happen. Report bugs to adjective_noun#3215 on Discord, to @adj_noun on Twitter, or to adjectivenoun3215@gmail.com using an email service.</p>
   
   <i><p id = "splashtext" class = "me" >Loading...</p></i>
-
+  <!--killer armor, killstreak, level-->
   <p class = "section">Killer's Stats</p>
   <form action="" style = "display: inline-table" onChange = "checkHat(Player1Helmet.value);">
     <label>Select helmet </label>
@@ -111,7 +111,7 @@
     <input type = "number" id = "killerlevel" min = "0" max = "120">
   <br><br>
   <p class = "section">Passives</p>
-
+  <!--All resource passives, like passives, killstreaks, renown boosts, etc-->
   <form action="" style = "display: inline-table;">
     <label><span class = mb>XP Boost</span> passive level </label>
     <select id="PassiveXPBoost">
@@ -229,7 +229,7 @@
   </select>
     
   <br><br>
-
+  <!--Mystic pants hidden if not selected with armor-->
 
   <div id = "MysticPantsBuffs" class = "invis">
   <p class = "section"><span class = mc>Mystic Pants</span> Bonuses</p>
@@ -324,7 +324,7 @@
   <br>
   <br>
   </div>
-
+  <!--Mystic weapon hidden if dark pants equipped-->
   <div id = "MysticWeaponBuffs" class = "">
   <p class = "section"><span class = me>Mystic Weapon</span> Bonuses</p>
 
@@ -392,7 +392,7 @@
     </select>
     <br><br><br>
   </div>
-  
+  <!--Select active event, "r" denotes rage pit because i didn't want to use arrays-->
     <label>Active Event </label>
     <select id="EventMultiplier">
       <option value="1">None</option>
@@ -404,7 +404,7 @@
     </select>
   
 
-    
+    <!--Select perks-->
     <br><br>
     <p class = "section">Perks & Killstreaks</p>
     <p class = me><i><b>Only perks and killstreaks that influence on-kill rewards are displayed.</b></i></p>
@@ -427,7 +427,7 @@
       <td id = "perk4" style="text-align: center"><img class = "icon" id = "perk4image" src="./images/None_Helmet.png" width="100%"></td>
     </tr>
     </table>
-    
+    <!--Select killstreaks, thankfully all singularly mutually exclusive-->
     <br><br>
     <p>Kill streak</p>
     <table class = "imgkillstreaks body" style = "display: inline-table">
@@ -455,6 +455,7 @@
       <td id = "To_the_Moon" style="text-align: center" onclick = selectMega("To_the_Moon")><img class = "icon"  src="./images/To_the_Moon.png" width="100%"></td>
     </table>
     <br><br><br>
+  <!--target's stuff, including armor, streak, killstreak-->
     <p class = section>Victim's Stats</p>
     <form action="" style = "display: inline-table">
     <label>Select victim's helmet </label>
@@ -466,8 +467,7 @@
       <option value="Diamond_Helmet" style = "background: #0cc">Diamond Helmet</option>
       <option value="Golden_Helmet" style = "background: #cc0">Golden Helmet</option>
     </select>
-  </form>
-  
+  </form> 
   <br>
        
   <form action="" style = "display: inline-table">
@@ -556,7 +556,7 @@
     </select>
   <br><br>
 
-
+  <!--the BUTTON-->
 
   <span id = "Calcbutton" style = "padding: 10px; background-color: #aa55aa" onclick = "calcrewards();">Calculate!</span><br><br>
   <span class = mb id = "finalxp">–––––</span><br><br>
@@ -568,7 +568,7 @@
 
   <script>
     //splashes
-    var splashtexts = ["/boop BrookeAFK!", "/boop Gamazations!", "/boop litphoenix!", "Now with 6% less fat!", "Also try Warlords!", "Nerf MW Hunter!", "Don't do hacks!", "People actually use this site?", "Grey is the best color!", "Brought to you by The Council!", "Also see pit.wiki!", "Also see brookeafk.com!", "Replace pitcalculator in the URL with holeinthewall!", ":heart:!", "<o/", "Finish your daily contracts!", "Cool features coming soon!", "Just add gold!", "Loading screen tip!", "Toxicity isn't cool!", "Left-click to deal damage!", "The end is never the end!", "Hyperbolic!", "You'll never escape it.", "The oldest anarchy server on Hypixel!", "thabks miniklon", "Since 2022!", "adjective HATES math!", "We do a little enchanting!", "No added sugar!", "Translation to Pirate English pending!", "Stay safe!", "Reject Skywars, return to Blitz!", "Fireproof!", "Alpha tested!"]
+    var splashtexts = ["/boop BrookeAFK!", "/boop Gamazations!", "/boop litphoenix!", "Now with 6% less fat!", "Also try Warlords!", "Nerf MW Hunter!", "Don't do hacks!", "People actually use this site?", "Grey is the best color!", "Brought to you by The Council!", "Also see pit.wiki!", "Also see brookeafk.com!", "Also try Hole in the Wall!", ":heart:!", "<o/", "Finish your daily contracts!", "Cool features coming soon!", "Just add gold!", "Loading screen tip!", "Toxicity isn't cool!", "Left-click to deal damage!", "The end is never the end!", "Hyperbolic!", "The oldest anarchy server on Hypixel!", "thabks miniklon", "Since 2022!", "adjective HATES math!", "We do a little enchanting!", "No added sugar!", "Translation to Pirate English pending!", "Stay safe!", "Fireproof!", "Alpha tested!"]
     var splashindex = Math.floor(Math.random() * splashtexts.length);
     document.getElementById("splashtext").innerText = splashtexts[splashindex];
     //Reveals pants based on whether certain conditions are true.
