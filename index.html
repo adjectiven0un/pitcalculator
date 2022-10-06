@@ -573,7 +573,7 @@
     document.getElementById("splashtext").innerText = splashtexts[splashindex];
     //Reveals pants based on whether certain conditions are true.
     function revealPants(value){  
-      if (value == "Golden_Leggings"){
+      if (value = "Golden_Leggings" && !perksequipped.includes("Bounty_Hunter")){
         addPerk("Bounty_Hunter");
       }
       if (value == "Mystic_Pants"){
@@ -599,9 +599,7 @@
         document.getElementById("MysticPantsBuffs").classList.add("invis");
         document.getElementById("SewerPantsBuffs").classList.add("invis");
         document.getElementById("DarkPantsBuffs").classList.add("invis");
-        if (value = "Golden_Leggings" && !perksequipped.includes("Bounty_Hunter")){
-          addPerk("Bounty_Hunter");
-        }
+        
       }
     }
     //Removes letters from number inputs. Thanks Brookie!
