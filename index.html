@@ -1182,10 +1182,10 @@
       }
       var mysticgoldboost = 1;
       if (Player1Leggings.value != "Dark_Pants"){
-        mysticgoldboost += parseInt(GoldBoostLevel.value);
+        mysticgoldboost += parseFloat(GoldBoostLevel.value);
       }
       if (Player1Leggings.value == "Mystic_Pants"){
-        mysticgoldboost += parseInt(GoldBoostLevelP.value);
+        mysticgoldboost += parseFloat(GoldBoostLevelP.value);
       }
       if (mysticgoldboost > 1){
         basegold *= mysticgoldboost;
