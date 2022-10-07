@@ -996,20 +996,25 @@
         console.log("Active event: x" + EventMultiplier.value + " (" + basexp + ")");
       }
       var cap = 400;
+      console.log(cap);
       if (EICActive == 1){
         cap += 50;
       }
-      if (Player1Leggings.value != "Dark_Pants"){
+      console.log(cap);
+      if (Player1Leggings.value != "Dark_Pants" && SweatyLevel.value > 1){
         cap += 50 * (SweatyLevel.value - 1);
       }
-      if (Player1Leggings.value == "Mystic_Pants"){
+      console.log(cap);
+      if (Player1Leggings.value == "Mystic_Pants" && SweatyLevel.value > 1){
         cap += 50 * (SweatyLevelP.value - 1);
       }
+      console.log(cap);
       if (streak >= 100 && megaequipped == "To_the_Moon") {
         cap += 100;
       } else if (streak >= 50 && megaequipped == "Beastmode"){
         cap += 50;
       }
+      console.log(cap);
       cap *= superstreakermult;
       cap = Math.floor(cap);
       basexp = Math.ceil(basexp);
@@ -1250,10 +1255,10 @@
         console.log("Active event: x2 (" + basegold + ")");
       }
       basegold = basegold.toFixed(2);
-      var cap = 2500;
-      if (basegold > cap){
-        basegold = cap;
-        console.log("Capped at " + cap);
+      var goldcap = 2500;
+      if (basegold > goldcap){
+        basegold = goldcap;
+        console.log("Capped at " + goldcap);
         document.getElementById("finalgold").innerText = (basegold + "g (Capped)");
       }
       
