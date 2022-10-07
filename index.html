@@ -996,25 +996,20 @@
         console.log("Active event: x" + EventMultiplier.value + " (" + basexp + ")");
       }
       var cap = 400;
-      console.log(cap);
       if (EICActive == 1){
         cap += 50;
       }
-      console.log(cap);
       if (Player1Leggings.value != "Dark_Pants" && SweatyLevel.value > 1){
         cap += 50 * (SweatyLevel.value - 1);
       }
-      console.log(cap);
       if (Player1Leggings.value == "Mystic_Pants" && SweatyLevel.value > 1){
         cap += 50 * (SweatyLevelP.value - 1);
       }
-      console.log(cap);
       if (streak >= 100 && megaequipped == "To_the_Moon") {
         cap += 100;
       } else if (streak >= 50 && megaequipped == "Beastmode"){
         cap += 50;
       }
-      console.log(cap);
       cap *= superstreakermult;
       cap = Math.floor(cap);
       basexp = Math.ceil(basexp);
