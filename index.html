@@ -3,7 +3,7 @@
   <body>
   <title>Hypixel Pit rewards calculator</title>
   <link rel="stylesheet" href="stylesheet.css">
-  <meta name = "description" content = "Hypixel Pit rewards calculator v0.0.5β">
+  <meta name = "description" content = "Hypixel Pit rewards calculator v0.1.0β">
   <meta name = "author" content = "adjective_n0un">
 <div class = "box">
 <span class = "body">
@@ -14,14 +14,15 @@
   <!--The full formulas may be seen at https://pit.wiki/XP and https://pit.wiki/Gold.-->
   <p><span class = mc>WARNING!</span> This site is still a work in progress. Bugs may happen. Report bugs to adjective_noun#3215 on Discord, to @adj_noun on Twitter, or to adjectivenoun3215@gmail.com using an email service.</p>
   
+  
   <i><p id = "splashtext" class = "me" >Loading...</p></i>
   <!--killer armor, killstreak, level-->
   <p class = "section">Killer's Stats</p>
-  <form action="" style = "display: inline-table" onChange = "checkHat(Player1Helmet.value);">
+  <form action="" style = "display: inline-table" onChange = "checkHat(Player1Helmet.value); changeArmorImage('Helmet', '1', Player1Helmet.value)">
     <label>Select helmet </label>
     <select id="Player1Helmet">
-      <option value="none">None</option>
-      <option value="Fancy_Hat" style = "background: #a5a">Fancy Hat</option>
+      <option value="None_Helmet">None</option>
+      <option value="Leather_Helmet" style = "background: #a5a">Fancy Hat</option>
       <option value="Chainmail_Helmet" style = "background: #888">Chainmail Helmet</option>
       <option value="Iron_Helmet" style = "background: #aaa">Iron Helmet</option>
       <option value="Diamond_Helmet" style = "background: #0cc">Diamond Helmet</option>
@@ -31,22 +32,22 @@
   
   <br>
        
-  <form action="" style = "display: inline-table">
+  <form action="" style = "display: inline-table" onChange = "changeArmorImage('Chestplate', '1', Player1Chestplate.value);">
     <label>Select chestplate </label>
-    <select id="Player1Chestplate">
-      <option value="none">None</option>
+    <select id="Player1Chestplate" >
+      <option value="None_Chestplate">None</option>
       <option value="Chainmail_Chestplate" style = "background: #888">Chainmail Chestplate</option>
       <option value="Iron_Chestplate" style = "background: #aaa">Iron Chestplate</option>
       <option value="Diamond_Chestplate" style = "background: #0cc">Diamond Chestplate</option>
-      <option value="Archangel_Chestplate" style = "background: #099">Archangel Chestplate</option>
+      <option value="Diamond_Chestplate" style = "background: #099">Archangel Chestplate</option>
     </select>
   </form>
   
   <br>
-  <form action="" style = "display: inline-table" onChange = "revealPants(Player1Leggings.value);">
+  <form action="" style = "display: inline-table" onChange = "revealPants(Player1Leggings.value); changeArmorImage('Leggings', '1', Player1Leggings.value);">
     <label>Select leggings </label>
     <select id="Player1Leggings">
-      <option value="none">None</option>
+      <option value="None_Leggings">None</option>
       <option value="Golden_Leggings" style = "background: #dd0">Golden Leggings</option>
       <option value="Chainmail_Leggings" style = "background: #888">Chainmail Leggings</option>
       <option value="Iron_Leggings" style = "background: #aaa">Iron Leggings</option>
@@ -58,10 +59,10 @@
   </form>
   
   <br>
-  <form action="" style = "display: inline-table">
+  <form action="" style = "display: inline-table" onChange = "changeArmorImage('Boots', '1', Player1Boots.value);">
     <label>Select boots </label>
     <select id="Player1Boots">
-      <option value="none">None</option>
+      <option value="None_Boots">None</option>
       <option value="Chainmail_Boots" style = "background: #888">Chainmail Boots</option>
       <option value="Iron_Boots" style = "background: #aaa">Iron Boots</option>
       <option value="Diamond_Boots" style = "background: #0cc">Diamond Boots</option>
@@ -73,36 +74,37 @@
   <br>
   <table class="img body" style = "display: inline-table">
     <tr>
-      <td id = "killerHelmet" style="text-align: center"><img src="./images/None_Helmet.png" width="100%"></td>
+      <td  style="text-align: center"><img id = "killerHelmet" src="./images/None_Helmet.png" width="100%"></td>
     </tr>
     <tr>
-      <td class="small center" id="caption2" name="caption2">Killer's helmet</td>
+      <td class="small center" id="caption2" name="caption2">Helmet</td>
     </tr>
   </table>  
   <table class="img body" style = "display: inline-table">
     <tr>
-      <td id = "killerChestplate" style="text-align: center"><img src="./images/None_Chestplate.png" width="100%"></td>
+      <td  style="text-align: center"><img id = "killerChestplate" src="./images/None_Chestplate.png" width="100%"></td>
     </tr>
     <tr>
-      <td class="small center" id="caption2" name="caption2">Killer's chestplate</td>
+      <td class="small center" id="caption2" name="caption2">Chestplate</td>
     </tr>
   </table>
   <table class="img body" style = "display: inline-table">
     <tr>
-      <td id = "killerLeggings" style="text-align: center"><img src="./images/None_Leggings.png" width="100%"></td>
+      <td  style="text-align: center"><img id = "killerLeggings" src="./images/None_Leggings.png" width="100%"></td>
     </tr>
     <tr>
-      <td class="small center" id="caption2" name="caption2">Killer's leggings</td>
+      <td class="small center" id="caption2" name="caption2">Leggings</td>
     </tr>
   </table>
   <table class="img body" style = "display: inline-table">
     <tr>
-      <td id = "killerBoots" style="text-align: center"><img src="./images/None_Boots.png" width="100%"></td>
+      <td  style="text-align: center"><img id = "killerBoots" src="./images/None_Boots.png" width="100%"></td>
     </tr>
     <tr>
-      <td class="small center" id="caption2" name="caption2">Killer's boots</td>
+      <td class="small center" id="caption2" name="caption2">Boots</td>
     </tr>
   </table>
+
 
   <br><br>
     <label>Killer's streak after kill </label>
@@ -458,11 +460,11 @@
     <br><br><br>
   <!--target's stuff, including armor, streak, killstreak-->
     <p class = section>Victim's Stats</p>
-    <form action="" style = "display: inline-table">
+    <form action="" style = "display: inline-table" onChange = "changeArmorImage('Helmet', '2', Player2Helmet.value);">
     <label>Select victim's helmet </label>
     <select id="Player2Helmet">
-      <option value="none">None</option>
-      <option value="Fancy_Hat" style = "background: #a5a">Fancy Hat</option>
+      <option value="None_Helmet">None</option>
+      <option value="Leather_Helmet" style = "background: #a5a">Fancy Hat</option>
       <option value="Chainmail_Helmet" style = "background: #888">Chainmail Helmet</option>
       <option value="Iron_Helmet" style = "background: #aaa">Iron Helmet</option>
       <option value="Diamond_Helmet" style = "background: #0cc">Diamond Helmet</option>
@@ -471,10 +473,10 @@
   </form> 
   <br>
        
-  <form action="" style = "display: inline-table">
+  <form action="" style = "display: inline-table" onChange = "changeArmorImage('Chestplate', '2', Player2Chestplate.value);">
     <label>Select victim's chestplate </label>
     <select id="Player2Chestplate">
-      <option value="none">None</option>
+      <option value="None_Chestplate">None</option>
       <option value="Chainmail_Chestplate" style = "background: #888">Chainmail Chestplate</option>
       <option value="Iron_Chestplate" style = "background: #aaa">Iron Chestplate</option>
       <option value="Diamond_Chestplate" style = "background: #0cc">Diamond Chestplate</option>
@@ -483,10 +485,10 @@
   </form>
   
   <br>
-  <form action="" style = "display: inline-table">
+  <form action="" style = "display: inline-table" onChange = "changeArmorImage('Leggings', '2', Player2Leggings.value);">
     <label>Select victim's leggings </label>
     <select id="Player2Leggings">
-      <option value="none">None</option>
+      <option value="None_Leggings">None</option>
       <option value="Golden_Leggings" style = "background: #dd0">Golden Leggings</option>
       <option value="Chainmail_Leggings" style = "background: #888">Chainmail Leggings</option>
       <option value="Iron_Leggings" style = "background: #aaa">Iron Leggings</option>
@@ -498,10 +500,10 @@
   </form>
   
   <br>
-  <form action="" style = "display: inline-table">
+  <form action="" style = "display: inline-table" onChange = "changeArmorImage('Boots', '2', Player2Boots.value);"> 
     <label>Select victim's boots </label>
     <select id="Player2Boots">
-      <option value="none">None</option>
+      <option value="None_Boots">None</option>
       <option value="Chainmail_Boots" style = "background: #888">Chainmail Boots</option>
       <option value="Iron_Boots" style = "background: #aaa">Iron Boots</option>
       <option value="Diamond_Boots" style = "background: #0cc">Diamond Boots</option>
@@ -513,34 +515,34 @@
   <br>
   <table class="img body" style = "display: inline-table">
     <tr>
-      <td id = "victimHelmet" style="text-align: center"><img src="./images/None_Helmet.png" width="100%"></td>
+      <td  style="text-align: center"><img id = "victimHelmet" src="./images/None_Helmet.png" width="100%"></td>
     </tr>
     <tr>
-      <td class="small center" id="caption2" name="caption2">Victim's helmet</td>
+      <td class="small center" id="caption2" name="caption2">Helmet</td>
     </tr>
   </table>  
   <table class="img body" style = "display: inline-table">
     <tr>
-      <td id = "victimChestplate" style="text-align: center"><img src="./images/None_Chestplate.png" width="100%"></td>
+      <td  style="text-align: center"><img id = "victimChestplate" src="./images/None_Chestplate.png" width="100%"></td>
     </tr>
     <tr>
-      <td class="small center" id="caption2" name="caption2">Victim's chestplate</td>
-    </tr>
-  </table>
-  <table class="img body" style = "display: inline-table">
-    <tr>
-      <td id = "victimLeggings" style="text-align: center"><img src="./images/None_Leggings.png" width="100%"></td>
-    </tr>
-    <tr>
-      <td class="small center" id="caption2" name="caption2">Victim's leggings</td>
+      <td class="small center" id="caption2" name="caption2">Chestplate</td>
     </tr>
   </table>
   <table class="img body" style = "display: inline-table">
     <tr>
-      <td id = "victimBoots" style="text-align: center"><img src="./images/None_Boots.png" width="100%"></td>
+      <td  style="text-align: center"><img id = "victimLeggings" src="./images/None_Leggings.png" width="100%"></td>
     </tr>
     <tr>
-      <td class="small center" id="caption2" name="caption2">Victim's boots</td>
+      <td class="small center" id="caption2" name="caption2">Leggings</td>
+    </tr>
+  </table>
+  <table class="img body" style = "display: inline-table">
+    <tr>
+      <td  style="text-align: center"><img id = "victimBoots" src="./images/None_Boots.png" width="100%"></td>
+    </tr>
+    <tr>
+      <td class="small center" id="caption2" name="caption2">Boots</td>
     </tr>
   </table>
   <br><br>
@@ -1261,13 +1263,12 @@
         document.getElementById("finalgold").innerText = (basegold + "g");
       }
     }
-    function changeArmorImage(armortype, material, player){
-      var item = ("Player" + player + armortype).value;
+    function changeArmorImage(armortype, player, item){
       if (player == 1){
-        document.getElementById("killer" + armortype).src = "./images/" + material + "_" + armortype + ".png";
+        document.getElementById("killer" + armortype).src = ("./images/" + item + ".png");
       }
       if (player == 2){
-        document.getElementById("victim" + armortype).src = "./images/" + material + "_" + armortype + ".png";
+        document.getElementById("victim" + armortype).src = ("./images/" + item + ".png");
       }
     }
   </script>
