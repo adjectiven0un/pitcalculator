@@ -3,14 +3,14 @@
   <body>
   <title>Hypixel Pit rewards calculator</title>
   <link rel="stylesheet" href="stylesheet.css">
-  <meta name = "description" content = "Hypixel Pit rewards calculator v0.1.0β">
+  <meta name = "description" content = "Hypixel Pit rewards calculator v0.1.1β">
   <meta name = "author" content = "adjective_n0un">
 <div class = "box">
 <span class = "body">
   <span class="header">Hypixel Pit Rewards Calculator</span><br>
   <span class="subheader">A beta feature of the <a href="https://pit.wiki">Hypixel Pit Wiki</a></span>
   <hr>
-  <!--Apologies to anyone who has to read this. The HTML ends at line 567. I'll try to explain it as well as I can.-->
+  <!--Apologies to anyone who has to read this. The HTML ends at line 572. I'll try to explain it as well as I can.-->
   <!--The full formulas may be seen at https://pit.wiki/XP and https://pit.wiki/Gold.-->
   <p><span class = mc>WARNING!</span> This site is still a work in progress. Bugs may happen. Report bugs to adjective_noun#3215 on Discord, to @adj_noun on Twitter, or to adjectivenoun3215@gmail.com using an email service.</p>
   
@@ -572,8 +572,7 @@
   <script>
     //splashes
     var splashtexts = ["/boop BrookeAFK!", "/boop Gamazations!", "/boop litphoenix!", "Now with 6% less fat!", "Also try Warlords!", "Nerf MW Hunter!", "Don't do hacks!", "People actually use this site?", "Grey is the best color!", "Brought to you by The Council!", "Also see pit.wiki!", "Also see brookeafk.com!", "Also try Hole in the Wall!", ":heart:!", "<o/", "Finish your daily contracts!", "Cool features coming soon!", "Just add gold!", "Loading screen tip!", "Toxicity isn't cool!", "Left-click to deal damage!", "The end is never the end!", "Hyperbolic!", "The oldest anarchy server on Hypixel!", "thabks miniklon", "Since 2022!", "adjective HATES math!", "No added sugar!", "Translation t' Pirate Speak pendin'!", "Stay safe!", "Fireproof!", "Alpha tested!"]
-    var splashindex = Math.floor(Math.random() * splashtexts.length);
-    document.getElementById("splashtext").innerText = splashtexts[splashindex];
+    document.getElementById("splashtext").innerText = splashtexts[Math.floor(Math.random() * splashtexts.length);];
     //Reveals pants based on whether certain conditions are true.
     function revealPants(value){  
       if (perksequipped.includes("Bounty_Hunter")){
@@ -691,6 +690,7 @@
         perksequipped.splice(perksequipped.indexOf(value), 1);
         if (value == "Safety_First"){
           Player1Helmet.selectedIndex = 0;
+          killerHelmet.src = "./images/None_Helmet.png";
         }
         if (value == "Bounty_Hunter"){
           Player1Leggings.selectedIndex = 0;
