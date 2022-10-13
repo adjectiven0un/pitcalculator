@@ -432,7 +432,7 @@
     </table>
     <!--Select killstreaks, thankfully all singularly mutually exclusive-->
     <br><br>
-    <p>Kill streak</p>
+    <p>Killstreak</p>
     <table class = "imgkillstreaks body" style = "display: inline-table">
       <td id = "Second_Gapple" style="text-align: center" onclick = selectKillstreak("Second_Gapple")><img class = "icon"  src="./images/Second_Gapple.png" width="100%"></td>
       <td id = "Explicious" style="text-align: center" onclick = selectKillstreak("Explicious")><img class = "icon"  src="./images/Explicious.png" width="100%"></td>
@@ -626,13 +626,7 @@
         }
       }
     }
-    //Removes letters from number inputs. Thanks Brookie!
-    function RemoveBad() {
-      if(parseFloat(killstreak.value.replace(/[^\.\d]/g,'')).toLocaleString() == "NaN") {
-        document.getElementById('killstreak').value = "";
-      }
-      document.getElementById('killstreak').value = (killstreak.value.replace(/[^\.\d]/g,''))
-    }
+    //Removes letters from numerical inputs. Thanks Brooke!
     function RemoveBad() {
       if(parseFloat(killstreak.value.replace(/[^\.\d]/g,'')).toLocaleString() == "NaN") {
         document.getElementById('killstreak').value = "";
@@ -747,7 +741,7 @@
         superstreakeractive = true;
       }
     }
-    //toggle EIC on or off
+    //toggle EIC
     var EICActive = 0;
     var EIC = 100;
     function toggleEIC(){
