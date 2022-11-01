@@ -115,17 +115,8 @@
   <br><br>
   <p class = "section">Passives</p>
   <!--All resource passives, like passives, killstreaks, renown boosts, etc-->
-  <form action="" style = "display: inline-table;">
-    <label><span class = mb>XP Boost</span> passive level </label>
-    <select id="PassiveXPBoost">
-      <option value="1">0</option>
-      <option value="1.1">I</option>
-      <option value="1.2">II</option>
-      <option value="1.3">III</option>
-      <option value="1.4">IV</option>
-      <option value="1.5">V</option>
-      <option value="1.6">VI</option>
-    </select> </form>
+  <input type = "range" id = "PassiveXPBoost" min = "1" max = "1.6" value = "1" step = "0.1" onChange = "changeText(PassiveXPBoost, 'XP Boost Passive level: ');">
+  <br><span class = mb id = "PassiveXPBoostText">XP Boost Passive level: </span><br>
   <form action="" style = "display: inline-table;">
     <label><span class = m6>  Gold Boost</span> passive level </label>
     <select id="PassiveGoldBoost">
@@ -1265,6 +1256,9 @@
       if (player == 2){
         document.getElementById("victim" + armortype).src = ("./images/" + item + ".png");
       }
+    }
+    function changeText(textname, text){
+      document.getElementById(textname + "Text").innerText = (text + textname.value());
     }
   </script>
   </html>
