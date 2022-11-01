@@ -115,30 +115,13 @@
   <br><br>
   <p class = "section">Passives</p>
   <!--All resource passives, like passives, killstreaks, renown boosts, etc-->
-  <input type = "range" id = "PassiveXPBoost" min = "1" max = "1.6" value = "1" step = "0.1" onChange = "changeText(PassiveXPBoost, 'XP Boost Passive level: ');" class = "slider">
-  <br><span class = mb id = "PassiveXPBoostText">XP Boost Passive level: </span><br>
-  <form action="" style = "display: inline-table;">
-    <label><span class = m6>  Gold Boost</span> passive level </label>
-    <select id="PassiveGoldBoost">
-      <option value="1">0</option>
-      <option value="1.1">I</option>
-      <option value="1.2">II</option>
-      <option value="1.3">III</option>
-      <option value="1.4">IV</option>
-      <option value="1.5">V</option>
-      <option value="1.6">VI</option>
-    </select> </form>
-  <form action="" style = "display: inline-table;">
-    <label><span class = md>  El Gato</span> passive level </label>
-    <select id="PassiveElGato">
-      <option value="0">0</option>
-      <option value="1">I</option>
-      <option value="2">II</option>
-      <option value="3">III</option>
-      <option value="4">IV</option>
-      <option value="5">V</option>
-      <option value="6">VI</option>
-    </select> </form>
+  <input type = "range" id = "PassiveXPBoost" min = "1" max = "1.6" value = "1" step = "0.1" onChange = "changeText(PassiveXPBoost);" class = "slider">
+  <br><span class = mb>XP Boost passive multiplier: </span><span class = mb id = "PassiveXPBoostText">0</span><br>
+  <input type = "range" id = "PassiveGoldBoost" min = "1" max = "1.6" value = "1" step = "0.1" onChange = "changeText(PassiveGoldBoost);" class = "slider">
+  <br><span class = mb>Gold Boost passive multiplier: </span><span class = m6 id = "PassiveGoldBoostText">0</span><br>
+  <input type = "range" id = "PassiveElGato" min = "0" max = "6" value = "1" step = "1" onChange = "changeText(PassiveElGato);" class = "slider">
+  <br><span class = mb>El Gato passive multiplier: </span><span class = md id = "PassiveElGatoText">0</span><br>
+  
     <br><br>
     <p class = "section">Renown Reward Boosts</p>
   <form action="" style = "display: inline-table;">
@@ -1257,8 +1240,8 @@
         document.getElementById("victim" + armortype).src = ("./images/" + item + ".png");
       }
     }
-    function changeText(textname, text){
-      document.getElementById(textname + "Text").innerText = (text + textname.value());
+    function changeText(textname){
+      document.getElementById(textname + "Text").innerText = (parseString(textname).value());
     }
   </script>
   </html>
