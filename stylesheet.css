@@ -327,24 +327,31 @@ input {
   color: #FFF;
 }
 
-input[type=range] {
-  -webkit-appearance: none; 
-  width: 100%; 
-  background: #808080; 
-}
-
-input[type=range]::-webkit-slider-thumb {
+.slider {
   -webkit-appearance: none;
+  width: 500px;
+  height: 10px;
+  border-radius: 5px;
+  background: #808080;
+  outline: none;
+  
 }
 
-input[type=range]:focus {
-  outline: none; 
-}
 
-input[type=range]::-ms-track {
-  width: 100%;
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 30px;
+  border-radius: 10px;
+  background: #d0d0d0;
   cursor: pointer;
-  background: transparent; 
-  border-color: transparent;
-  color: transparent;
+}
+
+.slider::-moz-range-thumb {
+  width: 15px;
+  height: 30px;
+  border-radius: 10px;
+  background: #d0d0d0;
+  cursor: pointer;
 }
