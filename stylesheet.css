@@ -1,1251 +1,357 @@
-<!DOCTYPE html>
-  <html>
-  <body>
-  <title>Hypixel Pit rewards calculator</title>
-  <link rel="stylesheet" href="stylesheet.css">
-  <meta name = "description" content = "Hypixel Pit rewards calculator v0.1.1β">
-  <meta name = "author" content = "adjective_n0un">
-<div class = "box">
-<span class = "body">
-  <span class="header">Hypixel Pit Rewards Calculator</span><br>
-  <span class="subheader">A beta feature of the <a href="https://pit.wiki">Hypixel Pit Wiki</a></span>
-  <hr>
-  <!--Apologies to anyone who has to read this. The HTML ends at line 572. I'll try to explain it as well as I can.-->
-  <!--The full formulas may be seen at https://pit.wiki/XP and https://pit.wiki/Gold.-->
-  <p><span class = mc>WARNING!</span> The site is currently down while adj does a little experimenting. </p>
+/*i've literally just copied the stylesheet from pit.wiki*/
+
+body {
+  font-family: Roboto, Manrope, sans-serif;
+  background-attachment: fixed;
+  background-image: url("images/background.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.header {
+  font-size: 30px;
+  color: white;
+}
+
+.subheader {
+  font-size: 16px;
+  color: white;
+  font-style: italic;
+}
+
+.body {
+  font-size: 16px;
+  color: #fff;
+}
+
+.section {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.small {
+  font-size: 12px;
+  color: #fff;
+}
+
+.center {
+  text-align: center;
+}
+
+.icon {
+  width: 30px;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.img {
+  width: 125px;
+  margin: 10px;
+}
+
+.imgkillstreaks{
+  width: 30px;
+  margin: 10px;
+}
+
+.imgwide {
+  width: 300px;
+  margin: 10px;
+}
+
+
+.tableheader {
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center;
+}
+
+table,
+th,
+td {
+  border: 1px solid white;
+  padding: 5px;
+}
+
+.highlighted {
+  border: 2px solid #cc0000;
+  background: #880000;
+}
+
+.invisible_fill {
+  background-color: var(--bg);
+}
+
+.headerbox {
+  background-color: var(--bg);
+  width: 80%;
+  padding: 20px 50px 20px;
+  margin: 0px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.75;
+  border-radius: 15px;
+}
+
+.smallbreak {
+  height: 0px;
+  visibility: hidden;
+}
+
+.box {
+  background-color: var(--bg);
+  width: 80%;
+  padding: 20px 50px 20px;
+  margin: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.75;
+  border-radius: 15px;
+  position: relative;
+  top: 50px;
+}
+
+.invis {
+  display: none;
+}
+
+.unselected {
+  border-color: "#ff0000";
+}
+.selected {
+  border-color: "#00ff00";
+}
+
+.m0 {
+  color: #000;
+}
+.m1 {
+  color: #00a;
+}
+.m2 {
+  color: #0a0;
+}
+.m3 {
+  color: #0aa;
+}
+.m4 {
+  color: #a00;
+}
+.m5 {
+  color: #a0a;
+}
+.m6 {
+  color: #fa0;
+}
+.m7 {
+  color: #aaa;
+}
+.m8 {
+  color: #555;
+}
+.m9 {
+  color: #55f;
+}
+.ma {
+  color: #5f5;
+}
+.mb {
+  color: #5ff;
+}
+.mc {
+  color: #f55;
+}
+.md {
+  color: #f5f;
+}
+.me {
+  color: #ff5;
+}
+.mf {
+  color: #fff;
+}
+.td {
+  color: #caa;
+}
+
+code {
+  font-family: "Roboto Mono", ui-monospace, Menlo, "Cascadia Mono",
+    "Segoe UI Mono", "Fira Mono", "Droid Sans Mono", monospace;
+  color: #cac;
+  background-color: #383838;
+  padding: 2px;
+}
+
+pre > code {
+  background-color: transparent;
+}
+
+a:link {
+  color: #5abbb7;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #4b9b98;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #c2edee;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+a:active {
+  color: #ddf0f0;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+@font-face {
+  font-family: Roboto;
+  src: url("./font/Roboto-Regular.ttf");
+}
+
+@font-face {
+  font-family: Material;
+  src: url("./font/Material.ttf");
+}
+
+:root {
+  --mc0: #000;
+  --mc1: #00a;
+  --mc2: #0a0;
+  --mc3: #0aa;
+  --mc4: #a00;
+  --mc5: #a0a;
+  --mc6: #fa0;
+  --mc7: #aaa;
+  --mc8: #555;
+  --mc9: #55f;
+  --mca: #5f5;
+  --mcb: #5ff;
+  --mcc: #f55;
+  --mcd: #f5f;
+  --mce: #ff5;
+  --mcf: #fff;
+  --td: #caa;
+  --bg: #252525;
+}
+
+td img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.anchor {
+  position: absolute;
+  transform: translateY(-100px);
+}
+
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+ul {
+  list-style-type: square;
+}
+
+.homepagecontainer {
+  margin: 1.5em auto;
+  max-width: 1068px;
+  column-gap: 1.5em;
+}
+
+.homepageitem {
+  background: #363636;
+  padding: 1em;
+  margin: 0 0 1.5em;
+  break-inside: avoid-column;
+}
+
+@media only screen and (min-width: 1024px) {
+  .homepagecontainer {
+    column-count: 4;
+  }
+}
+
+@media only screen and (max-width: 1023px) and (min-width: 768px) {
+  .homepagecontainer {
+    column-count: 3;
+  }
+}
+
+@media only screen and (max-width: 767px) and (min-width: 540px) {
+  .homepagecontainer {
+    column-count: 2;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  body {
+    background-image: none;
+    background-color: #252525;
+  }
+}
+
+select {
+  size: 4;
+  font-family: Roboto;
+  background-color: #252525;
+  color: #fff;
+  border: 2px solid #444;
+  border-radius: 5px;
+  font-size: 16px
+}
+
+select option:checked,
+select option:hover {
+    box-shadow: 0 0 10px 100px #000 inset;
+}
+
+input {
+  background-color: #252525;
+  border: 2px solid #444;
+  border-radius: 5px;
+  font-size: 16px;
+  font-family: Roboto;
+  color: #FFF;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 200px;
+  height: 10px;
+  border-radius: 5px;
+  background: #808080;
+  outline: none;
   
-  
-  <i><p id = "splashtext" class = "me" >Loading...</p></i>
-  <!--killer armor, killstreak, level-->
-  <p class = "section">Killer's Stats</p>
-  <form action="" style = "display: inline-table" onChange = "checkHat(Player1Helmet.value); changeArmorImage('Helmet', '1', Player1Helmet.value)">
-    <label>Select helmet </label>
-    <select id="Player1Helmet">
-      <option value="None_Helmet">None</option>
-      <option value="Leather_Helmet" style = "background: #a5a">Fancy Hat</option>
-      <option value="Chainmail_Helmet" style = "background: #888">Chainmail Helmet</option>
-      <option value="Iron_Helmet" style = "background: #aaa">Iron Helmet</option>
-      <option value="Diamond_Helmet" style = "background: #0cc">Diamond Helmet</option>
-      <option value="Golden_Helmet" style = "background: #cc0">Golden Helmet</option>
-    </select>
-  </form>
-  
-  <br>
-       
-  <form action="" style = "display: inline-table" onChange = "changeArmorImage('Chestplate', '1', Player1Chestplate.value);">
-    <label>Select chestplate </label>
-    <select id="Player1Chestplate" >
-      <option value="None_Chestplate">None</option>
-      <option value="Chainmail_Chestplate" style = "background: #888">Chainmail Chestplate</option>
-      <option value="Iron_Chestplate" style = "background: #aaa">Iron Chestplate</option>
-      <option value="Diamond_Chestplate" style = "background: #0cc">Diamond Chestplate</option>
-      <option value="Diamond_Chestplate" style = "background: #099">Archangel Chestplate</option>
-    </select>
-  </form>
-  
-  <br>
-  <form action="" style = "display: inline-table" onChange = "revealPants(Player1Leggings.value); changeArmorImage('Leggings', '1', Player1Leggings.value);">
-    <label>Select leggings </label>
-    <select id="Player1Leggings">
-      <option value="None_Leggings">None</option>
-      <option value="Golden_Leggings" style = "background: #dd0">Golden Leggings</option>
-      <option value="Chainmail_Leggings" style = "background: #888">Chainmail Leggings</option>
-      <option value="Iron_Leggings" style = "background: #aaa">Iron Leggings</option>
-      <option value="Diamond_Leggings" style = "background: #0cc">Diamond Leggings</option>
-      <option value="Mystic_Pants" style = "background: #f55">Mystic Pants</option>
-      <option value="Dark_Pants" style = "background: #444">Dark Pants</option>
-      <option value="Sewer_Pants" style = "background: #9c4">Sewer Pants</option>
-    </select>
-  </form>
-  
-  <br>
-  <form action="" style = "display: inline-table" onChange = "changeArmorImage('Boots', '1', Player1Boots.value);">
-    <label>Select boots </label>
-    <select id="Player1Boots">
-      <option value="None_Boots">None</option>
-      <option value="Chainmail_Boots" style = "background: #888">Chainmail Boots</option>
-      <option value="Iron_Boots" style = "background: #aaa">Iron Boots</option>
-      <option value="Diamond_Boots" style = "background: #0cc">Diamond Boots</option>
-      <option value="Armageddon_Boots" style = "background: #c00">Armageddon Boots</option>
-      <option value="Radioactive_Boots" style = "background: #9c4">Radioactive Boots</option>
-    </select>
-  </form>
- 
-  <br>
-  <table class="img body" style = "display: inline-table">
-    <tr>
-      <td  style="text-align: center"><img id = "killerHelmet" src="./images/None_Helmet.png" width="100%"></td>
-    </tr>
-    <tr>
-      <td class="small center" id="caption2" name="caption2">Helmet</td>
-    </tr>
-  </table>  
-  <table class="img body" style = "display: inline-table">
-    <tr>
-      <td  style="text-align: center"><img id = "killerChestplate" src="./images/None_Chestplate.png" width="100%"></td>
-    </tr>
-    <tr>
-      <td class="small center" id="caption2" name="caption2">Chestplate</td>
-    </tr>
-  </table>
-  <table class="img body" style = "display: inline-table">
-    <tr>
-      <td  style="text-align: center"><img id = "killerLeggings" src="./images/None_Leggings.png" width="100%"></td>
-    </tr>
-    <tr>
-      <td class="small center" id="caption2" name="caption2">Leggings</td>
-    </tr>
-  </table>
-  <table class="img body" style = "display: inline-table">
-    <tr>
-      <td  style="text-align: center"><img id = "killerBoots" src="./images/None_Boots.png" width="100%"></td>
-    </tr>
-    <tr>
-      <td class="small center" id="caption2" name="caption2">Boots</td>
-    </tr>
-  </table>
+}
 
 
-  <br><br>
-    <label>Killer's streak after kill </label>
-    <input type = "text" id = "killstreak" onkeyup="RemoveBad()">
-  <br><br>
-    <label>Killer's level </label>
-    <input type = "number" id = "killerlevel" min = "0" max = "120">
-  <br><br>
-  <p class = "section">Passives</p>
-  <!--All resource passives, like passives, killstreaks, renown boosts, etc-->
-  <input type = "range" id = "PassiveXPBoost" min = "1" max = "1.6" value = "1" step = "0.1" onchange = "changeText('PassiveXPBoost', true);" class = "slider">
-  <br><span class = mb>XP Boost passive multiplier: </span><span class = mb id = "PassiveXPBoostText">0</span><br>
-  <input type = "range" id = "PassiveGoldBoost" min = "1" max = "1.6" value = "1" step = "0.1" onchange = "changeText('PassiveGoldBoost', true);" class = "slider">
-  <br><span class = m6>Gold Boost passive multiplier: </span><span class = m6 id = "PassiveGoldBoostText">0</span><br>
-  <input type = "range" id = "PassiveElGato" min = "0" max = "6" value = "0" step = "1" onchange = "changeText('PassiveElGato', false);" class = "slider">
-  <br><span class = md>El Gato boosted kills: </span><span class = md id = "PassiveElGatoText">0</span><br>
-  
-    <br><br>
-    <p class = "section">Renown Reward Boosts</p>
-  <form action="" style = "display: inline-table;">
-  <label><span class = mb>Renown XP Bump</span> passive level </label>
-    <select id="RenownXPBump">
-      <option value="0">0</option>
-      <option value="1">I</option>
-      <option value="2">II</option>
-      <option value="3">III</option>
-      <option value="4">IV</option>
-      <option value="5">V</option>
-      <option value="6">VI</option>
-      <option value="7">VII</option>
-      <option value="8">VIII</option>
-      <option value="9">IX</option>
-      <option value="10">X</option>
-    </select> </form>
- 
-  <form action="" style = "display: inline-table;">
-  <label><span class = m6>  Renown Gold Boost</span> passive level </label>
-    <select id="RenownGoldBoost">
-      <option value="1">0</option>
-      <option value="1.025">I</option>
-      <option value="1.05">II</option>
-      <option value="1.075">III</option>
-      <option value="1.1">IV</option>
-      <option value="1.125">V</option>
-      <option value="1.15">VI</option>
-      <option value="1.175">VII</option>
-      <option value="1.2">VIII</option>
-      <option value="1.225">IX</option>
-      <option value="1.25">X</option>
-    </select> </form>
-  <br><br>
-  <p class = "section">Stacking Killstreaks</p>
-    <label><span class = mb>XP stack</span> activations (0 - 220)</label>
-    <input type = "number" id = "XPStack" min = "0" max = "220">
-    <label>  <span class = m6>Gold stack</span> activations (0 - 55)</label>
-    <input type = "number" id = "GoldStack" min = "0" max = "55">
-  <br><br>
-  <p class = "section">Genesis</p>
-  <label>Genesis <span class = mb>XP multiplier</span></label>
-    <select id="GenesisXPMultiplier">
-      <option value="1.0">0%</option>
-      <option value="1.01">1%</option>
-      <option value="1.02">2%</option>
-      <option value="1.03">3%</option>
-      <option value="1.04">4%</option>
-      <option value="1.05">5%</option>
-      <option value="1.06">6%</option>
-      <option value="1.07">7%</option>
-      <option value="1.08">8%</option>
-      <option value="1.09">9%</option>
-      <option value="1.10">10%</option>
-      <option value="1.11">11%</option>
-      <option value="1.12">12%</option>
-      <option value="1.13">13%</option>
-      <option value="1.14">14%</option>
-      <option value="1.15">15%</option>
-    </select>
-  
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 30px;
+  border-radius: 10px;
+  background: #d0d0d0;
+  cursor: pointer;
+}
 
-    <label>  Genesis <span class = m6>Gold bump</span></label>
-    <select id="GenesisGoldBump">
-      <option value="0">0.0</option>
-      <option value="0.2">0.2</option>
-      <option value="0.4">0.4</option>
-      <option value="0.6">0.6</option>
-      <option value="0.8">0.8</option>
-      <option value="1.0">1.0</option>
-      <option value="1.2">1.2</option>
-      <option value="1.4">1.4</option>
-      <option value="1.6">1.6</option>
-      <option value="1.8">1.8</option>
-      <option value="2.0">2.0</option>
-      <option value="2.2">2.2</option>
-      <option value="2.4">2.4</option>
-      <option value="2.6">2.6</option>
-      <option value="2.8">2.8</option>
-      <option value="3.0">3.0</option>
-     
-  </select>
-    
-  <br><br>
-  <!--Mystic pants hidden if not selected with armor-->
-
-  <div id = "MysticPantsBuffs" class = "invis">
-  <p class = "section"><span class = mc>Mystic Pants</span> Bonuses</p>
-
-    <label>Sweaty level </label>
-    <select id="SweatyLevelP">
-      <option value="0">0</option>
-      <option value="1">I</option>
-      <option value="2">II</option>
-      <option value="3">III</option>
-    </select>
-  
-
-    <label> XP Boost level </label>
-    <select id="XPBoostLevelP">
-      <option value="0.0">0</option>
-      <option value="0.1">I</option>
-      <option value="0.2">II</option>
-      <option value="0.3">III</option>
-    </select>
-  
-
-    <label> XP Bump level </label>
-    <select id="XPBumpLevelP">
-      <option value="0">0</option>
-      <option value="2">I</option>
-      <option value="4">II</option>
-      <option value="6">III</option>
-    </select>
-  
-  <br><br>
-
-    <label>Moctezuma level </label>
-    <select id="MoctezumaLevelP">
-      <option value="0">0</option>
-      <option value="6">I</option>
-      <option value="12">II</option>
-      <option value="18">III</option>
-    </select>
-  
-
-    <label> Gold Boost level </label>
-    <select id="GoldBoostLevelP">
-      <option value="0">0</option>
-      <option value="0.15">I</option>
-      <option value="0.3">II</option>
-      <option value="0.45">III</option>
-    </select>
-  
-
-    <label> Gold Bump level </label>
-    <select id="GoldBumpLevelP">
-      <option value="0">0</option>
-      <option value="4">I</option>
-      <option value="8">II</option>
-      <option value="12">III</option>
-    </select>
-
-    <label> Pit MBA level </label>
-    <select id="PitMBALevelP">
-      <option value="0">0</option>
-      <option value="1">I</option>
-      <option value="2">II</option>
-      <option value="3">III</option>
-    </select>
-  
-  <br>
-  <br>
-  </div>
-    
-  <div id = "SewerPantsBuffs" class = "invis">
-  <p class = "section"><span class = m3>Sewer Pants</span> Bonuses</p>
-
-    <label>Enchant </label>
-    <select id="SewerMult">
-      <option value="1">N/A</option>
-      <option value="1.2">Worm</option>
-    </select>
-  <br>
-  <br>
-  </div>
-    
-  <div id = "DarkPantsBuffs" class = "invis">
-  <p class = "section"><span class = m5>Dark Pants</span> Bonuses</p>
-
-    <label>Enchant </label>
-    <select id="DarkMult">
-      <option value="1">N/A</option>
-      <option value="1.1">Lycanthropy</option>
-      <option value="0.2">Grim Reaper</option>
-    </select>
-  <br>
-  <br>
-  </div>
-  <!--Mystic weapon hidden if dark pants equipped-->
-  <div id = "MysticWeaponBuffs" class = "">
-  <p class = "section"><span class = me>Mystic Weapon</span> Bonuses</p>
-
-    <label>Sweaty level </label>
-    <select id="SweatyLevel">
-      <option value="0">0</option>
-      <option value="1">I</option>
-      <option value="2">II</option>
-      <option value="3">III</option>
-    </select>
-  
-
-    <label> XP Boost level </label>
-    <select id="XPBoostLevel">
-      <option value="0">0</option>
-      <option value="0.1">I</option>
-      <option value="0.2">II</option>
-      <option value="0.3">III</option>
-    </select>
-  
-
-    <label> XP Bump level </label>
-    <select id="XPBumpLevel">
-      <option value="0">0</option>
-      <option value="2">I</option>
-      <option value="4">II</option>
-      <option value="6">III</option>
-    </select>
-  
-  <br><br>
-
-    <label>Moctezuma level </label>
-    <select id="MoctezumaLevel">
-      <option value="0">0</option>
-      <option value="6">I</option>
-      <option value="12">II</option>
-      <option value="18">III</option>
-    </select>
-  
-
-    <label> Gold Boost level </label>
-    <select id="GoldBoostLevel">
-      <option value="0">0</option>
-      <option value="0.15">I</option>
-      <option value="0.3">II</option>
-      <option value="0.45">III</option>
-    </select>
-  
-
-    <label> Gold Bump level </label>
-    <select id="GoldBumpLevel">
-      <option value="0">0</option>
-      <option value="4">I</option>
-      <option value="8">II</option>
-      <option value="12">III</option>
-    </select>
-  
-
-    <label> Sierra level </label>
-    <select id="SierraLevel">
-      <option value="0">0</option>
-      <option value="30">I</option>
-      <option value="60">II</option>
-      <option value="90">III</option>
-    </select>
-    <br><br><br>
-  </div>
-  <!--Select active event, "r" denotes rage pit because i didn't want to use arrays-->
-    <label>Active Event </label>
-    <select id="EventMultiplier">
-      <option value="1">None</option>
-      <option value="2">King of the Ladder</option>
-      <option value="2">2x Rewards</option>
-      <option value="4">King of the Hill</option>
-      <option value="2">Team Deathmatch</option>
-      <option value="r">Rage Pit</option>
-    </select>
-  
-
-    <!--Select perks-->
-    <br><br>
-    <p class = "section">Perks & Killstreaks</p>
-    <p class = me><i><b>Only perks and killstreaks that influence on-kill rewards are displayed.</b></i></p>
-    <table class="imgwide body" style = "display: inline-table">
-    <tr>
-      <td id = "Safety_First" style="text-align: center; background-color: #252525;" onclick = "addPerk('Safety_First');"><img class = "icon" src="./images/Safety_First.png" width="100%"></td>
-      <td id = "Spammer" style="text-align: center; background-color: #252525;" onclick = "addPerk('Spammer');"><img class = "icon" src="./images/Spammer.png" width="100%"></td>
-      <td id = "Bounty_Hunter" style="text-align: center; background-color: #252525;" onclick = "addPerk('Bounty_Hunter');"><img class = "icon" src="./images/Bounty_Hunter.png" width="100%"></td>
-      <td id = "Streaker" style="text-align: center; background-color: #252525;" onclick = "addPerk('Streaker');"><img class = "icon" src="./images/Streaker.png" width="100%"></td>
-      <td id = "Assistant_to_the_Streaker" style="text-align: center; background-color: #252525;" onclick = "addPerk('Assistant_to_the_Streaker');"><img class = "icon" src="./images/Assistant_to_the_Streaker.png" width="100%"></td>
-      <td id = "Conglomerate" style="text-align: center; background-color: #252525;" onclick = "addPerk('Conglomerate');"><img class = "icon" src="./images/Conglomerate.png" width="100%"></td>
-    </tr>
-    </table>
-    <br><br>
-    <table class="imgkillstreaks body" style = "display: inline-table">
-    <tr>
-      <td id = "perk1" style="text-align: center"><img class = "icon" id = "perk1image" src="./images/None_Helmet.png" width="100%"></td>
-      <td id = "perk2" style="text-align: center"><img class = "icon" id = "perk2image" src="./images/None_Helmet.png" width="100%"></td>
-      <td id = "perk3" style="text-align: center"><img class = "icon" id = "perk3image" src="./images/None_Helmet.png" width="100%"></td>
-      <td id = "perk4" style="text-align: center"><img class = "icon" id = "perk4image" src="./images/None_Helmet.png" width="100%"></td>
-    </tr>
-    </table>
-    <!--Select killstreaks, thankfully all singularly mutually exclusive-->
-    <br><br>
-    <p>Killstreak</p>
-    <table class = "imgkillstreaks body" style = "display: inline-table">
-      <td id = "Second_Gapple" style="text-align: center" onclick = selectKillstreak("Second_Gapple")><img class = "icon"  src="./images/Second_Gapple.png" width="100%"></td>
-      <td id = "Explicious" style="text-align: center" onclick = selectKillstreak("Explicious")><img class = "icon"  src="./images/Explicious.png" width="100%"></td>
-      <td id = "Arquebusier" style="text-align: center" onclick = selectKillstreak("Arquebusier")><img class = "icon"  src="./images/Arquebusier.png" width="100%"></td>
-      <td id = "Khanate" style="text-align: center" onclick = selectKillstreak("Khanate")><img class = "icon"  src="./images/Khanate.png" width="100%"></td>
-    </table>
-    <p>Other bonuses</p>
-    <table class = "imgkillstreaks body" style = "display: inline-table">
-      <td id = "Super_Streaker" style="text-align: center" onclick = toggleSuperStreaker()><img class = "icon"  src="./images/Super_Streaker.png" width="100%"></td>
-    </table>
-    <table class = "imgkillstreaks body" style = "display: inline-table">
-      <td id = "ExperienceIndustrial_Complex" style="text-align: center" onclick = toggleEIC()><img class = "icon"  src="./images/ExperienceIndustrial_Complex.png" width="100%"></td>
-    </table>
-    <table class = "imgkillstreaks body" style = "display: inline-table">
-      <td id = "Celebrity" style="text-align: center" onclick = toggleCelebrity()><img class = "icon"  src="./images/Celebrity.png" width="100%"></td>
-    </table>
-    <p>Megastreak</p>
-    <table class = "imgkillstreaks body" style = "display: inline-table">
-      <td id = "Overdrive" style="text-align: center" onclick = selectMega("Overdrive")><img class = "icon"  src="./images/Overdrive.png" width="100%"></td>
-      <td id = "Beastmode" style="text-align: center" onclick = selectMega("Beastmode")><img class = "icon"  src="./images/Beastmode.png" width="100%"></td>
-      <td id = "Hermit" style="text-align: center" onclick = selectMega("Hermit")><img class = "icon"  src="./images/Hermit.png" width="100%"></td>
-      <td id = "Highlander" style="text-align: center" onclick = selectMega("Highlander")><img class = "icon"  src="./images/Highlander.png" width="100%"></td>
-      <td id = "To_the_Moon" style="text-align: center" onclick = selectMega("To_the_Moon")><img class = "icon"  src="./images/To_the_Moon.png" width="100%"></td>
-    </table>
-    <br><br><br>
-  <!--target's stuff, including armor, streak, killstreak-->
-    <p class = section>Victim's Stats</p>
-    <form action="" style = "display: inline-table" onChange = "changeArmorImage('Helmet', '2', Player2Helmet.value);">
-    <label>Select victim's helmet </label>
-    <select id="Player2Helmet">
-      <option value="None_Helmet">None</option>
-      <option value="Leather_Helmet" style = "background: #a5a">Fancy Hat</option>
-      <option value="Chainmail_Helmet" style = "background: #888">Chainmail Helmet</option>
-      <option value="Iron_Helmet" style = "background: #aaa">Iron Helmet</option>
-      <option value="Diamond_Helmet" style = "background: #0cc">Diamond Helmet</option>
-      <option value="Golden_Helmet" style = "background: #cc0">Golden Helmet</option>
-    </select>
-  </form> 
-  <br>
-       
-  <form action="" style = "display: inline-table" onChange = "changeArmorImage('Chestplate', '2', Player2Chestplate.value);">
-    <label>Select victim's chestplate </label>
-    <select id="Player2Chestplate">
-      <option value="None_Chestplate">None</option>
-      <option value="Chainmail_Chestplate" style = "background: #888">Chainmail Chestplate</option>
-      <option value="Iron_Chestplate" style = "background: #aaa">Iron Chestplate</option>
-      <option value="Diamond_Chestplate" style = "background: #0cc">Diamond Chestplate</option>
-      <option value="Archangel_Chestplate" style = "background: #099">Archangel Chestplate</option>
-    </select>
-  </form>
-  
-  <br>
-  <form action="" style = "display: inline-table" onChange = "changeArmorImage('Leggings', '2', Player2Leggings.value);">
-    <label>Select victim's leggings </label>
-    <select id="Player2Leggings">
-      <option value="None_Leggings">None</option>
-      <option value="Golden_Leggings" style = "background: #dd0">Golden Leggings</option>
-      <option value="Chainmail_Leggings" style = "background: #888">Chainmail Leggings</option>
-      <option value="Iron_Leggings" style = "background: #aaa">Iron Leggings</option>
-      <option value="Diamond_Leggings" style = "background: #0cc">Diamond Leggings</option>
-      <option value="Mystic_Pants" style = "background: #f55">Mystic Pants</option>
-      <option value="Dark_Pants" style = "background: #444">Dark Pants</option>
-      <option value="Sewer_Pants" style = "background: #9c4">Sewer Pants</option>
-    </select>
-  </form>
-  
-  <br>
-  <form action="" style = "display: inline-table" onChange = "changeArmorImage('Boots', '2', Player2Boots.value);"> 
-    <label>Select victim's boots </label>
-    <select id="Player2Boots">
-      <option value="None_Boots">None</option>
-      <option value="Chainmail_Boots" style = "background: #888">Chainmail Boots</option>
-      <option value="Iron_Boots" style = "background: #aaa">Iron Boots</option>
-      <option value="Diamond_Boots" style = "background: #0cc">Diamond Boots</option>
-      <option value="Armageddon_Boots" style = "background: #c00">Armageddon Boots</option>
-      <option value="Radioactive_Boots" style = "background: #9c4">Radioactive Boots</option>
-    </select>
-  </form>
-
-  <br>
-  <table class="img body" style = "display: inline-table">
-    <tr>
-      <td  style="text-align: center"><img id = "victimHelmet" src="./images/None_Helmet.png" width="100%"></td>
-    </tr>
-    <tr>
-      <td class="small center" id="caption2" name="caption2">Helmet</td>
-    </tr>
-  </table>  
-  <table class="img body" style = "display: inline-table">
-    <tr>
-      <td  style="text-align: center"><img id = "victimChestplate" src="./images/None_Chestplate.png" width="100%"></td>
-    </tr>
-    <tr>
-      <td class="small center" id="caption2" name="caption2">Chestplate</td>
-    </tr>
-  </table>
-  <table class="img body" style = "display: inline-table">
-    <tr>
-      <td  style="text-align: center"><img id = "victimLeggings" src="./images/None_Leggings.png" width="100%"></td>
-    </tr>
-    <tr>
-      <td class="small center" id="caption2" name="caption2">Leggings</td>
-    </tr>
-  </table>
-  <table class="img body" style = "display: inline-table">
-    <tr>
-      <td  style="text-align: center"><img id = "victimBoots" src="./images/None_Boots.png" width="100%"></td>
-    </tr>
-    <tr>
-      <td class="small center" id="caption2" name="caption2">Boots</td>
-    </tr>
-  </table>
-  <br><br>
-  <label>Victim's streak </label>
-    <input type = "text" id = "victimstreak" onkeyup="RemoveBad2()">
-  <br><br>
-  <label>Victim's level </label>
-    <input type = "number" id = "victimlevel" min = "0" max = "120">
-  <br><br>
-  <label>Victim in party? </label>
-    <select id="inparty">
-      <option value="false">No</option>
-      <option value="true">Yes</option>
-    </select>
-  <br><br>
-
-  <!--the BUTTON-->
-
-  <span id = "Calcbutton" style = "padding: 10px; background-color: #aa55aa" onclick = "calcrewards();">Calculate!</span><br><br>
-  <span class = mb id = "finalxp">–––––</span><br><br>
-  <span class = m6 id = "finalgold">–––––</span>
-
-</span>
-</div>
-  </body>
-
-  <script>
-    //splashes
-    var splashtexts = ["/boop BrookeAFK!", "/boop Gamazations!", "/boop litphoenix!", "Now with 6% less fat!", "Also try Warlords!", "Nerf MW Hunter!", "Don't do hacks!", "People actually use this site?", "Grey is the best color!", "Brought to you by The Council!", "Also see pit.wiki!", "Also see brookeafk.com!", "Also try Hole in the Wall!", ":heart:!", "<o/", "Finish your daily contracts!", "Cool features coming soon!", "Just add gold!", "Loading screen tip!", "Toxicity isn't cool!", "Left-click to deal damage!", "The end is never the end!", "Hyperbolic!", "The oldest anarchy server on Hypixel!", "thabks miniklon", "Since 2022!", "adjective HATES math!", "No added sugar!", "Translation t' Pirate Speak pendin'!", "Stay safe!", "Fireproof!", "Alpha tested!"]
-    document.getElementById("splashtext").innerText = splashtexts[Math.floor(Math.random() * splashtexts.length)];
-    //Reveals pants based on whether certain conditions are true.
-    function revealPants(value){  
-      if (perksequipped.includes("Bounty_Hunter")){
-        addPerk("Bounty_Hunter");
-      }
-      if (value == "Mystic_Pants"){
-        document.getElementById("MysticPantsBuffs").className = ("");
-        document.getElementById("MysticWeaponBuffs").className = ("");
-        document.getElementById("SewerPantsBuffs").className = ("invis");
-        document.getElementById("DarkPantsBuffs").className = ("invis");
-        Player1Leggings.selectedIndex = 5;
-      }
-      else if (value == "Dark_Pants"){
-        document.getElementById("DarkPantsBuffs").className = ("");
-        document.getElementById("MysticWeaponBuffs").className = ("invis");
-        document.getElementById("SewerPantsBuffs").className = ("invis");
-        document.getElementById("MysticPantsBuffs").className = ("invis");
-         Player1Leggings.selectedIndex = 6;
-      }
-      else if (value == "Sewer_Pants"){
-        document.getElementById("MysticWeaponBuffs").className = ("");
-        document.getElementById("SewerPantsBuffs").className = ("");
-        document.getElementById("DarkPantsBuffs").className = ("invis");
-        document.getElementById("MysticPantsBuffs").className = ("invis");
-         Player1Leggings.selectedIndex = 7;
-      }
-      else if (value == "Golden_Leggings" && !perksequipped.includes("Bounty_Hunter")){
-        addPerk("Bounty_Hunter");
-        document.getElementById("MysticWeaponBuffs").className = ("");
-        document.getElementById("MysticPantsBuffs").classList.add("invis");
-        document.getElementById("SewerPantsBuffs").classList.add("invis");
-        document.getElementById("DarkPantsBuffs").classList.add("invis");
-      }
-      else{
-        document.getElementById("MysticWeaponBuffs").className = ("");
-        document.getElementById("MysticPantsBuffs").classList.add("invis");
-        document.getElementById("SewerPantsBuffs").classList.add("invis");
-        document.getElementById("DarkPantsBuffs").classList.add("invis");
-        if (value == "None"){
-           Player1Leggings.selectedIndex = 0;
-        }
-        if (value == "Chainmail_Leggings"){
-           Player1Leggings.selectedIndex = 2;
-        }
-        if (value == "Iron_Leggings"){
-           Player1Leggings.selectedIndex = 3;
-        }
-        if (value == "Diamond_Leggings"){
-           Player1Leggings.selectedIndex = 4;
-        }
-      }
-    }
-    //Removes letters from numerical inputs. Thanks Brooke!
-    function RemoveBad() {
-      if(parseFloat(killstreak.value.replace(/[^\.\d]/g,'')).toLocaleString() == "NaN") {
-        document.getElementById('killstreak').value = "";
-      }
-      document.getElementById('killstreak').value = (killstreak.value.replace(/[^\.\d]/g,''))
-    }
-    function RemoveBad2() {
-      if(parseFloat(victimstreak.value.replace(/[^\.\d]/g,'')).toLocaleString() == "NaN") {
-        document.getElementById('victimstreak').value = "";
-      }
-      document.getElementById('victimstreak').value = (victimstreak.value.replace(/[^\.\d]/g,''))
-    }
-    var perksequipped = [];
-    //Adds safety first if chain helm is equipped.
-    function checkHat(value){
-      
-      if (value == "Chainmail_Helmet" && !perksequipped.includes("Safety_First")){
-        
-        addPerk("Safety_First");
-      } 
-    }
-    //Add a perk. 
-    function addPerk(value){
-      if (!perksequipped.includes(value) && perksequipped.length < 4){
-        perksequipped.push(value);
-        //If Safety First or Bounty Hunter are selected, select those as your worn item.
-        document.getElementById(value).style.backgroundColor = "#55aa55";
-        if (value == "Safety_First"){
-          Player1Helmet.selectedIndex = 2;
-        }
-        if (value == "Bounty_Hunter"){
-          Player1Leggings.selectedIndex = 1;
-        }
-        updatePerksList();
-      }
-      //Push an perk out of the list if there's already four equipped.
-      else if (!perksequipped.includes(value) && perksequipped.length >= 4){
-        document.getElementById(perksequipped[0]).style.backgroundColor = "#252525";
-        //If the removed perk is sf or bh, clear helm or leggings respectively
-        if (perksequipped[0] == "Safety_First"){
-          Player1Helmet.selectedIndex = 0;
-        }
-        if (perksequipped[0] == "Bounty_Hunter"){
-          Player1Leggings.selectedIndex = 0;
-        }
-        perksequipped.splice(0, 1);
-        perksequipped.push(value);
-        
-        document.getElementById(value).style.backgroundColor = "#55aa55";
-        if (value == "Safety_First"){
-          Player1Helmet.selectedIndex = 2;
-        }
-        if (value == "Bounty_Hunter"){
-          Player1Leggings.selectedIndex = 1;
-          revealPants("Golden_Leggings");
-        }
-        updatePerksList();
-      }
-      //unequip a perk
-      else if (perksequipped.includes(value)){
-        document.getElementById(value).style.backgroundColor = "#252525";
-        perksequipped.splice(perksequipped.indexOf(value), 1);
-        if (value == "Safety_First"){
-          Player1Helmet.selectedIndex = 0;
-          killerHelmet.src = "./images/None_Helmet.png";
-        }
-        if (value == "Bounty_Hunter"){
-          Player1Leggings.selectedIndex = 0;
-          killerLeggings.src = "./images/None_Helmet.png";
-        }
-        updatePerksList();
-        
-      }
-      
-    }
-    //reset all images, then re-add them as necessary
-    function updatePerksList(){
-      document.getElementById("perk1image").src = ("");
-      document.getElementById("perk2image").src = ("");
-      document.getElementById("perk3image").src = ("");
-      document.getElementById("perk4image").src = ("");
-      for (var i = 1; i <= perksequipped.length; i++){
-        document.getElementById("perk" + (i) + "image").src = ("./images/" + perksequipped[i - 1] + ".png");
-      }
-      if (perksequipped.length == 0){
-        document.getElementById("perk4image").src = ("./images/None_Helmet.png");
-      }
-    }
-    //killstreak selection
-    var killstreakequipped = "";
-    function selectKillstreak(value){
-      if (killstreakequipped != value){
-        killstreakequipped = value;
-        document.getElementById("Second_Gapple").style.backgroundColor = "#252525";
-        document.getElementById("Explicious").style.backgroundColor = "#252525";
-        document.getElementById("Arquebusier").style.backgroundColor = "#252525";
-        document.getElementById("Khanate").style.backgroundColor = "#252525";
-        document.getElementById(value).style.backgroundColor = "#55aa55";
-      } else if (killstreakequipped == value) {
-        killstreakequipped = "";
-        document.getElementById(value).style.backgroundColor = "#252525";
-      }
-    }
-    //toggle Super Streaker on or off
-    var superstreakeractive = false;
-    function toggleSuperStreaker(){
-      
-      if (superstreakeractive){
-        document.getElementById("Super_Streaker").style.backgroundColor = "#252525";
-        superstreakeractive = false;
-      } else {
-        document.getElementById("Super_Streaker").style.backgroundColor = "#55aa55";
-        superstreakeractive = true;
-      }
-    }
-    //toggle EIC
-    var EICActive = 0;
-    var EIC = 100;
-    function toggleEIC(){
-      EICActive = Math.abs(EICActive - 1);
-      if (EICActive == 0){
-        document.getElementById("ExperienceIndustrial_Complex").style.backgroundColor = "#252525";
-        EIC = 100;
-      } else {
-        document.getElementById("ExperienceIndustrial_Complex").style.backgroundColor = "#55aa55";
-        EIC = 200;
-      }
-    }
-    //toggle celebrity
-    var celebrityactive = 0;
-    function toggleCelebrity(){
-      celebrityactive = Math.abs(celebrityactive - 1);
-      if (celebrityactive == 0){
-        document.getElementById("Celebrity").style.backgroundColor = "#252525";
-        
-      } else {
-        document.getElementById("Celebrity").style.backgroundColor = "#55aa55";
-        
-      }
-    }
-    //equip overdrive by default and select a megastreak
-    var megaequipped = "Overdrive";
-    document.getElementById("Overdrive").style.backgroundColor = "#55aa55";
-    function selectMega(value){
-      if (megaequipped != value){
-        megaequipped = value;
-        document.getElementById("Overdrive").style.backgroundColor = "#252525";
-        document.getElementById("Beastmode").style.backgroundColor = "#252525";
-        document.getElementById("Hermit").style.backgroundColor = "#252525";
-        document.getElementById("Highlander").style.backgroundColor = "#252525";
-        document.getElementById("To_the_Moon").style.backgroundColor = "#252525";
-        document.getElementById(value).style.backgroundColor = "#55aa55";
-      } else if (megaequipped == value) {
-        megaequipped = "Overdrive";
-        document.getElementById(value).style.backgroundColor = "#252525";
-        document.getElementById("Overdrive").style.backgroundColor = "#55aa55";
-      }
-    }
-    //start the calcs
-    function calcrewards(){
-      console.log("__...---== XP Formula ==---...__");
-      var basexp = 5.0;
-      console.log("Base xp: " + basexp);
-      var streak = 1;
-      if (!killstreak.value == ""){
-         streak = parseInt(killstreak.value);
-      }
-      if (streak <= 3) {
-        basexp += 4;
-        console.log("First 3 kills bonus: +4 (" + basexp + ")");
-      }
-      
-      if (streak <= PassiveElGato.value){
-        basexp += 5;
-        console.log("El Gato Bonus: +5 (" + basexp + ")");
-      }
-      if (RenownXPBump.value > 0){
-        basexp += parseInt(RenownXPBump.value);
-        console.log("Renown XP Bump: +" + RenownXPBump.value + " (" + basexp + ")");
-      }
-      if (XPStack.value > 0){
-        basexp += ((XPStack.value) * 0.05);
-        console.log("XP Stacks: +" + (XPStack.value) * 0.05 + " (" + basexp + ")");
-      }
-      var streakxpbonus;
-      if (streak < 3){
-        streakxpbonus = 0;
-      }
-      else if (streak == 3 || streak == 4) {
-        streakxpbonus = 3;
-      }
-      else if (streak >= 5 && streak <= 19) {
-        streakxpbonus = 5;
-      }
-      else if (streak >= 20 && streak <= EIC) {  
-        streakxpbonus = Math.floor(streak / 10) * 3;
-      }
-      else {
-        if (EICActive == 0){
-          streakxpbonus = 30;
-        }
-        if (EICActive == 1){
-          streakxpbonus = 60;
-        }
-      }
-      if (perksequipped.includes("Streaker")){
-        streakxpbonus *= 3;
-      }
-      var sweaty = 0;
-      if (Player1Leggings.value != "Dark_Pants"){
-        sweaty += parseFloat(SweatyLevel.value);
-      }
-      if (Player1Leggings.value == "Mystic_Pants"){
-        sweaty += parseFloat(SweatyLevelP.value);
-      }
-      sweaty *= 0.2;
-      sweaty += 1;
-      streakxpbonus *= parseFloat(sweaty);
-      if (streakxpbonus > 0){
-        basexp += (streakxpbonus);
-        console.log("Streak xp bonus modified: " + streakxpbonus + " (" + basexp + ")");
-      }
-      var lvldifference = victimlevel.value - killerlevel.value;
-      if (lvldifference > 0){
-        lvldifference = Math.floor(lvldifference / 5);
-        basexp += (lvldifference);
-        console.log("Level difference: " + lvldifference + " (" + basexp + ")");
-      }
-      var shutdownbonus = 0;
-      var shutdown = victimstreak.value;
-      if (shutdown < 3){
-        shutdownbonus = 0;
-      }
-      else if (shutdown == 3 || shutdown == 4) {
-        shutdownbonus = 15;
-      }
-      else if (shutdown >= 5 && shutdown <= 19) {
-        shutdownbonus = 25;
-      }
-      else if (shutdown >= 20 && shutdown <= 200) {  
-        shutdownbonus = Math.floor(victimstreak.value / 10) * 15;
-      }
-      else if (shutdown >= 200){
-        shutdownbonus = 300;
-      }
-      if (shutdownbonus > 0){
-        basexp += shutdownbonus;
-        console.log("Shutdown bonus: " + shutdownbonus + " (" + basexp + ")");
-      }
-      
-     
-      if (streak % 3 == 0){
-        if (killstreakequipped == "Second_Gapple"){
-          basexp += 5;
-          console.log("Second Gapple: +5" + " (" + basexp + ")");
-        }
-        if (killstreakequipped == "Explicious"){
-          basexp += 12;
-          console.log("Explicious: +12" + " (" + basexp + ")");
-        }
-      }
-      if (streak % 10 == 0 && superstreakeractive == true){
-       
-          basexp += 50;
-          console.log("Super Streaker: +50" + " (" + basexp + ")");
-     
-        
-      }
-      var xpbump = 0;
-      if (Player1Leggings.value != "Dark_Pants"){
-        xpbump += parseInt(XPBumpLevel.value);
-      }
-      if (Player1Leggings.value == "Mystic_Pants"){
-        xpbump += parseInt(XPBumpLevelP.value);
-      }
-      if (xpbump > 0){
-        basexp += xpbump;
-        console.log("XP Bump: +" + xpbump + " (" + basexp + ")");
-      }
-      if (PassiveXPBoost.value > 1){
-        basexp *= PassiveXPBoost.value;
-        console.log("XP Boost Passive: x" + PassiveXPBoost.value + " (" + basexp + ")");
-      }
-      if (GenesisXPMultiplier.value > 1){
-        basexp *= GenesisXPMultiplier.value;
-        console.log("Genesis XP Multiplier: x" + GenesisXPMultiplier.value + " (" + basexp + ")");
-      }
-      if (Player1Helmet.value == "Golden_Helmet"){
-        basexp *= 1.1;
-        console.log("Royalty: x1.1 (" + basexp + ")");
-      }
-      if (Player1Leggings.value == "Sewer_Pants"){
-        basexp *= SewerMult.value;
-        console.log("Sewer Pants: x" + SewerMult.value + " (" + basexp + ")");
-      }
-      if (Player1Leggings.value == "Dark_Pants"){
-        basexp *= DarkMult.value;
-        console.log("Dark Pants: x" + DarkMult.value + " (" + basexp + ")");
-      }
-      
-      var mysticxpboost = 1;
-      if (Player1Leggings.value != "Dark_Pants"){
-        mysticxpboost += parseInt(XPBoostLevel.value);
-      }
-      if (Player1Leggings.value == "Mystic_Pants"){
-        mysticxpboost += parseInt(XPBoostLevelP.value);
-      }
-      if (mysticxpboost > 1){
-        basexp *= mysticxpboost;
-        console.log("Mystic XP Boost: x" + mysticxpboost + " (" + basexp + ")");
-      }
-      if (Player1Leggings.value == "Mystic_Pants"){
-        var pitmba = "1." + PitMBALevelP.value;
-        if (pitmba > 1){
-          basexp *= pitmba;
-          console.log("Pit MBA: x" + pitmba + " (" + basexp + ")");
-        }
-      }
-      if (perksequipped.includes("Assistant_to_the_Streaker")){
-        basexp *= 1.15;
-        console.log("ATTS: x1.15 (" + basexp + ")");
-      }
-      if (streak >= 100 && megaequipped == "To_the_Moon") {
-        basexp *= 1.2;
-        console.log("To the Moon: x1.2 (" + basexp + ")");
-      }
-      else if (streak >= 50 && megaequipped == "Hermit") {
-        var hermitmultiplier = 1;
-        if (streak <= 200){
-          hermitmultiplier += Math.floor((streak - 50) / 10) * 0.05;
-        } else {
-          hermitmultiplier = 1.75;
-        }
-        basexp *= hermitmultiplier;
-        console.log("Hermit: x" + hermitmultiplier + " (" + basexp + ")");
-      }
-      else if (streak >= 50 && megaequipped == "Beastmode") {
-        basexp *= 1.5;
-        console.log("Beastmode: x1.5 (" + basexp + ")");
-      }
-      else if (streak >= 50 && megaequipped == "Overdrive") {
-        basexp *= 2;
-        console.log("Overdrive: x2 (" + basexp + ")");
-      }
-      var superstreakermult = 1;
-      if (superstreakeractive == true){
-        superstreakermult += Math.floor(streak / 10) * 0.05;
-        if (superstreakermult > 1.5){
-          superstreakermult = 1.5;
-        }
-        
-        basexp *= superstreakermult;
-        console.log("Super Streaker boost: x" + superstreakermult + " (" + basexp + ")");
-      }
-      if (inparty.value == "true") {
-        basexp *= 1.1;
-        console.log("Victim in a party: x1.1 " + "(" + basexp + ")");
-      }
-      if (victimlevel.value <= 20) {
-        basexp *= 0.9;
-        console.log("Killed a noob: x0.9 " + "(" + basexp + ")");
-      }
-      if (EventMultiplier.value != "r" && EventMultiplier.value != 1){
-        basexp *= EventMultiplier.value;
-        console.log("Active event: x" + EventMultiplier.value + " (" + basexp + ")");
-      }
-      var cap = 400;
-      if (EICActive == 1){
-        cap += 50;
-      }
-      if (Player1Leggings.value != "Dark_Pants" && SweatyLevel.value > 1){
-        cap += 50 * (SweatyLevel.value - 1);
-      }
-      if (Player1Leggings.value == "Mystic_Pants" && SweatyLevel.value > 1){
-        cap += 50 * (SweatyLevelP.value - 1);
-      }
-      if (streak >= 100 && megaequipped == "To_the_Moon") {
-        cap += 100;
-      } else if (streak >= 50 && megaequipped == "Beastmode"){
-        cap += 50;
-      }
-      cap *= superstreakermult;
-      cap = Math.floor(cap);
-      basexp = Math.ceil(basexp);
-      console.log("Rounded up to " + basexp);
-      if (basexp > cap){
-        basexp = cap;
-        console.log("Capped at " + cap);
-        document.getElementById("finalxp").innerText = (basexp + "XP (Capped)");
-      }
-      else {
-        document.getElementById("finalxp").innerText = (basexp + "XP");
-      }
-      if (perksequipped.includes("Conglomerate")){
-        document.getElementById("finalxp").className = ("m7");
-      } else {
-        document.getElementById("finalxp").className = ("mb");
-      }
-      
-      
-      //gold now
-      console.log("__...---== Gold Formula ==---...__");
-      var basegold = 10;
-      console.log("Base gold: " + basegold);
-      if (streak <= 3) {
-        basegold += 4;
-        console.log("First 3 kills bonus: +4 (" + basegold + ")");
-      }
-      
-      if (streak <= PassiveElGato.value){
-        basegold += 5;
-        console.log("El Gato Bonus: +5 (" + basegold + ")");
-      }
-      if (perksequipped.includes("Assistant_to_the_Streaker")) {
-        basegold += 2;
-        console.log("ATTS: +2 (" + basegold + ")");
-      }
-      if (perksequipped.includes("Bounty_Hunter")) {
-        basegold += 4;
-        console.log("Bounty Hunter: +4 (" + basegold + ")");
-      }
-      if (streak % 3 == 0){
-        if (killstreakequipped == "Second_Gapple"){
-          basegold += 5;
-          console.log("Second Gapple: +5" + " (" + basegold + ")");
-        }
-        if (killstreakequipped == "Arquebusier"){
-          basegold += 12;
-          console.log("Arquebusier: +7 " + " (" + basegold + ")");
-        }
-        if (killstreakequipped == "Khanate"){
-          basegold += 12;
-          console.log("Khanate: +8 " + " (" + basegold + ")");
-        }
-      }
-      var goldbumpvalue = 0;
-      if (Player1Leggings.value != "Dark_Pants"){
-        goldbumpvalue = parseFloat(GoldBumpLevel.value);
-      }
-      if (Player1Leggings.value == "Mystic_Pants"){
-        goldbumpvalue += parseFloat(GoldBumpLevelP.value);
-      }
-      if (goldbumpvalue > 1){
-        basegold += goldbumpvalue;
-        console.log("Gold Bump: +" + goldbumpvalue + " (" + basegold + ")");
-      }
-      var moctvalue = 0;
-      if (Player1Leggings.value != "Dark_Pants"){
-        moctvalue = parseFloat(MoctezumaLevel.value);
-      }
-      if (Player1Leggings.value == "Mystic_Pants"){
-        moctvalue += parseFloat(MoctezumaLevelP.value);
-      }
-      if (moctvalue > 1){
-        basegold += moctvalue;
-        console.log("Moctezuma: +" + moctvalue + " (" + basegold + ")");
-      }
-      if (GenesisGoldBump.value > 0){
-        basegold += parseFloat(GenesisGoldBump.value);
-        console.log("Genesis Gold Bump: +" + GenesisGoldBump.value + " (" + basegold + ")");
-      }
-      var goldshutdown = 0;
-      
-      if (shutdown > 3){
-        goldshutdown = (shutdown * 2);
-      }
-      if (goldshutdown > 80){
-        goldshutdown = 80;
-      }
-      if (goldshutdown > 0){
-        basegold += goldshutdown;
-        console.log("Streak shutdown: +" + goldshutdown + " (" + basegold + ")");
-      }
-      var killerarmor = 0;
-      if (Player1Helmet.value == "Chainmail_Helmet"){
-        killerarmor += 1;
-      } else if (Player1Helmet.value == "Iron_Helmet"){
-        killerarmor += 2;
-      } else if (Player1Helmet.value == "Diamond_Helmet"){
-        killerarmor += 4;
-      }
-      if (Player1Chestplate.value == "Iron_Chestplate"){
-        killerarmor += 2;
-      } else if (Player1Chestplate.value == "Diamond_Chestplate"){
-        killerarmor += 4;
-      }
-      if (Player1Leggings.value == "Iron_Leggings"){
-        killerarmor += 2;
-      } else if (Player1Leggings.value == "Diamond_Leggings"){
-        killerarmor += 4;
-      }
-      if (Player1Boots.value == "Iron_Boots"){
-        killerarmor += 2;
-      } else if (Player1Boots.value == "Diamond_Boots"){
-        killerarmor += 4;
-      }
-      var victimarmor = 0;
-      var victimdiamondarmor = 0;
-      if (Player2Helmet.value == "Chainmail_Helmet"){
-        victimarmor += 1;
-      } else if (Player2Helmet.value == "Iron_Helmet"){
-        victimarmor += 2;
-      } else if (Player2Helmet.value == "Diamond_Helmet"){
-        victimarmor += 4;
-        victimdiamondarmor += 1;
-      }
-      if (Player2Chestplate.value == "Iron_Chestplate"){
-        victimarmor += 2;
-      } else if (Player2Chestplate.value == "Diamond_Chestplate"){
-        victimarmor += 4;
-        victimdiamondarmor += 1;
-      }
-      if (Player2Leggings.value == "Iron_Leggings"){
-        victimarmor += 2;
-      } else if (Player2Leggings.value == "Diamond_Leggings"){
-        victimarmor += 4;
-        victimdiamondarmor += 1;
-      }
-      if (Player2Boots.value == "Iron_Boots"){
-        victimarmor += 2;
-      } else if (Player2Boots.value == "Diamond_Boots"){
-        victimarmor += 4;
-        victimdiamondarmor += 1;
-      }
-
-      var armordifference = victimarmor - killerarmor;
-      
-      if (armordifference > 0) {
-        basegold += armordifference;
-        console.log("Armor difference: +" + armordifference + " (" + basegold + ")");
-      }
-      if (Player1Leggings.value != "Dark_Pants"){
-        var sierravalue = parseInt(SierraLevel.value);
-        if (sierravalue * victimdiamondarmor > 1) {
-          basegold += (sierravalue * victimdiamondarmor);
-          console.log("Sierra: +" + (sierravalue * victimdiamondarmor) + " (" + basegold + ")");
-        }
-      }
-      if (GoldStack.value > 1){
-        basegold += ((GoldStack.value) * 0.1);
-        console.log("Gold Stacks: +" + (GoldStack.value) * 0.1 + " (" + basegold + ")");
-      }
-      if (PassiveGoldBoost.value > 1){
-        basegold *= PassiveGoldBoost.value;
-        console.log("Gold Boost passive: x" + PassiveGoldBoost.value + " (" + basegold + ")");
-      }
-      if (RenownGoldBoost.value > 1){
-        
-        basegold *= RenownGoldBoost.value;
-        console.log("Renown Gold Boost: x" + RenownGoldBoost.value + " (" + basegold + ")");
-      }
-      var mysticgoldboost = 1;
-      if (Player1Leggings.value != "Dark_Pants"){
-        mysticgoldboost += parseFloat(GoldBoostLevel.value);
-      }
-      if (Player1Leggings.value == "Mystic_Pants"){
-        mysticgoldboost += parseFloat(GoldBoostLevelP.value);
-      }
-      if (mysticgoldboost > 1){
-        basegold *= mysticgoldboost;
-        console.log("Mystic Gold Boost: x" + mysticgoldboost + " (" + basegold + ")");
-      }
-      if (Player1Leggings.value == "Mystic_Pants"){
-        var pitmbavaluecheck = 2 * parseInt(PitMBALevelP.value) - 1
-        if (pitmbavaluecheck < 0) {
-          pitmbavaluecheck = 0;
-        }
-        var pitmba2 = "1." + (pitmbavaluecheck);
-        if (pitmba2 > 1){
-          basegold *= pitmba2;
-          console.log("Pit MBA: x" + pitmba2 + " (" + basegold + ")");
-        }
-      }
-      if (perksequipped.includes("Spammer")){
-        basegold *= 3;
-        console.log("Spammer: x3 (" + basegold + ")");
-      }
-      if (celebrityactive == 1){
-        basegold *= 2;
-        console.log("Celebrity: x2 (" + basegold + ")");
-      }
-      if (streak >= 50 && megaequipped == "Hermit") {
-        var hermitmultiplier = 1;
-        if (streak <= 200){
-          hermitmultiplier += Math.floor((streak - 50) / 10) * 0.05;
-        } else {
-          hermitmultiplier = 1.75;
-        }
-        basegold *= hermitmultiplier;
-        console.log("Hermit: x" + hermitmultiplier + " (" + basegold + ")");
-      }
-      else if (streak >= 50 && megaequipped == "Beastmode") {
-        basegold *= 1.75;
-        console.log("Beastmode: x1.75 (" + basegold + ")");
-      }
-      else if (streak >= 50 && megaequipped == "Overdrive") {
-        basegold *= 1.5;
-        console.log("Overdrive: x1.5 (" + basegold + ")");
-      }
-      else if (streak >= 50 && megaequipped == "Highlander") {
-        basegold *= 2.1;
-        console.log("Highlander: x2.1 (" + basegold + ")");
-      }
-      if (victimlevel.value <= 20) {
-        basegold *= 0.91;
-        console.log("Killed a noob: x0.91 " + "(" + basegold + ")");
-      }
-      if (perksequipped.includes("Conglomerate")){
-        basegold += (0.2 * basexp);
-        console.log("Conglomerate: +" + (0.2 * basexp) + " (" + basegold + ")");
-      }
-      if (EventMultiplier.value != "r"){
-        if (EventMultiplier.value != 1){
-          basegold *= EventMultiplier.value;
-          console.log("Active event: x" + EventMultiplier.value + " (" + basegold + ")");
-        }
-      } else {
-        basegold *= 2;
-        console.log("Active event: x2 (" + basegold + ")");
-      }
-      basegold = basegold.toFixed(2);
-      var goldcap = 2500;
-      if (basegold > goldcap){
-        basegold = goldcap;
-        console.log("Capped at " + goldcap);
-        document.getElementById("finalgold").innerText = (basegold + "g (Capped)");
-      }
-      
-      else {
-        document.getElementById("finalgold").innerText = (basegold + "g");
-      }
-    }
-    function changeArmorImage(armortype, player, item){
-      if (player == 1){
-        document.getElementById("killer" + armortype).src = ("./images/" + item + ".png");
-      }
-      if (player == 2){
-        document.getElementById("victim" + armortype).src = ("./images/" + item + ".png");
-      }
-    }
-    function changeText(textname, multcheck){
-      if (multcheck){
-        document.getElementById(textname + "Text").innerText = Math.round((document.getElementById(textname).value - 1) * 10);
-      } else {
-        document.getElementById(textname + "Text").innerText = (document.getElementById(textname).value);
-      }
-    }
-  </script>
-  </html>
+.slider::-moz-range-thumb {
+  width: 15px;
+  height: 30px;
+  border-radius: 10px;
+  background: #d0d0d0;
+  cursor: pointer;
+}
