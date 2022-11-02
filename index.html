@@ -12,11 +12,14 @@
   <hr>
   <!--Apologies to anyone who has to read this. The HTML ends at line 572. I'll try to explain it as well as I can.-->
   <!--The full formulas may be seen at https://pit.wiki/XP and https://pit.wiki/Gold.-->
-  <p><span class = mc>WARNING!</span> Several features of the site are under construction. It's still functional, but parts of it will look different from others while adj messes with the site. </p>
+  
+
+  <div style = "text-align:center"><p><span class = mc>WARNING!</span> Bugs may be present. Report bugs to adjective_noun#3215 on Discord, @adj_noun on Twitter, or adjectivenoun3215@gmail.com.</p>
   
   
-  <i><p id = "splashtext" class = "me" >Loading...</p></i>
+  <i><p id = "splashtext" class = "me" >Loading...</p></i></div>
   <!--killer armor, killstreak, level-->
+  <div style = "text-align:center">
   <p class = "section">Killer's Stats</p>
   <form action="" style = "display: inline-table" onChange = "checkHat(Player1Helmet.value); changeArmorImage('Helmet', '1', Player1Helmet.value)">
     <label>Select helmet </label>
@@ -112,102 +115,35 @@
   <br><br>
     <label>Killer's level </label>
     <input type = "number" id = "killerlevel" min = "0" max = "120">
-  <br><br>
+  <br><br> </div>
   <p class = "section" style = "text-align:center">Passive reward bonuses</p>
   <!--All resource passives, like passives, killstreaks, renown boosts, etc-->
-  <div style = "text-align:center"><input type = "range" id = "PassiveXPBoost" min = "1" max = "1.6" value = "1" step = "0.1" onchange = "changeText('PassiveXPBoost', true);" class = "slider"></div>
-  <p class = mb style = "text-align: center;">XP Boost passive multiplier: <span class = mb id = "PassiveXPBoostText">0</span></p>
-  <div style = "text-align:center"><input type = "range" id = "PassiveGoldBoost" min = "1" max = "1.6" value = "1" step = "0.1" onchange = "changeText('PassiveGoldBoost', true);" class = "slider"></div>
-  <p class = m6 style = "text-align: center;">Gold Boost passive multiplier: <span class = m6 id = "PassiveGoldBoostText">0</span></p>
-  <div style = "text-align:center"><input type = "range" id = "PassiveElGato" min = "0" max = "6" value = "0" step = "1" onchange = "changeText('PassiveElGato', false);" class = "slider"></div>
-  <p class = md style = "text-align: center;">El Gato passive multiplier: <span class = md id = "PassiveElGatoText">0</span></p>
+  <div style = "text-align:center"><input type = "range" id = "PassiveXPBoost" min = "1" max = "1.6" value = "1" step = "0.1" onchange = "changeText('PassiveXPBoost', 'mult1');" class = "slider" >
+  <p class = mb >XP Boost <span class = mf>passive: </span>Tier <b class = mb id = "PassiveXPBoostText">0</b></p></div>
+  <div style = "text-align:center"><input type = "range" id = "PassiveGoldBoost" min = "1" max = "1.6" value = "1" step = "0.1" onchange = "changeText('PassiveGoldBoost', 'mult1');" class = "slider">
+  <p class = m6 >Gold Boost <span class = mf>passive: </span>Tier <b class = m6 id = "PassiveGoldBoostText">0</b></p></div>
+  <div style = "text-align:center"><input type = "range" id = "PassiveElGato" min = "0" max = "6" value = "0" step = "1" onchange = "changeText('PassiveElGato', 'add');" class = "slider">
+  <p class = md >El Gato <span class = mf>boosted kills:</span> <b class = md id = "PassiveElGatoText">0</b></p></div>
+  <div style = "text-align:center"><input type = "range" id = "RenownXPBump" min = "0" max = "10" value = "0" step = "1" onchange = "changeText('RenownXPBump', 'add');" class = "sliderbig">
+  <p class = mb><span class = me>Renown</span> XP Bump: +<b class = mb id = "RenownXPBumpText">0</b></p></div>
+  <div style = "text-align:center"><input type = "range" id = "RenownGoldBoost" min = "1" max = "1.25" value = "1" step = "0.025" onchange = "changeText('RenownGoldBoost', 'mult2');" class = "sliderbig">
+  <p class = m6><span class = me>Renown</span> Gold Boost: <b class = m6 id = "RenownGoldBoostText">0</b>%</p></div>
+  <div style = "text-align:center"><input type = "range" id = "GenesisXPMultiplier" min = "1" max = "1.15" value = "1" step = "0.01" onchange = "changeText('GenesisXPMultiplier', 'mult2');" class = "slidermega">
+  <p class = mb><span class = m7>Genesis</span> XP Multiplier: <b class = mb id = "GenesisXPMultiplierText">0</b>%</p></div>
+  <div style = "text-align:center"><input type = "range" id = "GenesisGoldBump" min = "0" max = "3" value = "0" step = "0.2" onchange = "changeText('GenesisGoldBump', 'add');" class = "slidermega">
+  <p class = m6><span class = m7>Genesis</span> Gold Bump: <b class = m6 id = "GenesisGoldBumpText">0</b></p></div>
   
-    <br><br>
-    <p class = "section">Renown Reward Boosts</p>
-  <form action="" style = "display: inline-table;">
-  <label><span class = mb>Renown XP Bump</span> passive level </label>
-    <select id="RenownXPBump">
-      <option value="0">0</option>
-      <option value="1">I</option>
-      <option value="2">II</option>
-      <option value="3">III</option>
-      <option value="4">IV</option>
-      <option value="5">V</option>
-      <option value="6">VI</option>
-      <option value="7">VII</option>
-      <option value="8">VIII</option>
-      <option value="9">IX</option>
-      <option value="10">X</option>
-    </select> </form>
- 
-  <form action="" style = "display: inline-table;">
-  <label><span class = m6>  Renown Gold Boost</span> passive level </label>
-    <select id="RenownGoldBoost">
-      <option value="1">0</option>
-      <option value="1.025">I</option>
-      <option value="1.05">II</option>
-      <option value="1.075">III</option>
-      <option value="1.1">IV</option>
-      <option value="1.125">V</option>
-      <option value="1.15">VI</option>
-      <option value="1.175">VII</option>
-      <option value="1.2">VIII</option>
-      <option value="1.225">IX</option>
-      <option value="1.25">X</option>
-    </select> </form>
-  <br><br>
+  
+  <div style = "text-align:center">
   <p class = "section">Stacking Killstreaks</p>
     <label><span class = mb>XP stack</span> activations (0 - 220)</label>
     <input type = "number" id = "XPStack" min = "0" max = "220">
     <label>  <span class = m6>Gold stack</span> activations (0 - 55)</label>
     <input type = "number" id = "GoldStack" min = "0" max = "55">
-  <br><br>
-  <p class = "section">Genesis</p>
-  <label>Genesis <span class = mb>XP multiplier</span></label>
-    <select id="GenesisXPMultiplier">
-      <option value="1.0">0%</option>
-      <option value="1.01">1%</option>
-      <option value="1.02">2%</option>
-      <option value="1.03">3%</option>
-      <option value="1.04">4%</option>
-      <option value="1.05">5%</option>
-      <option value="1.06">6%</option>
-      <option value="1.07">7%</option>
-      <option value="1.08">8%</option>
-      <option value="1.09">9%</option>
-      <option value="1.10">10%</option>
-      <option value="1.11">11%</option>
-      <option value="1.12">12%</option>
-      <option value="1.13">13%</option>
-      <option value="1.14">14%</option>
-      <option value="1.15">15%</option>
-    </select>
+  </div>
   
-
-    <label>  Genesis <span class = m6>Gold bump</span></label>
-    <select id="GenesisGoldBump">
-      <option value="0">0.0</option>
-      <option value="0.2">0.2</option>
-      <option value="0.4">0.4</option>
-      <option value="0.6">0.6</option>
-      <option value="0.8">0.8</option>
-      <option value="1.0">1.0</option>
-      <option value="1.2">1.2</option>
-      <option value="1.4">1.4</option>
-      <option value="1.6">1.6</option>
-      <option value="1.8">1.8</option>
-      <option value="2.0">2.0</option>
-      <option value="2.2">2.2</option>
-      <option value="2.4">2.4</option>
-      <option value="2.6">2.6</option>
-      <option value="2.8">2.8</option>
-      <option value="3.0">3.0</option>
-     
-  </select>
-    
-  <br><br>
   <!--Mystic pants hidden if not selected with armor-->
-
+  <div style = "text-align:center">
   <div id = "MysticPantsBuffs" class = "invis">
   <p class = "section"><span class = mc>Mystic Pants</span> Bonuses</p>
 
@@ -379,10 +315,11 @@
       <option value="2">Team Deathmatch</option>
       <option value="r">Rage Pit</option>
     </select>
-  
+  </div>
 
     <!--Select perks-->
     <br><br>
+    <div style = "text-align:center">
     <p class = "section">Perks & Killstreaks</p>
     <p class = me><i><b>Only perks and killstreaks that influence on-kill rewards are displayed.</b></i></p>
     <table class="imgwide body" style = "display: inline-table">
@@ -431,9 +368,10 @@
       <td id = "Highlander" style="text-align: center" onclick = selectMega("Highlander")><img class = "icon"  src="./images/Highlander.png" width="100%"></td>
       <td id = "To_the_Moon" style="text-align: center" onclick = selectMega("To_the_Moon")><img class = "icon"  src="./images/To_the_Moon.png" width="100%"></td>
     </table>
-    <br><br><br>
+    <br><br><br></div>
+
   <!--target's stuff, including armor, streak, killstreak-->
-    <p class = section>Victim's Stats</p>
+    <div style = "text-align:center"><p class = section>Victim's Stats</p>
     <form action="" style = "display: inline-table" onChange = "changeArmorImage('Helmet', '2', Player2Helmet.value);">
     <label>Select victim's helmet </label>
     <select id="Player2Helmet">
@@ -532,19 +470,21 @@
       <option value="true">Yes</option>
     </select>
   <br><br>
-
+  </div>
   <!--the BUTTON-->
-
-  <span id = "Calcbutton" style = "padding: 10px; background-color: #aa55aa" onclick = "calcrewards();">Calculate!</span><br><br>
-  <span class = mb id = "finalxp">–––––</span><br><br>
-  <span class = m6 id = "finalgold">–––––</span>
-
+  <div style = "text-align:center">
+  <span id = "Calcbutton" style = "padding: 15px; background-color: #aa55aa;" onclick = "calcrewards();" >ㅤㅤㅤㅤㅤCalculate!ㅤㅤㅤㅤㅤ</span><br><br>
+  
+  <span class = "mb" id = "finalxp" style = "font-size:25px">–––––</span><span>ㅤㅤㅤㅤㅤ</span><span class = "m6" id = "finalgold" style = "font-size:25px">–––––</span>
+  
+  </div>
 </span>
 </div>
   </body>
 
   <script>
     //splashes
+    console.log("Welcome to the console. Detailed logs on calculations can be found here. I do wonder what brought you here in the first place. Maybe I told you. In any case, enjoy! -adj");
     var splashtexts = ["/boop BrookeAFK!", "/boop Gamazations!", "/boop litphoenix!", "Now with 6% less fat!", "Also try Warlords!", "Nerf MW Hunter!", "Don't do hacks!", "People actually use this site?", "Grey is the best color!", "Brought to you by The Council!", "Also see pit.wiki!", "Also see brookeafk.com!", "Also try Hole in the Wall!", ":heart:!", "<o/", "Finish your daily contracts!", "Cool features coming soon!", "Just add gold!", "Loading screen tip!", "Toxicity isn't cool!", "Left-click to deal damage!", "The end is never the end!", "Hyperbolic!", "The oldest anarchy server on Hypixel!", "thabks miniklon", "Since 2022!", "adjective HATES math!", "No added sugar!", "Translation t' Pirate Speak pendin'!", "Stay safe!", "Fireproof!", "Alpha tested!"]
     document.getElementById("splashtext").innerText = splashtexts[Math.floor(Math.random() * splashtexts.length)];
     //Reveals pants based on whether certain conditions are true.
@@ -1241,9 +1181,11 @@
       }
     }
     function changeText(textname, multcheck){
-      if (multcheck){
+      if (multcheck == "mult1"){
         document.getElementById(textname + "Text").innerText = Math.round((document.getElementById(textname).value - 1) * 10);
-      } else {
+      } else if (multcheck == "mult2"){
+        document.getElementById(textname + "Text").innerText = (((document.getElementById(textname).value) - 1) * 100).toFixed(1);
+      } else if (multcheck == "add") {
         document.getElementById(textname + "Text").innerText = (document.getElementById(textname).value);
       }
     }
