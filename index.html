@@ -12,7 +12,7 @@
   <hr>
   <!--Apologies to anyone who has to read this. The HTML ends at line 572. I'll try to explain it as well as I can.-->
   <!--The full formulas may be seen at https://pit.wiki/XP and https://pit.wiki/Gold.-->
-  <p><span class = mc>WARNING!</span> The site is currently down while adj does a little experimenting. </p>
+  <p><span class = mc>WARNING!</span> Several features of the site are under construction. It's still functional, but parts of it will look different from others while adj messes with the site. </p>
   
   
   <i><p id = "splashtext" class = "me" >Loading...</p></i>
@@ -113,14 +113,14 @@
     <label>Killer's level </label>
     <input type = "number" id = "killerlevel" min = "0" max = "120">
   <br><br>
-  <p class = "section">Passives</p>
+  <p class = "section" style = "text-align:center">Passive reward bonuses</p>
   <!--All resource passives, like passives, killstreaks, renown boosts, etc-->
-  <input type = "range" id = "PassiveXPBoost" min = "1" max = "1.6" value = "1" step = "0.1" onchange = "changeText(PassiveXPBoost);" class = "slider" style = "text-align:center;">
-  <br><span class = mb style = "text-align:center;">XP Boost passive multiplier: </span><span class = mb id = "PassiveXPBoostText" style = "text-align:center;">0</span><br>
-  <input type = "range" id = "PassiveGoldBoost" min = "1" max = "1.6" value = "1" step = "0.1" onchange = "changeText(PassiveGoldBoost);" class = "slider" style = "text-align:center;">
-  <br><span class = m6 style = "text-align:center;">Gold Boost passive multiplier: </span><span class = m6 id = "PassiveGoldBoostText" style = "text-align:center;">0</span><br>
-  <input type = "range" id = "PassiveElGato" min = "0" max = "6" value = "1" step = "1" onchange = "changeText(PassiveElGato);" class = "slider" style = "text-align:center;">
-  <br><span class = md style = "text-align:center;">El Gato passive multiplier: </span><span class = md id = "PassiveElGatoText" style = "text-align:center;">0</span><br>
+  <div style = "text-align:center"><input type = "range" id = "PassiveXPBoost" min = "1" max = "1.6" value = "1" step = "0.1" onchange = "changeText('PassiveXPBoost', true);" class = "slider"></div>
+  <p class = mb style = "text-align: center;">XP Boost passive multiplier: <span class = mb id = "PassiveXPBoostText">0</span></p>
+  <div style = "text-align:center"><input type = "range" id = "PassiveGoldBoost" min = "1" max = "1.6" value = "1" step = "0.1" onchange = "changeText('PassiveGoldBoost', true);" class = "slider"></div>
+  <p class = m6 style = "text-align: center;">Gold Boost passive multiplier: <span class = m6 id = "PassiveGoldBoostText">0</span></p>
+  <div style = "text-align:center"><input type = "range" id = "PassiveElGato" min = "0" max = "6" value = "0" step = "1" onchange = "changeText('PassiveElGato', false);" class = "slider"></div>
+  <p class = md style = "text-align: center;">El Gato passive multiplier: <span class = md id = "PassiveElGatoText">0</span></p>
   
     <br><br>
     <p class = "section">Renown Reward Boosts</p>
@@ -1240,8 +1240,12 @@
         document.getElementById("victim" + armortype).src = ("./images/" + item + ".png");
       }
     }
-    function changeText(textname){
-      document.getElementById(textname + "Text").innerText = (parseString(textname).value());
+    function changeText(textname, multcheck){
+      if (multcheck){
+        document.getElementById(textname + "Text").innerText = Math.round((document.getElementById(textname).value - 1) * 10);
+      } else {
+        document.getElementById(textname + "Text").innerText = (document.getElementById(textname).value);
+      }
     }
   </script>
   </html>
