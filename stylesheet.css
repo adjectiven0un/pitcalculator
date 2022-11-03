@@ -219,6 +219,12 @@ a:active {
 }
 
 @font-face {
+  font-family: Roboto;
+  src: url("./path/to/font.ttf");
+font-weight: 700;
+}
+
+@font-face {
   font-family: Material;
   src: url("./font/Material.ttf");
 }
