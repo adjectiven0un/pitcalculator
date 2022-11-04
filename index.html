@@ -5,8 +5,9 @@
   <link rel="stylesheet" href="stylesheet.css">
   <meta name = "description" content = "Hypixel Pit rewards calculator v0.2.0β">
   <meta name = "author" content = "adjective_n0un">
-<div class = "box">
 <span class = "body">
+<div class = "box">
+
   <span class="header">Hypixel Pit Rewards Calculator</span><br>
   <span class="subheader">A beta feature of the <a href="https://pit.wiki">Hypixel Pit Wiki</a></span>
   <hr>
@@ -473,19 +474,21 @@
   </div>
   <!--the BUTTON-->
   <div style = "text-align:center">
-  <span id = "Calcbutton" style = "padding: 15px; background-color: #aa55aa;" onclick = "calcrewards();" >&nbsp;&nbsp;&nbsp;Calculate!&nbsp;&nbsp;&nbsp;</span><br><br>
+  <span id = "Calcbutton" style = "padding: 15px; background-color: #aa55aa;" onclick = "calcrewards();" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Calculate!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><br><br>
   
-  <span class = "mb" id = "finalxp" style = "font-size:25px">–––––</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class = "m6" id = "finalgold" style = "font-size:25px">–––––</span>
+  <span class = "mb" id = "finalxp" style = "font-size:25px">–––––</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class = "m6" id = "finalgold" style = "font-size:25px">–––––</span>
   
   </div>
-</span>
+
+
 </div>
+</span>
   </body>
 
   <script>
     //splashes
     console.log("Welcome to the console. Detailed logs on calculations can be found here. I do wonder what brought you here in the first place. Maybe I told you. In any case, enjoy! -adj");
-    var splashtexts = ["/boop BrookeAFK!", "/boop Gamazations!", "/boop litphoenix!", "Now with 6% less fat!", "Also try Warlords!", "Nerf MW Hunter!", "Don't do hacks!", "People actually use this site?", "Grey is the best color!", "Brought to you by The Council!", "Also see pit.wiki!", "Also see brookeafk.com!", "Also try Hole in the Wall!", ":heart:!", "<o/", "Finish your daily contracts!", "Cool features coming soon!", "Just add gold!", "Loading screen tip!", "Toxicity isn't cool!", "Left-click to deal damage!", "The end is never the end!", "Hyperbolic!", "The oldest anarchy server on Hypixel!", "thabks miniklon", "Since 2022!", "adjective HATES math!", "No added sugar!", "Translation t' Pirate Speak pendin'!", "Stay safe!", "Fireproof!", "Alpha tested!"]
+    var splashtexts = ["/boop BrookeAFK!", "/boop Gamazations!", "/boop litphoenix!", "Now with 6% less fat!", "Also try Warlords!", "Nerf MW Hunter!", "Don't do hacks!", "People actually use this site?", "Grey is the best color!", "Brought to you by The Council!", "Also see pit.wiki!", "Also see brookeafk.com!", "Also try Hole in the Wall!", ":heart:!", "<o/", "Finish your daily contracts!", "Cool features coming soon!", "Just add gold!", "Loading screen tip!", "Toxicity isn't cool!", "Left-click to deal damage!", "The end is never the end!", "Hyperbolic!", "The oldest anarchy server on Hypixel!", "thabks miniklon", "Since 2022!", "adjective HATES math!", "No added sugar!", "Translation t' Pirate Speak pendin'!", "Stay safe!", "Fireproof!", "Alpha tested!", "Conclave supported!", "Written using Notepad!"]
     document.getElementById("splashtext").innerText = splashtexts[Math.floor(Math.random() * splashtexts.length)];
     //Reveals pants based on whether certain conditions are true.
     function revealPants(value){  
