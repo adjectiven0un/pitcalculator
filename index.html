@@ -1,5 +1,6 @@
 <!DOCTYPE html>
   <html>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
   <body>
   <title>Hypixel Pit rewards calculator</title>
   <link rel="stylesheet" href="stylesheet.css">
@@ -19,7 +20,14 @@
   
   
   <i><p id = "splashtext" class = "me" >Loading...</p></i></div>
+  <div style = "text-align:center">
+  <p class = section>Autofill</p>
+  <span>Username:     </span>
+  <input type = "text" id = "identifier" onchange = "nametouuid(value)">
+  <p class = m7 id = "namestatus"><i>Input of a username here is entirely optional. If input, certain values will automatically be set based on what the player has unlocked.</i></p>
+  </div>
   <!--killer armor, killstreak, level-->
+  
   <div style = "text-align:center">
   <p class = "section">Killer's Stats</p>
   <form action="" style = "display: inline-table" onChange = "checkHat(Player1Helmet.value); changeArmorImage('Helmet', '1', Player1Helmet.value)">
@@ -112,7 +120,7 @@
 
   <br><br>
     <label>Killer's streak after kill </label>
-    <input type = "text" id = "killstreak" onkeyup="RemoveBad()">
+    <input type = "number" id = "killstreak" onkeyup="RemoveBad()">
   <br><br>
     <label>Killer's level </label>
     <input type = "number" id = "killerlevel" min = "0" max = "120">
@@ -1192,5 +1200,127 @@
         document.getElementById(textname + "Text").innerText = (document.getElementById(textname).value);
       }
     }
+  </script>
+
+  <script>
+  
+  var UUID = null;
+  function userinput(id){
+    if (id.length == 32){
+      UUID = id;
+      reinput ();
+    }
+  }
+  
+  function reinput(){
+  var foundPassiveXPBoost = false;
+  var foundPassiveGoldBoost = false;
+  var foundPassiveElGato = false;
+  var foundRenownXPBump = false;
+  var foundRenownGoldBoost = false;
+  document.getElementById("PassiveXPBoost").value = ("1");
+  changeText('PassiveXPBoost', 'mult1');
+  document.getElementById("PassiveGoldBoost").value = ("1");
+  changeText('PassiveXPBoost', 'mult1');
+  document.getElementById("PassiveElGato").value = ("0");
+  changeText('PassiveElGato', 'add');
+  document.getElementById("RenownXPBump").value = ("0");
+  changeText('RenownXPBump', 'add');
+  document.getElementById("RenownGoldBoost").value = ("1");
+  changeText('RenownGoldBoost', 'mult2');
+  document.getElementById("GenesisXPMultiplier").value = ("1");
+  changeText('GenesisXPMultiplier', 'mult2');
+  document.getElementById("GenesisGoldBump").value = ("0");
+  changeText('GenesisGoldBump', 'add');
+  $.getJSON(
+    "https://api.hypixel.net/player?key=9510951316254db681df506a5916314d&uuid=" + UUID,
+    function (data) {
+        check = (data.player.stats.Pit.pit_stats_ptl.kills);
+        prestige = (data.player.achievements.pit_prestiges);
+        console.log("Player is prestige " + prestige);
+        array = data["player"]["stats"]["Pit"]["profile"]["unlocks_" + prestige];
+       
+        for (var i = array.length - 1; i >= 0; i--){
+          var currentarray = array[i];
+          if (currentarray.key == "xp_boost" && foundPassiveXPBoost == false){
+            document.getElementById("PassiveXPBoost").value = ("1." + (currentarray.tier + 1));
+            changeText('PassiveXPBoost', 'mult1');
+            console.log("Found a value for XP Boost: " + (currentarray.tier + 1));
+            foundPassiveXPBoost = true;
+          }
+          if (currentarray.key == "cash_boost" && foundPassiveGoldBoost == false){
+            document.getElementById("PassiveGoldBoost").value = ("1." + (currentarray.tier + 1));
+            changeText('PassiveGoldBoost', 'mult1');
+            foundPassiveGoldBoost = true;
+            console.log("Found a value for Gold Boost: " + (currentarray.tier + 1));
+          }
+          if (currentarray.key == "el_gato" && foundPassiveElGato == false){
+            document.getElementById("PassiveElGato").value = (currentarray.tier + 1);
+            changeText('PassiveElGato', 'add');
+            console.log("Found a value for El Gato: " + (currentarray.tier + 1));
+            foundPassiveElGato = true;
+          }
+          if (foundPassiveXPBoost && foundPassiveGoldBoost && foundPassiveElGato){
+            break;
+          }
+        }
+        array = data["player"]["stats"]["Pit"]["profile"]["renown_unlocks"];
+        for (var i = array.length - 1; i >= 0; i--){
+          var currentarray = array[i];
+          if (currentarray.key == "xp_bump" && foundRenownXPBump == false){
+            document.getElementById("RenownXPBump").value = (currentarray.tier + 1);
+            changeText('RenownXPBump', 'add');
+            console.log("Found a value for Renown XP Bump: " + (currentarray.tier + 1));
+            foundRenownXPBump = true;
+          }
+          if (currentarray.key == "renown_gold_boost" && foundRenownGoldBoost == false){
+            document.getElementById("RenownGoldBoost").value = (1 + ((currentarray.tier + 1) * 0.025)).toFixed(3);
+            changeText('RenownGoldBoost', 'mult2');
+            console.log("Found a value for Renown Gold Boost: " + (1 + ((currentarray.tier + 1) * 0.025)).toFixed(3));
+            foundRenownGoldBoost = true;
+          }
+          if (foundRenownXPBump && foundRenownGoldBoost){
+            break;
+          }
+        } 
+        var genesisangel = 1 + (data["player"]["stats"]["Pit"]["profile"]["genesis_perma_angel"] * 0.01);
+        //in case anyone's reading this, the next line makes sure it's not NaN
+        if (genesisangel - 2 < 0){
+          document.getElementById("GenesisXPMultiplier").value = (genesisangel);
+          console.log("Found value for Genesis XP Boost: " + (genesisangel));
+          changeText('GenesisXPMultiplier', 'mult2');
+        }
+        var genesisdemon = (data["player"]["stats"]["Pit"]["profile"]["genesis_perma_demon"] * 0.2).toFixed(1);
+        if (genesisdemon - 4 < 0){
+          document.getElementById("GenesisGoldBump").value = (genesisdemon);
+          console.log("Found value for Genesis Gold Bump: " + (genesisdemon));
+          changeText('GenesisGoldBump', 'add');
+        }
+        document.getElementById('namestatus').innerHTML = '<span class="ma">Success!</span>';
+      
+    })
+    }
+  function nametouuid(name){
+    document.getElementById('namestatus').innerHTML = '<span class="m7">Checking...</span>';
+    if (name.length <= 16){
+      $.getJSON(
+        "https://playerdb.co/api/player/minecraft/" + name,
+        function (data){
+          
+          let json5 = data;
+          console.log("checking uuid " + json5.data.player.raw_id);
+          activeid = json5.data.player.raw_id;
+          if (activeid.length == 32){
+            userinput(activeid);
+          } else {
+            document.getElementById('namestatus').innerHTML = '<span class="mc">Invalid username</span>';
+          }
+            
+        })
+      
+    } else {
+      document.getElementById('namestatus').innerHTML = '<span class="mc">Invalid username</span>';
+    }
+  }
   </script>
   </html>
