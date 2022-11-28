@@ -1232,14 +1232,29 @@
   changeText('GenesisXPMultiplier', 'mult2');
   document.getElementById("GenesisGoldBump").value = ("0");
   changeText('GenesisGoldBump', 'add');
+  canproceed = true;
   $.getJSON(
     "https://api.hypixel.net/player?key=9510951316254db681df506a5916314d&uuid=" + UUID,
     function (data) {
-        check = (data.player.stats.Pit.pit_stats_ptl.kills);
-        prestige = (data.player.achievements.pit_prestiges);
+        try {
+          check = (data.player.stats.Pit.pit_stats_ptl.kills);
+        } catch {
+          document.getElementById('namestatus').innerHTML = '<span class="mc">Player has never played The Pit</span>';
+          canproceed = false;
+          console.log("Error: User has never played The Pit...");
+        }
+        
+          prestige = (data.player.achievements.pit_prestiges);
+        if (prestige = "undefined"){
+          prestige = 0;
+        }
         console.log("Player is prestige " + prestige);
-        array = data["player"]["stats"]["Pit"]["profile"]["unlocks_" + prestige];
-       
+        if (prestige > 0){
+          array = data["player"]["stats"]["Pit"]["profile"]["unlocks_" + prestige];
+        } else {
+          array = data["player"]["stats"]["Pit"]["profile"]["unlocks"];
+        }
+        if (canproceed){
         for (var i = array.length - 1; i >= 0; i--){
           var currentarray = array[i];
           if (currentarray.key == "xp_boost" && foundPassiveXPBoost == false){
@@ -1264,25 +1279,27 @@
             break;
           }
         }
-        array = data["player"]["stats"]["Pit"]["profile"]["renown_unlocks"];
-        for (var i = array.length - 1; i >= 0; i--){
-          var currentarray = array[i];
-          if (currentarray.key == "xp_bump" && foundRenownXPBump == false){
-            document.getElementById("RenownXPBump").value = (currentarray.tier + 1);
-            changeText('RenownXPBump', 'add');
-            console.log("Found a value for Renown XP Bump: " + (currentarray.tier + 1));
-            foundRenownXPBump = true;
-          }
-          if (currentarray.key == "renown_gold_boost" && foundRenownGoldBoost == false){
-            document.getElementById("RenownGoldBoost").value = (1 + ((currentarray.tier + 1) * 0.025)).toFixed(3);
-            changeText('RenownGoldBoost', 'mult2');
-            console.log("Found a value for Renown Gold Boost: " + (1 + ((currentarray.tier + 1) * 0.025)).toFixed(3));
-            foundRenownGoldBoost = true;
-          }
-          if (foundRenownXPBump && foundRenownGoldBoost){
-            break;
-          }
+        if (prestige > 0){
+          array = data["player"]["stats"]["Pit"]["profile"]["renown_unlocks"];
+          for (var i = array.length - 1; i >= 0; i--){
+            var currentarray = array[i];
+            if (currentarray.key == "xp_bump" && foundRenownXPBump == false){
+              document.getElementById("RenownXPBump").value = (currentarray.tier + 1);
+              changeText('RenownXPBump', 'add');
+              console.log("Found a value for Renown XP Bump: " + (currentarray.tier + 1));
+              foundRenownXPBump = true;
+            }
+            if (currentarray.key == "renown_gold_boost" && foundRenownGoldBoost == false){
+              document.getElementById("RenownGoldBoost").value = (1 + ((currentarray.tier + 1) * 0.025)).toFixed(3);
+              changeText('RenownGoldBoost', 'mult2');
+              console.log("Found a value for Renown Gold Boost: " + (1 + ((currentarray.tier + 1) * 0.025)).toFixed(3));
+              foundRenownGoldBoost = true;
+            }
+            if (foundRenownXPBump && foundRenownGoldBoost){
+              break;
+            }
         } 
+        }
         var genesisangel = 1 + (data["player"]["stats"]["Pit"]["profile"]["genesis_perma_angel"] * 0.01);
         //in case anyone's reading this, the next line makes sure it's not NaN
         if (genesisangel - 2 < 0){
@@ -1297,25 +1314,26 @@
           changeText('GenesisGoldBump', 'add');
         }
         document.getElementById('namestatus').innerHTML = '<span class="ma">Success!</span>';
-      
+        }
     })
     }
   function nametouuid(name){
     document.getElementById('namestatus').innerHTML = '<span class="m7">Checking...</span>';
     if (name.length <= 16){
+      
       $.getJSON(
         "https://playerdb.co/api/player/minecraft/" + name,
         function (data){
           
-          let json5 = data;
-          console.log("checking uuid " + json5.data.player.raw_id);
-          activeid = json5.data.player.raw_id;
-          if (activeid.length == 32){
-            userinput(activeid);
-          } else {
-            document.getElementById('namestatus').innerHTML = '<span class="mc">Invalid username</span>';
-          }
-            
+            let json5 = data;
+            console.log("checking uuid " + json5.data.player.raw_id);
+            activeid = json5.data.player.raw_id;
+            if (activeid.length == 32 && typeof(activeid) != "undefined"){
+              userinput(activeid);
+            } else {
+              document.getElementById('namestatus').innerHTML = '<span class="mc">Invalid username</span>';
+            }
+          
         })
       
     } else {
