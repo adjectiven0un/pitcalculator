@@ -1203,12 +1203,14 @@
   </script>
 
   <script>
-  
+  var done = false;
   var UUID = null;
   function userinput(id){
     if (id.length == 32){
       UUID = id;
       reinput ();
+    } else {
+      document.getElementById('namestatus').innerHTML = '<span class="mc">Invalid username</span>';
     }
   }
   
@@ -1316,29 +1318,33 @@
         document.getElementById('namestatus').innerHTML = '<span class="ma">Success!</span>';
         }
     })
+    done = true;
     }
   function nametouuid(name){
+    done = false;
     document.getElementById('namestatus').innerHTML = '<span class="m7">Checking...</span>';
     if (name.length <= 16){
-      
+    setTimeout(invalid, 3000);
       $.getJSON(
         "https://playerdb.co/api/player/minecraft/" + name,
         function (data){
-          
+            
             let json5 = data;
             console.log("checking uuid " + json5.data.player.raw_id);
             activeid = json5.data.player.raw_id;
-            if (activeid.length == 32 && typeof(activeid) != "undefined"){
-              userinput(activeid);
-            } else {
-              document.getElementById('namestatus').innerHTML = '<span class="mc">Invalid username</span>';
-            }
+            userinput(activeid);
           
         })
-      
+            
     } else {
+      invalid();
+    }
+  }
+  function invalid(){
+    if (!done){
       document.getElementById('namestatus').innerHTML = '<span class="mc">Invalid username</span>';
     }
   }
+
   </script>
   </html>
