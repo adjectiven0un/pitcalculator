@@ -1223,7 +1223,7 @@
   document.getElementById("PassiveXPBoost").value = ("1");
   changeText('PassiveXPBoost', 'mult1');
   document.getElementById("PassiveGoldBoost").value = ("1");
-  changeText('PassiveXPBoost', 'mult1');
+  changeText('PassiveGoldBoost', 'mult1');
   document.getElementById("PassiveElGato").value = ("0");
   changeText('PassiveElGato', 'add');
   document.getElementById("RenownXPBump").value = ("0");
@@ -1257,50 +1257,51 @@
           array = data["player"]["stats"]["Pit"]["profile"]["unlocks"];
         }
         if (canproceed){
-        for (var i = array.length - 1; i >= 0; i--){
-          var currentarray = array[i];
-          if (currentarray.key == "xp_boost" && foundPassiveXPBoost == false){
-            document.getElementById("PassiveXPBoost").value = ("1." + (currentarray.tier + 1));
-            changeText('PassiveXPBoost', 'mult1');
-            console.log("Found a value for XP Boost: " + (currentarray.tier + 1));
-            foundPassiveXPBoost = true;
-          }
-          if (currentarray.key == "cash_boost" && foundPassiveGoldBoost == false){
-            document.getElementById("PassiveGoldBoost").value = ("1." + (currentarray.tier + 1));
-            changeText('PassiveGoldBoost', 'mult1');
-            foundPassiveGoldBoost = true;
-            console.log("Found a value for Gold Boost: " + (currentarray.tier + 1));
-          }
-          if (currentarray.key == "el_gato" && foundPassiveElGato == false){
-            document.getElementById("PassiveElGato").value = (currentarray.tier + 1);
-            changeText('PassiveElGato', 'add');
-            console.log("Found a value for El Gato: " + (currentarray.tier + 1));
-            foundPassiveElGato = true;
-          }
-          if (foundPassiveXPBoost && foundPassiveGoldBoost && foundPassiveElGato){
-            break;
-          }
-        }
-        if (prestige > 0){
-          array = data["player"]["stats"]["Pit"]["profile"]["renown_unlocks"];
+          document.getElementById('namestatus').innerHTML = '<span class="ma">Success!</span>';
           for (var i = array.length - 1; i >= 0; i--){
             var currentarray = array[i];
-            if (currentarray.key == "xp_bump" && foundRenownXPBump == false){
-              document.getElementById("RenownXPBump").value = (currentarray.tier + 1);
-              changeText('RenownXPBump', 'add');
-              console.log("Found a value for Renown XP Bump: " + (currentarray.tier + 1));
-              foundRenownXPBump = true;
+            if (currentarray.key == "xp_boost" && foundPassiveXPBoost == false){
+              document.getElementById("PassiveXPBoost").value = ("1." + (currentarray.tier + 1));
+              changeText('PassiveXPBoost', 'mult1');
+              console.log("Found a value for XP Boost: " + (currentarray.tier + 1));
+              foundPassiveXPBoost = true;
             }
-            if (currentarray.key == "renown_gold_boost" && foundRenownGoldBoost == false){
-              document.getElementById("RenownGoldBoost").value = (1 + ((currentarray.tier + 1) * 0.025)).toFixed(3);
-              changeText('RenownGoldBoost', 'mult2');
-              console.log("Found a value for Renown Gold Boost: " + (1 + ((currentarray.tier + 1) * 0.025)).toFixed(3));
-              foundRenownGoldBoost = true;
+            if (currentarray.key == "cash_boost" && foundPassiveGoldBoost == false){
+              document.getElementById("PassiveGoldBoost").value = ("1." + (currentarray.tier + 1));
+              changeText('PassiveGoldBoost', 'mult1');
+              foundPassiveGoldBoost = true;
+              console.log("Found a value for Gold Boost: " + (currentarray.tier + 1));
             }
-            if (foundRenownXPBump && foundRenownGoldBoost){
+            if (currentarray.key == "el_gato" && foundPassiveElGato == false){
+              document.getElementById("PassiveElGato").value = (currentarray.tier + 1);
+              changeText('PassiveElGato', 'add');
+              console.log("Found a value for El Gato: " + (currentarray.tier + 1));
+              foundPassiveElGato = true;
+            }
+            if (foundPassiveXPBoost && foundPassiveGoldBoost && foundPassiveElGato){
               break;
             }
-        } 
+          }
+          if (prestige > 0){
+            array = data["player"]["stats"]["Pit"]["profile"]["renown_unlocks"];
+            for (var i = array.length - 1; i >= 0; i--){
+              var currentarray = array[i];
+              if (currentarray.key == "xp_bump" && foundRenownXPBump == false){
+                document.getElementById("RenownXPBump").value = (currentarray.tier + 1);
+                changeText('RenownXPBump', 'add');
+                console.log("Found a value for Renown XP Bump: " + (currentarray.tier + 1));
+                foundRenownXPBump = true;
+              }
+              if (currentarray.key == "renown_gold_boost" && foundRenownGoldBoost == false){
+                document.getElementById("RenownGoldBoost").value = (1 + ((currentarray.tier + 1) * 0.025)).toFixed(3);
+                changeText('RenownGoldBoost', 'mult2');
+                console.log("Found a value for Renown Gold Boost: " + (1 + ((currentarray.tier + 1) * 0.025)).toFixed(3));
+                foundRenownGoldBoost = true;
+              }
+              if (foundRenownXPBump && foundRenownGoldBoost){
+                break;
+              }
+          } 
         }
         var genesisangel = 1 + (data["player"]["stats"]["Pit"]["profile"]["genesis_perma_angel"] * 0.01);
         //in case anyone's reading this, the next line makes sure it's not NaN
@@ -1315,9 +1316,11 @@
           console.log("Found value for Genesis Gold Bump: " + (genesisdemon));
           changeText('GenesisGoldBump', 'add');
         }
-        document.getElementById('namestatus').innerHTML = '<span class="ma">Success!</span>';
+        
         }
+       
     })
+    
     done = true;
     }
   function nametouuid(name){
