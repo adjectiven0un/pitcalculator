@@ -1235,28 +1235,38 @@
   document.getElementById("GenesisGoldBump").value = ("0");
   changeText('GenesisGoldBump', 'add');
   canproceed = true;
+  checkpassives = true;
   $.getJSON(
     "https://api.hypixel.net/player?key=9510951316254db681df506a5916314d&uuid=" + UUID,
     function (data) {
         try {
           check = (data.player.stats.Pit.pit_stats_ptl.kills);
         } catch {
-          document.getElementById('namestatus').innerHTML = '<span class="mc">Player has never played The Pit</span>';
+          document.getElementById('namestatus').innerHTML = '<span class="mc">Player has never joined The Hypixel Pit</span>';
           canproceed = false;
           console.log("Error: User has never played The Pit...");
         }
         
-          prestige = (data.player.achievements.pit_prestiges);
-        if (prestige = "undefined"){
+        prestige = (data.player.achievements.pit_prestiges);
+        if (!((prestige - 51) < 0)){
           prestige = 0;
         }
         console.log("Player is prestige " + prestige);
-        if (prestige > 0){
-          array = data["player"]["stats"]["Pit"]["profile"]["unlocks_" + prestige];
+        
+        
+        if (prestige != 0){
+          var array = data["player"]["stats"]["Pit"]["profile"]["unlocks_" + prestige];
         } else {
-          array = data["player"]["stats"]["Pit"]["profile"]["unlocks"];
+          var array = data["player"]["stats"]["Pit"]["profile"]["unlocks"];
+        }
+        try {
+          check = array.length;
+        } catch {
+          document.getElementById('namestatus').innerHTML = '<span class="me">Player does not have any unlocks this prestige, or has not ported their stats.</span>';
+          checkpassives = false;
         }
         if (canproceed){
+        if (checkpassives){
           document.getElementById('namestatus').innerHTML = '<span class="ma">Success!</span>';
           for (var i = array.length - 1; i >= 0; i--){
             var currentarray = array[i];
@@ -1282,6 +1292,7 @@
               break;
             }
           }
+          }
           if (prestige > 0){
             array = data["player"]["stats"]["Pit"]["profile"]["renown_unlocks"];
             for (var i = array.length - 1; i >= 0; i--){
@@ -1301,8 +1312,8 @@
               if (foundRenownXPBump && foundRenownGoldBoost){
                 break;
               }
-          } 
-        }
+            } 
+          }
         var genesisangel = 1 + (data["player"]["stats"]["Pit"]["profile"]["genesis_perma_angel"] * 0.01);
         //in case anyone's reading this, the next line makes sure it's not NaN
         if (genesisangel - 2 < 0){
