@@ -6,7 +6,7 @@
       <meta name = "description" content = "why are you here. how did you find this.">
       <meta name = "author" content = "adjective_n0un">
       <link rel="stylesheet" href="nerdsheet.css">
-      <link rel="icon" type="image/x-icon" href="/favicon/nerd.ico">
+      <link rel="icon" type="image/x-icon" href="./favicon/nerd.ico">
     </head>
     <body>
       <br><br>
@@ -70,6 +70,7 @@
             document.getElementById("m").innerText = (asz(m) + ":");
             var s = Math.floor((timedifference - 3600000 * h - 60000 * m) / 1000);
             document.getElementById("s").innerText = (asz(s));
+            document.title = "[" + asz(h) + ":" + asz(m) + ":" + asz(s) + "] Safety check"
           } else {
             document.getElementById("milliseconds").innerText = ("");
             document.getElementById("status").innerHTML = `<span style="color: #3AE8B9">SAFE!</span>`
