@@ -1,0 +1,59 @@
+body {
+    background-color: #363646;
+}
+
+div {
+    font-family: Inter, sans-serif;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.header {
+    font-size: 30px;
+}
+
+.timer {
+    font-size: 70px;
+    color: rgba(255, 255, 255, 1);
+    font-variant-numeric: tabular-nums;
+}
+
+#localtime {
+    font-size: 30px;
+}
+
+#safetext {
+    font-size: 20px;
+}
+
+a {
+    transition-duration: 0.2s;
+}
+  
+a:link {
+color: #5abbb7;
+background-color: transparent;
+text-decoration: none;
+}
+
+a:visited {
+color: #4b9b98;
+background-color: transparent;
+text-decoration: none;
+}
+
+a:hover {
+color: #c2edee;
+background-color: transparent;
+text-decoration: underline;
+}
+
+a:active {
+color: #ddf0f0;
+background-color: transparent;
+text-decoration: underline;
+}
+
+@font-face {
+    font-family: Inter;
+    src: url("./font/InterVariable.ttf");
+}

@@ -1,52 +1,96 @@
 <!DOCTYPE html>
   <html>
-  <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
-  <title>Safety check</title>
-  <meta name = "description" content = "why are you here. how did you find this.">
-  <meta name = "author" content = "adjective_n0un">
-  <br><br><br><br><br>
-  <div style = "text-align:center";>
-  <span id = "safetext"></span>
-  <span id = "h"></span>
-  <span id = "m"></span>
-  <span id = "s"></span>
-  <br>
-  <span id = "milliseconds">Loading...</span>
-  </div>
-  </html>
-  <script>
-  function update(){
-  $.getJSON(
-    "https://api.hypixel.net/player?key=9510951316254db681df506a5916314d&uuid=5b1afdb8022f4e87bc062c72e4cc1c6c",
-    function (data) {
-      var lastout = data.player.lastLogout;
-      var lastin = data.player.lastLogin;
-      if (lastout > lastin){
-        var timedifference = Date.now() - lastout;
-        timedifference = 7200000 - timedifference;
-        if (timedifference > 0) {
-          document.getElementById("milliseconds").innerText = "";
-          document.getElementById("safetext").innerText = "Safe in: ";
-          var h = Math.floor(timedifference / 3600000);
-          document.getElementById("h").innerText = (h + "h");
-          var m = Math.floor((timedifference - 3600000 * h) / 60000);
-          document.getElementById("m").innerText = (m + "m");
-          var s = Math.floor((timedifference - 3600000 * h - 60000 * m) / 1000);
-          document.getElementById("s").innerText = (s + "s");
-        } else {
-          document.getElementById("milliseconds").innerText = ("");
-          document.getElementById("safetext").innerText = ("Currently safe");
-        }
-         
-      } else {
-        document.getElementById("milliseconds").innerText = ("<!> <!> <!> <!> <!>");
-        document.getElementById("safetext").innerText = ("Currently unsafe");
-        document.getElementById("h").innerText = ("");
-        document.getElementById("m").innerText = ("");
-        document.getElementById("s").innerText = ("");
-      }
+    <head>
+      <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
+      <title>Safety check</title>
+      <meta name = "description" content = "why are you here. how did you find this.">
+      <meta name = "author" content = "adjective_n0un">
+      <link rel="stylesheet" href="nerdsheet.css">
+      <link rel="icon" type="image/x-icon" href="/favicon/nerd.ico">
+    </head>
+    <body>
+      <br><br>
+      <div style = "text-align: center">
+      <span class="header">Logging into Nerd is <b id = "status"></b></span><br>
+      <span id = "safetext"></span><br>
+      <span class="timer">
+      <span id = "h"></span><span id = "m"></span><span id = "s"></span>
+      </span><br>
+      <span id="localtime"></span>
+      <br>
+      <span id = "milliseconds">Loading...</span><br>
+      <span id="whenapi"></span><br>
+      <span id="substatus"></span><br>
+
+      <span id="ad">In the meantime, why not read a <a href="https://pit.wiki/Random_Page" target="_blank">Pit Wiki article</a>?</span>
+      </div>
+    </body>
+    <script>
+    function asz(num) { // add starting zero
+      return String(num).padStart(2, '0');
     }
-  )
-  }
-  setInterval(update, 1000);
-  </script>
+
+    var okay; // unix timestamp of when the player can log in again
+    var okaydate; // used for converting timestamp to human date
+    var lastout, lastin; // last logout, last login
+    var lastAPI; // last time the API was called;
+    var datenow; // Date.now();
+
+    function checkAPI(){
+    $.getJSON(
+      "https://api.hypixel.net/player?key=9510951316254db681df506a5916314d&uuid=5b1afdb8022f4e87bc062c72e4cc1c6c",
+      function (data) {
+        lastAPI = Date.now();
+        lastout = data.player.lastLogout;
+        lastin = data.player.lastLogin;
+        update();
+      }
+    )
+    }
+
+    function update() {
+      datenow = Date.now();
+      okay = lastout + 7200000;
+      console.log(okay)
+        if (lastout > lastin){
+          var timedifference = datenow - lastout;
+          timedifference = 7200000 - timedifference;
+          okaydate = new Date(okay);
+          document.getElementById('localtime').innerText = "(" + okaydate.toLocaleTimeString("en-CA") /* our home and native land */ + ")";
+          if (timedifference > 0) {
+            document.getElementById("milliseconds").innerText = "";
+            document.getElementById("safetext").innerText = "Please wait";
+            document.getElementById("status").innerHTML = `<span style="color: #D84860">UNSAFE!</span>`
+            document.getElementById("substatus").innerHTML = `It's been less than two hours since someone logged out of the account. Please wait for this timer to run out.`;
+            document.getElementById("whenapi").innerHTML = `<i>Re-checking in ` + Math.floor(60 - ((datenow - lastAPI) / 1000)) + ` seconds</i>`;
+            document.getElementById("ad").style.display = "inline";
+            var h = Math.floor(timedifference / 3600000);
+            document.getElementById("h").innerText = (asz(h) + ":");
+            var m = Math.floor((timedifference - 3600000 * h) / 60000);
+            document.getElementById("m").innerText = (asz(m) + ":");
+            var s = Math.floor((timedifference - 3600000 * h - 60000 * m) / 1000);
+            document.getElementById("s").innerText = (asz(s));
+          } else {
+            document.getElementById("milliseconds").innerText = ("");
+            document.getElementById("status").innerHTML = `<span style="color: #3AE8B9">SAFE!</span>`
+            document.getElementById("ad").style.display = "none";
+            document.getElementById("substatus").innerHTML = `It's been more than two hours since the last logout! Have fun gaining renown.`;
+          }
+          
+        } else {
+          document.getElementById("milliseconds").innerText = ("<!> <!> <!> <!> <!>");
+          document.getElementById("safetext").innerText = ("Currently unsafe");
+          document.getElementById("status").innerHTML = `<span style="color: #982820">VERY UNSAFE!</span>`
+          document.getElementById("substatus").innerHTML = `Someone's on the account!`;
+          document.getElementById("ad").style.display = "none";
+          document.getElementById("h").innerText = ("");
+          document.getElementById("m").innerText = ("");
+          document.getElementById("s").innerText = ("");
+        }
+    }
+
+    checkAPI();
+    setInterval(checkAPI, 60000);
+    setInterval(update, 1000);
+    </script>
+</html>
