@@ -14,7 +14,7 @@
       <span class="header">Logging into Nerd is <b id = "status"></b></span><br>
       <span id = "safetext"></span><br>
       <span class="timer">
-      <span id = "h"></span><span id = "m"></span><span id = "s"></span>
+      <span id = "h">00:</span><span id = "m">00:</span><span id = "s">00</span>
       </span><br>
       <span id="localtime"></span>
       <br>
@@ -52,6 +52,7 @@
       datenow = Date.now();
       okay = lastout + 7200000;
       console.log(okay)
+      document.getElementById("whenapi").innerHTML = `<i>Re-checking in ` + Math.floor(60 - ((datenow - lastAPI) / 1000)) + ` seconds</i>`;
         if (lastout > lastin){
           var timedifference = datenow - lastout;
           timedifference = 7200000 - timedifference;
@@ -62,7 +63,6 @@
             document.getElementById("safetext").innerText = "Please wait";
             document.getElementById("status").innerHTML = `<span style="color: #D84860">UNSAFE!</span>`
             document.getElementById("substatus").innerHTML = `It's been less than two hours since someone logged out of the account. Please wait for this timer to run out.`;
-            document.getElementById("whenapi").innerHTML = `<i>Re-checking in ` + Math.floor(60 - ((datenow - lastAPI) / 1000)) + ` seconds</i>`;
             document.getElementById("ad").style.display = "inline";
             var h = Math.floor(timedifference / 3600000);
             document.getElementById("h").innerText = (asz(h) + ":");
