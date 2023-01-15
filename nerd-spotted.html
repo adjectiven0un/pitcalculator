@@ -11,7 +11,7 @@
   <span id = "m"></span>
   <span id = "s"></span>
   <br>
-  <span id = "milliseconds">Loading...</span>
+  <span id = "extratext">Loading...</span>
   </div>
   </html>
   <script>
@@ -25,21 +25,19 @@
         var timedifference = Date.now() - lastout;
         timedifference = 7200000 - timedifference;
         if (timedifference > 0) {
-          document.getElementById("milliseconds").innerText = "";
+          document.getElementById("extratext").innerText = "";
           document.getElementById("safetext").innerText = "Safe in: ";
           var h = Math.floor(timedifference / 3600000);
           document.getElementById("h").innerText = (h + "h");
           var m = Math.floor((timedifference - 3600000 * h) / 60000);
           document.getElementById("m").innerText = (m + "m");
-          var s = Math.floor((timedifference - 3600000 * h - 60000 * m) / 1000);
-          document.getElementById("s").innerText = (s + "s");
         } else {
-          document.getElementById("milliseconds").innerText = ("");
+          document.getElementById("extratext").innerText = ("");
           document.getElementById("safetext").innerText = ("Currently safe");
         }
          
       } else {
-        document.getElementById("milliseconds").innerText = ("<!> <!> <!> <!> <!>");
+        document.getElementById("extratext").innerText = ("<!> <!> <!> <!> <!>");
         document.getElementById("safetext").innerText = ("Currently unsafe");
         document.getElementById("h").innerText = ("");
         document.getElementById("m").innerText = ("");
@@ -48,5 +46,6 @@
     }
   )
   }
-  setInterval(update, 1000);
+  update();
+  setInterval(update, 60000);
   </script>
