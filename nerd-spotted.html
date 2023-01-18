@@ -57,8 +57,8 @@
           var timedifference = datenow - lastout;
           timedifference = 7200000 - timedifference;
           okaydate = new Date(okay);
-          document.getElementById('localtime').innerText = "(" + okaydate.toLocaleTimeString("en-CA") /* our home and native land */ + ")";
           if (timedifference > 0) {
+            document.getElementById('localtime').innerText = "(" + okaydate.toLocaleTimeString("en-CA") /* our home and native land */ + ")";
             document.getElementById("milliseconds").innerText = "";
             document.getElementById("safetext").innerText = "Please wait";
             document.getElementById("status").innerHTML = `<span style="color: #D84860">UNSAFE!</span>`
@@ -75,18 +75,22 @@
             document.getElementById("milliseconds").innerText = ("");
             document.getElementById("status").innerHTML = `<span style="color: #3AE8B9">SAFE!</span>`
             document.getElementById("ad").style.display = "none";
+            document.title = "[SAFE] Safety check"
             document.getElementById("substatus").innerHTML = `It's been more than two hours since the last logout! Have fun gaining renown.`;
+            document.getElementById('localtime').innerText = "";
           }
           
         } else {
           document.getElementById("milliseconds").innerText = ("<!> <!> <!> <!> <!>");
           document.getElementById("safetext").innerText = ("Currently unsafe");
+          document.title = "[UNSAFE] Safety check"
           document.getElementById("status").innerHTML = `<span style="color: #982820">VERY UNSAFE!</span>`
           document.getElementById("substatus").innerHTML = `Someone's on the account!`;
           document.getElementById("ad").style.display = "none";
           document.getElementById("h").innerText = ("");
           document.getElementById("m").innerText = ("");
           document.getElementById("s").innerText = ("");
+          document.getElementById('localtime').innerText = "";
         }
     }
 
