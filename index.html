@@ -4,7 +4,7 @@
   <body>
   <title>Hypixel Pit rewards calculator</title>
   <link rel="stylesheet" href="stylesheet.css">
-  <meta name = "description" content = "Hypixel Pit rewards calculator v0.2.1β">
+  <meta name = "description" content = "Hypixel Pit rewards calculator v0.3.0β">
   <meta name = "author" content = "adjective_n0un">
 <span class = "body">
 <div class = "box">
@@ -15,7 +15,6 @@
   <!--Apologies to anyone who has to read this. The HTML ends at line 483. I'll try to explain it as well as I can.-->
   <!--The full formulas may be seen at https://pit.wiki/XP and https://pit.wiki/Gold.-->
   
-
   <div style = "text-align:center"><p><span class = mc>WARNING!</span> Bugs may be present. Report bugs to adjective_noun#3215 on Discord, @adj_noun on Twitter, or adjectivenoun3215@gmail.com.</p>
   
   
@@ -26,9 +25,9 @@
   <input type = "text" id = "identifier" onchange = "nametouuid(value)">
   <p class = m7 id = "namestatus"><i>Input of a username here is entirely optional. If input, certain values will automatically be set based on what the player has unlocked.</i></p>
   </div>
-  <!--killer armor, killstreak, level-->
-  
-  <div style = "text-align:center">
+  <!--killer armor, killstreak, level------------------------------------------------------------------------------------>
+  <div>
+  <div id = "killerdiv" style = "text-align:center; width:50%; display: inline-table;">
   <p class = "section">Killer's Stats</p>
   <form action="" style = "display: inline-table" onChange = "checkHat(Player1Helmet.value); changeArmorImage('Helmet', '1', Player1Helmet.value)">
     <label>Select helmet </label>
@@ -100,6 +99,7 @@
       <td class="small center" id="caption2" name="caption2">Chestplate</td>
     </tr>
   </table>
+  <br>
   <table class="img body" style = "display: inline-table">
     <tr>
       <td  style="text-align: center"><img id = "killerLeggings" src="./images/None_Leggings.png" width="100%"></td>
@@ -124,25 +124,146 @@
   <br><br>
     <label>Killer's level </label>
     <input type = "number" id = "killerlevel" min = "0" max = "120">
-  <br><br> </div>
+  <br><br><br>
+  </div>
+  
+
+<!---------------------------------------------------------------------------!>
+
+  <div id = "victimdiv" style = "text-align:center; width:50%; display: inline-table;" >
+  <p class = section>Victim's Stats</p>
+    <form action="" style = "display: inline-table" onChange = "changeArmorImage('Helmet', '2', Player2Helmet.value);">
+    <label>Select victim's helmet </label>
+    <select id="Player2Helmet">
+      <option value="None_Helmet">None</option>
+      <option value="Leather_Helmet" style = "background: #a5a">Fancy Hat</option>
+      <option value="Chainmail_Helmet" style = "background: #888">Chainmail Helmet</option>
+      <option value="Iron_Helmet" style = "background: #aaa">Iron Helmet</option>
+      <option value="Diamond_Helmet" style = "background: #0cc">Diamond Helmet</option>
+      <option value="Golden_Helmet" style = "background: #cc0">Golden Helmet</option>
+    </select>
+  </form> 
+  <br>
+       
+  <form action="" style = "display: inline-table" onChange = "changeArmorImage('Chestplate', '2', Player2Chestplate.value);">
+    <label>Select victim's chestplate </label>
+    <select id="Player2Chestplate">
+      <option value="None_Chestplate">None</option>
+      <option value="Chainmail_Chestplate" style = "background: #888">Chainmail Chestplate</option>
+      <option value="Iron_Chestplate" style = "background: #aaa">Iron Chestplate</option>
+      <option value="Diamond_Chestplate" style = "background: #0cc">Diamond Chestplate</option>
+      <option value="Archangel_Chestplate" style = "background: #099">Archangel Chestplate</option>
+    </select>
+  </form>
+  
+  <br>
+  <form action="" style = "display: inline-table" onChange = "changeArmorImage('Leggings', '2', Player2Leggings.value);">
+    <label>Select victim's leggings </label>
+    <select id="Player2Leggings">
+      <option value="None_Leggings">None</option>
+      <option value="Golden_Leggings" style = "background: #dd0">Golden Leggings</option>
+      <option value="Chainmail_Leggings" style = "background: #888">Chainmail Leggings</option>
+      <option value="Iron_Leggings" style = "background: #aaa">Iron Leggings</option>
+      <option value="Diamond_Leggings" style = "background: #0cc">Diamond Leggings</option>
+      <option value="Mystic_Pants" style = "background: #f55">Mystic Pants</option>
+      <option value="Dark_Pants" style = "background: #444">Dark Pants</option>
+      <option value="Sewer_Pants" style = "background: #9c4">Sewer Pants</option>
+    </select>
+  </form>
+  
+  <br>
+  <form action="" style = "display: inline-table" onChange = "changeArmorImage('Boots', '2', Player2Boots.value);"> 
+    <label>Select victim's boots </label>
+    <select id="Player2Boots">
+      <option value="None_Boots">None</option>
+      <option value="Chainmail_Boots" style = "background: #888">Chainmail Boots</option>
+      <option value="Iron_Boots" style = "background: #aaa">Iron Boots</option>
+      <option value="Diamond_Boots" style = "background: #0cc">Diamond Boots</option>
+      <option value="Armageddon_Boots" style = "background: #c00">Armageddon Boots</option>
+      <option value="Radioactive_Boots" style = "background: #9c4">Radioactive Boots</option>
+    </select>
+  </form>
+
+  <br>
+  <table class="img body" style = "display: inline-table">
+    <tr>
+      <td  style="text-align: center"><img id = "victimHelmet" src="./images/None_Helmet.png" width="100%"></td>
+    </tr>
+    <tr>
+      <td class="small center" id="caption2" name="caption2">Helmet</td>
+    </tr>
+  </table>  
+  <table class="img body" style = "display: inline-table">
+    <tr>
+      <td  style="text-align: center"><img id = "victimChestplate" src="./images/None_Chestplate.png" width="100%"></td>
+    </tr>
+    <tr>
+      <td class="small center" id="caption2" name="caption2">Chestplate</td>
+    </tr>
+  </table>
+  <br>
+  <table class="img body" style = "display: inline-table">
+    <tr>
+      <td  style="text-align: center"><img id = "victimLeggings" src="./images/None_Leggings.png" width="100%"></td>
+    </tr>
+    <tr>
+      <td class="small center" id="caption2" name="caption2">Leggings</td>
+    </tr>
+  </table>
+  <table class="img body" style = "display: inline-table">
+    <tr>
+      <td  style="text-align: center"><img id = "victimBoots" src="./images/None_Boots.png" width="100%"></td>
+    </tr>
+    <tr>
+      <td class="small center" id="caption2" name="caption2">Boots</td>
+    </tr>
+  </table>
+  <br><br>
+  <label>Victim's streak </label>
+    <input type = "text" id = "victimstreak" onkeyup="RemoveBad2()">
+  <br><br>
+  <label>Victim's level </label>
+    <input type = "number" id = "victimlevel" min = "0" max = "120">
+  <br><br>
+  <label>Victim in party? </label>
+    <select id="inparty">
+      <option value="false">No</option>
+      <option value="true">Yes</option>
+    </select>
+
+  </div>
+  </div><br><br><br>
+  <p> </p>
+  <p style = "text-align: center">==========--------------------------------------------------------==========</p>
   <p class = "section" style = "text-align:center">Passive reward bonuses</p>
+
   <!--All resource passives, like passives, killstreaks, renown boosts, etc-->
-  <div style = "text-align:center"><input type = "range" id = "PassiveXPBoost" min = "1" max = "1.6" value = "1" step = "0.1" onchange = "changeText('PassiveXPBoost', 'mult1');" class = "slider" >
-  <p class = mb >XP Boost <span class = mf>passive: </span>Tier <b class = mb id = "PassiveXPBoostText">0</b></p></div>
-  <div style = "text-align:center"><input type = "range" id = "PassiveGoldBoost" min = "1" max = "1.6" value = "1" step = "0.1" onchange = "changeText('PassiveGoldBoost', 'mult1');" class = "slider">
-  <p class = m6 >Gold Boost <span class = mf>passive: </span>Tier <b class = m6 id = "PassiveGoldBoostText">0</b></p></div>
-  <div style = "text-align:center"><input type = "range" id = "PassiveElGato" min = "0" max = "6" value = "0" step = "1" onchange = "changeText('PassiveElGato', 'add');" class = "slider">
-  <p class = md >El Gato <span class = mf>boosted kills:</span> <b class = md id = "PassiveElGatoText">0</b></p></div>
-  <div style = "text-align:center"><input type = "range" id = "RenownXPBump" min = "0" max = "10" value = "0" step = "1" onchange = "changeText('RenownXPBump', 'add');" class = "sliderbig">
-  <p class = mb><span class = me>Renown</span> XP Bump: +<b class = mb id = "RenownXPBumpText">0</b></p></div>
-  <div style = "text-align:center"><input type = "range" id = "RenownGoldBoost" min = "1" max = "1.25" value = "1" step = "0.025" onchange = "changeText('RenownGoldBoost', 'mult2');" class = "sliderbig">
-  <p class = m6><span class = me>Renown</span> Gold Boost: <b class = m6 id = "RenownGoldBoostText">0</b>%</p></div>
-  <div style = "text-align:center"><input type = "range" id = "GenesisXPMultiplier" min = "1" max = "1.15" value = "1" step = "0.01" onchange = "changeText('GenesisXPMultiplier', 'mult2');" class = "slidermega">
-  <p class = mb><span class = m7>Genesis</span> XP Multiplier: <b class = mb id = "GenesisXPMultiplierText">0</b>%</p></div>
-  <div style = "text-align:center"><input type = "range" id = "GenesisGoldBump" min = "0" max = "3" value = "0" step = "0.2" onchange = "changeText('GenesisGoldBump', 'add');" class = "slidermega">
-  <p class = m6><span class = m7>Genesis</span> Gold Bump: <b class = m6 id = "GenesisGoldBumpText">0</b></p></div>
+  <div id = "passivesliders" style = "width:40%; display:inline-table; text-align:center">
+  <div style = "text-align:left"><input type = "range" id = "PassiveXPBoost" min = "1" max = "1.6" value = "1" step = "0.1" onchange = "changeText('PassiveXPBoost', 'mult1');" class = "slider">
+  <span class = mb>XP Boost <span class = mf>passive: </span>Tier <b class = mb id = "PassiveXPBoostText">0</b></span><br></div><br>
+  <div style = "text-align:left"><input type = "range" id = "PassiveGoldBoost" min = "1" max = "1.6" value = "1" step = "0.1" onchange = "changeText('PassiveGoldBoost', 'mult1');" class = "slider">
+  <span class = m6 >Gold Boost <span class = mf>passive: </span>Tier <b class = m6 id = "PassiveGoldBoostText">0</b></span></div><br>
+  <div style = "text-align:left"><input type = "range" id = "PassiveElGato" min = "0" max = "6" value = "0" step = "1" onchange = "changeText('PassiveElGato', 'add');" class = "slider">
+  <span class = md>El Gato <span class = mf>boosted kills:</span> <b class = md id = "PassiveElGatoText">0</b></span></div><br>
+  </div>
+ 
+  <div id = "renownsliders" style = "width: 60%; display: inline-table; text-align: center">
+  <div style = "text-align:right"><span class = mb><span class = me>Renown</span> XP Bump: +<b class = mb id = "RenownXPBumpText">0</b>⠀</span><input type = "range" id = "RenownXPBump" min = "0" max = "10" value = "0" step = "1" onchange = "changeText('RenownXPBump', 'add');" class = "sliderbig">
+  </div><br>
+  <div style = "text-align:right"><span class = m6><span class = me>Renown</span> Gold Boost: <b class = m6 id = "RenownGoldBoostText">0</b>%</span><input type = "range" id = "RenownGoldBoost" min = "1" max = "1.25" value = "1" step = "0.025" onchange = "changeText('RenownGoldBoost', 'mult2');" class = "sliderbig">
+  </div><br>
+  </div>
+
+
+  <p style = "text-align:center">⠀</p>
+  <p style = "text-align:center">⠀</p>
+  <div style = "text-align:left"><input type = "range" id = "GenesisXPMultiplier" min = "1" max = "1.15" value = "1" step = "0.01" onchange = "changeText('GenesisXPMultiplier', 'mult2');" class = "slidermega">
+  <span class = mb><span class = m7>Genesis</span> XP Multiplier: <b class = mb id = "GenesisXPMultiplierText">0</b>%</span></div><br>
+  <div style = "text-align:left"><input type = "range" id = "GenesisGoldBump" min = "0" max = "3" value = "0" step = "0.2" onchange = "changeText('GenesisGoldBump', 'add');" class = "slidermega">
+  <span class = m6><span class = m7>Genesis</span> Gold Bump: <b class = m6 id = "GenesisGoldBumpText">0</b></span></div>
   
-  
+  <p style = "text-align: center">==========--------------------------------------------------------==========</p>
+
   <div style = "text-align:center">
   <p class = "section">Stacking Killstreaks</p>
     <label><span class = mb>XP stack</span> activations (0 - 220)</label>
@@ -380,106 +501,7 @@
     <br><br><br></div>
 
   <!--target's stuff, including armor, streak, killstreak-->
-    <div style = "text-align:center"><p class = section>Victim's Stats</p>
-    <form action="" style = "display: inline-table" onChange = "changeArmorImage('Helmet', '2', Player2Helmet.value);">
-    <label>Select victim's helmet </label>
-    <select id="Player2Helmet">
-      <option value="None_Helmet">None</option>
-      <option value="Leather_Helmet" style = "background: #a5a">Fancy Hat</option>
-      <option value="Chainmail_Helmet" style = "background: #888">Chainmail Helmet</option>
-      <option value="Iron_Helmet" style = "background: #aaa">Iron Helmet</option>
-      <option value="Diamond_Helmet" style = "background: #0cc">Diamond Helmet</option>
-      <option value="Golden_Helmet" style = "background: #cc0">Golden Helmet</option>
-    </select>
-  </form> 
-  <br>
-       
-  <form action="" style = "display: inline-table" onChange = "changeArmorImage('Chestplate', '2', Player2Chestplate.value);">
-    <label>Select victim's chestplate </label>
-    <select id="Player2Chestplate">
-      <option value="None_Chestplate">None</option>
-      <option value="Chainmail_Chestplate" style = "background: #888">Chainmail Chestplate</option>
-      <option value="Iron_Chestplate" style = "background: #aaa">Iron Chestplate</option>
-      <option value="Diamond_Chestplate" style = "background: #0cc">Diamond Chestplate</option>
-      <option value="Archangel_Chestplate" style = "background: #099">Archangel Chestplate</option>
-    </select>
-  </form>
-  
-  <br>
-  <form action="" style = "display: inline-table" onChange = "changeArmorImage('Leggings', '2', Player2Leggings.value);">
-    <label>Select victim's leggings </label>
-    <select id="Player2Leggings">
-      <option value="None_Leggings">None</option>
-      <option value="Golden_Leggings" style = "background: #dd0">Golden Leggings</option>
-      <option value="Chainmail_Leggings" style = "background: #888">Chainmail Leggings</option>
-      <option value="Iron_Leggings" style = "background: #aaa">Iron Leggings</option>
-      <option value="Diamond_Leggings" style = "background: #0cc">Diamond Leggings</option>
-      <option value="Mystic_Pants" style = "background: #f55">Mystic Pants</option>
-      <option value="Dark_Pants" style = "background: #444">Dark Pants</option>
-      <option value="Sewer_Pants" style = "background: #9c4">Sewer Pants</option>
-    </select>
-  </form>
-  
-  <br>
-  <form action="" style = "display: inline-table" onChange = "changeArmorImage('Boots', '2', Player2Boots.value);"> 
-    <label>Select victim's boots </label>
-    <select id="Player2Boots">
-      <option value="None_Boots">None</option>
-      <option value="Chainmail_Boots" style = "background: #888">Chainmail Boots</option>
-      <option value="Iron_Boots" style = "background: #aaa">Iron Boots</option>
-      <option value="Diamond_Boots" style = "background: #0cc">Diamond Boots</option>
-      <option value="Armageddon_Boots" style = "background: #c00">Armageddon Boots</option>
-      <option value="Radioactive_Boots" style = "background: #9c4">Radioactive Boots</option>
-    </select>
-  </form>
-
-  <br>
-  <table class="img body" style = "display: inline-table">
-    <tr>
-      <td  style="text-align: center"><img id = "victimHelmet" src="./images/None_Helmet.png" width="100%"></td>
-    </tr>
-    <tr>
-      <td class="small center" id="caption2" name="caption2">Helmet</td>
-    </tr>
-  </table>  
-  <table class="img body" style = "display: inline-table">
-    <tr>
-      <td  style="text-align: center"><img id = "victimChestplate" src="./images/None_Chestplate.png" width="100%"></td>
-    </tr>
-    <tr>
-      <td class="small center" id="caption2" name="caption2">Chestplate</td>
-    </tr>
-  </table>
-  <table class="img body" style = "display: inline-table">
-    <tr>
-      <td  style="text-align: center"><img id = "victimLeggings" src="./images/None_Leggings.png" width="100%"></td>
-    </tr>
-    <tr>
-      <td class="small center" id="caption2" name="caption2">Leggings</td>
-    </tr>
-  </table>
-  <table class="img body" style = "display: inline-table">
-    <tr>
-      <td  style="text-align: center"><img id = "victimBoots" src="./images/None_Boots.png" width="100%"></td>
-    </tr>
-    <tr>
-      <td class="small center" id="caption2" name="caption2">Boots</td>
-    </tr>
-  </table>
-  <br><br>
-  <label>Victim's streak </label>
-    <input type = "text" id = "victimstreak" onkeyup="RemoveBad2()">
-  <br><br>
-  <label>Victim's level </label>
-    <input type = "number" id = "victimlevel" min = "0" max = "120">
-  <br><br>
-  <label>Victim in party? </label>
-    <select id="inparty">
-      <option value="false">No</option>
-      <option value="true">Yes</option>
-    </select>
-  <br><br>
-  </div>
+    
   <!--the BUTTON-->
   <div style = "text-align:center">
   <span id = "Calcbutton" style = "padding: 15px; background-color: #aa55aa;" onclick = "calcrewards();" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Calculate!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><br><br>
