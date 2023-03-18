@@ -4,7 +4,7 @@
   <body>
   <title>Hypixel Pit rewards calculator</title>
   <link rel="stylesheet" href="stylesheet.css">
-  <meta name = "description" content = "Hypixel Pit rewards calculator v0.3.0β">
+  <meta name = "description" content = "Hypixel Pit rewards calculator v0.3.1β">
   <meta name = "author" content = "adjective_n0un">
 <span class = "body">
 <div class = "box">
@@ -257,10 +257,10 @@
 
   <p style = "text-align:center">⠀</p>
   <p style = "text-align:center">⠀</p>
-  <div style = "text-align:left"><input type = "range" id = "GenesisXPMultiplier" min = "1" max = "1.15" value = "1" step = "0.01" onchange = "changeText('GenesisXPMultiplier', 'mult2');" class = "slidermega">
+  <div style = "text-align:center"><input type = "range" id = "GenesisXPMultiplier" min = "1" max = "1.15" value = "1" step = "0.01" onchange = "changeText('GenesisXPMultiplier', 'mult2');" class = "slidermega">
   <span class = mb><span class = m7>Genesis</span> XP Multiplier: <b class = mb id = "GenesisXPMultiplierText">0</b>%</span></div><br>
-  <div style = "text-align:left"><input type = "range" id = "GenesisGoldBump" min = "0" max = "3" value = "0" step = "0.2" onchange = "changeText('GenesisGoldBump', 'add');" class = "slidermega">
-  <span class = m6><span class = m7>Genesis</span> Gold Bump: <b class = m6 id = "GenesisGoldBumpText">0</b></span></div>
+  <div style = "text-align:center"><input type = "range" id = "GenesisGoldBump" min = "0" max = "3" value = "0" step = "0.2" onchange = "changeText('GenesisGoldBump', 'add');" class = "slidermega">
+  <span class = m6><span class = m7>Genesis</span> Gold Bump: <b class = m6 id = "GenesisGoldBumpText">0</b>ㅤ</span></div>
   
   <p style = "text-align: center">==========--------------------------------------------------------==========</p>
 
@@ -271,7 +271,8 @@
     <label>  <span class = m6>Gold stack</span> activations (0 - 55)</label>
     <input type = "number" id = "GoldStack" min = "0" max = "55">
   </div>
-  
+  <p style = "text-align:center">⠀</p>
+  <p style = "text-align: center">==========--------------------------------------------------------==========</p>
   <!--Mystic pants hidden if not selected with armor-->
   <div style = "text-align:center">
   <div id = "MysticPantsBuffs" class = "invis">
@@ -452,6 +453,8 @@
     <div style = "text-align:center">
     <p class = "section">Perks & Killstreaks</p>
     <p class = me><i><b>Only perks and killstreaks that influence on-kill rewards are displayed.</b></i></p>
+    <div id = "perks" style = "display: inline-table">
+    <p><b>Perks</b></p>
     <table class="imgwide body" style = "display: inline-table">
     <tr>
       <td id = "Safety_First" style="text-align: center; background-color: #252525;" onclick = "addPerk('Safety_First');"><img class = "icon" src="./images/Safety_First.png" width="100%"></td>
@@ -471,16 +474,22 @@
       <td id = "perk4" style="text-align: center"><img class = "icon" id = "perk4image" src="./images/None_Helmet.png" width="100%"></td>
     </tr>
     </table>
+    </div>
+    <div style = "display: inline-table">⠀⠀⠀⠀⠀⠀</div>
     <!--Select killstreaks, thankfully all singularly mutually exclusive-->
-    <br><br>
-    <p>Killstreak</p>
+    <div id = "killstreak" style = "display: inline-table">
+    <p>⠀</p>
+    <p><b>Killstreak</b></p>
     <table class = "imgkillstreaks body" style = "display: inline-table">
       <td id = "Second_Gapple" style="text-align: center" onclick = selectKillstreak("Second_Gapple")><img class = "icon"  src="./images/Second_Gapple.png" width="100%"></td>
       <td id = "Explicious" style="text-align: center" onclick = selectKillstreak("Explicious")><img class = "icon"  src="./images/Explicious.png" width="100%"></td>
       <td id = "Arquebusier" style="text-align: center" onclick = selectKillstreak("Arquebusier")><img class = "icon"  src="./images/Arquebusier.png" width="100%"></td>
       <td id = "Khanate" style="text-align: center" onclick = selectKillstreak("Khanate")><img class = "icon"  src="./images/Khanate.png" width="100%"></td>
     </table>
-    <p>Other bonuses</p>
+    </div>
+    <br><br>
+    <div style = "display:inline-table">
+    <p><b>Other bonuses</b></p>
     <table class = "imgkillstreaks body" style = "display: inline-table">
       <td id = "Super_Streaker" style="text-align: center" onclick = toggleSuperStreaker()><img class = "icon"  src="./images/Super_Streaker.png" width="100%"></td>
     </table>
@@ -490,7 +499,10 @@
     <table class = "imgkillstreaks body" style = "display: inline-table">
       <td id = "Celebrity" style="text-align: center" onclick = toggleCelebrity()><img class = "icon"  src="./images/Celebrity.png" width="100%"></td>
     </table>
-    <p>Megastreak</p>
+    </div>
+    <div style = "display: inline-table">⠀⠀⠀⠀⠀⠀</div>
+    <div style = "display:inline-table">
+    <p><b>Megastreak</b></p>
     <table class = "imgkillstreaks body" style = "display: inline-table">
       <td id = "Overdrive" style="text-align: center" onclick = selectMega("Overdrive")><img class = "icon"  src="./images/Overdrive.png" width="100%"></td>
       <td id = "Beastmode" style="text-align: center" onclick = selectMega("Beastmode")><img class = "icon"  src="./images/Beastmode.png" width="100%"></td>
@@ -498,6 +510,7 @@
       <td id = "Highlander" style="text-align: center" onclick = selectMega("Highlander")><img class = "icon"  src="./images/Highlander.png" width="100%"></td>
       <td id = "To_the_Moon" style="text-align: center" onclick = selectMega("To_the_Moon")><img class = "icon"  src="./images/To_the_Moon.png" width="100%"></td>
     </table>
+    </div>
     <br><br><br></div>
 
   <!--target's stuff, including armor, streak, killstreak-->
